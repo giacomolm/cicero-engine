@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars", "views/mapView","models/Event","collections/Events","text!templates/map.html"],
-    function ($, _, Backbone, Handlebars, mapView,Event,Events,template) {
+define(["zepto", "underscore", "backbone","handlebars","models/Event","collections/Events","text!templates/mapView.html"],
+    function ($, _, Backbone, Handlebars,Event,Events,template) {
 
     var mapView = Backbone.View.extend({
 
