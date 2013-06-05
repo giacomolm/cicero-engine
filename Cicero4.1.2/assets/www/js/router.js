@@ -15,16 +15,20 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
       
       login: function(){
+          if(this.externalView){
+              this.externalView.remove();
+          }
           this.externalView = new semiStructureView();
-          $('body').empty();
           $('body').append($(this.externalView.el));
           var login = new loginView();
           this.changePage(login);
       },
       
       map: function(){
+          if(this.externalView){
+              this.externalView.remove();
+          }
           this.externalView = new StructureView();
-          $('body').empty();
           $('body').append($(this.externalView.el));
     	  var map = new mapView();
     	  this.changePage(map);
