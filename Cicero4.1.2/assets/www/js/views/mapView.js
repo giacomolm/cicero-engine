@@ -14,10 +14,11 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
           });*/
 
           this.miei_eventi = new Events;
-          var self = this;
-          this.miei_eventi.firebase.on('value', function(snapshot){
-        	    self.render();
-        	});
+          this.miei_eventi.firebase.on('value',this.render,this);
+          //var self = this;
+          //this.miei_eventi.firebase.on('value', function(snapshot){
+          //	    self.render();
+          //	});
           //this.miei_eventi.add(this.mio_evento);
         },
 

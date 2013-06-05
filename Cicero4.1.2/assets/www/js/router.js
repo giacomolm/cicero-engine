@@ -1,18 +1,31 @@
-define(["zepto", "underscore", "backbone","views/mapView"],
-    function ($, _,Backbone,mapView) {
+define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView"],
+    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView) {
 
     var AppRouter = Backbone.Router.extend({
 
       routes: {
-        "": "map",
-        "map": "map",
+        "": "login",
+        "login": "login",
+        "map": "map"
       },
 
       initialize: function () {
+        this.externalView = undefined;  
         this.currentView = undefined;
       },
       
+      login: function(){
+          this.externalView = new semiStructureView();
+          $('body').empty();
+          $('body').append($(this.externalView.el));
+          var login = new loginView();
+          this.changePage(login);
+      },
+      
       map: function(){
+          this.externalView = new StructureView();
+          $('body').empty();
+          $('body').append($(this.externalView.el));
     	  var map = new mapView();
     	  this.changePage(map);
       },
@@ -23,8 +36,7 @@ define(["zepto", "underscore", "backbone","views/mapView"],
       }
 
         this.currentView = page;
-        //page.render();
-        $('body').append($(page.el));
+        $('#container').append($(this.currentView.el));
       }
 
     });
