@@ -1,12 +1,13 @@
-define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView"],
-    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView) {
+define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView"],
+    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView) {
 
     var AppRouter = Backbone.Router.extend({
 
       routes: {
         "": "login",
         "login": "login",
-        "map": "map"
+        "map": "map",
+        "register": "register" 
       },
 
       initialize: function () {
@@ -34,6 +35,16 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
     	  this.changePage(map);
       },
 
+      register: function(){
+          if(this.externalView){
+              this.externalView.remove();
+          }
+          this.externalView = new semiStructureView();
+          $('body').append($(this.externalView.el));
+          var register = new registerView();
+          this.changePage(register);
+      },
+      
       changePage: function (page) {
         if(this.currentView) {
            this.currentView.remove();
