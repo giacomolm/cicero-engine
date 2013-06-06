@@ -10,6 +10,7 @@ require.config({
     handlebars: '../lib/handlebars/handlebars',
     firebase: '../lib/firebase/firebase',
     backfire: '../lib/firebase/backfire',
+    leaflet: '../lib/leaflet/leaflet',
     templates: '../templates',
   },
   shim: {
@@ -32,6 +33,9 @@ require.config({
     'backfire': {
     	deps: ['backbone','firebase'],
     	exports: 'Backfire'
+    },
+    'leaflet': {
+        exports: 'Leaflet'
     }
   }
 });
