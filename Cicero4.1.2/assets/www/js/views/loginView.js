@@ -4,7 +4,8 @@ define(["zepto", "underscore", "backbone", "handlebars","text!templates/loginVie
     var loginView = Backbone.View.extend({
         
         events: {
-            "touchend #register": "showRegistration"
+            "touchend #register" : "showRegistration",
+            "touchend #guest" : "showMap"
           },
           
         template: Handlebars.compile(template),
@@ -16,7 +17,9 @@ define(["zepto", "underscore", "backbone", "handlebars","text!templates/loginVie
         showRegistration: function () {
             Backbone.history.navigate("register", {trigger: true});
         },
-          
+        showMap: function () {
+            Backbone.history.navigate("map", {trigger: true});
+        },  
         render: function (eventName) {
             $(this.el).empty();
             $(this.el).html(this.template());

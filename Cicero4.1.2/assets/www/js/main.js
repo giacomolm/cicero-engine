@@ -35,7 +35,7 @@ require.config({
     	exports: 'Backfire'
     },
     'leaflet': {
-        exports: 'Leaflet'
+        exports: 'L'
     }
   }
 });
@@ -49,8 +49,8 @@ require(['zepto','domReady','underscore','backbone','router'],
     });
 
     function run() {
-    	$('#test').append('zepto');
-    	document.getElementById("devready").innerHTML = "OnDeviceReady fired.";
+    	//$('#test').append('zepto');
+    	//document.getElementById("devready").innerHTML = "OnDeviceReady fired.";
     	new AppRouter();
     	Backbone.history.start();
     }

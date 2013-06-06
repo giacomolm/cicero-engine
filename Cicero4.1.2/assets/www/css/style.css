@@ -244,6 +244,12 @@ textarea.invalid {
 .nav img {
   margin-top: 0px;
 }
+
+.map{
+	width:99%;
+	height:100%;
+}
+
 #header {
   height: 44px;
   text-align: center;
@@ -306,7 +312,6 @@ textarea.invalid {
   width: 24%;
   text-align: center;
   margin-top: 5px;
-  width : 38px;
 }
 .footerMenu img{
 	width : 38px;
