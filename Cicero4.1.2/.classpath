@@ -5,6 +5,6 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="lib" path="C:/Users/giacomolm/Documents/univaq/specialistica/MAD/workspace/Cicero4.1.2/libs/cordova-2.7.0.jar" sourcepath="libs/cordova-2.7.0.jar"/>
+	<classpathentry kind="lib" path="/home/nino/Projects/eclipse/Cicero4.1.2/libs/cordova-2.7.0.jar" sourcepath="libs/cordova-2.7.0.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

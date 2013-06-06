@@ -3,13 +3,12 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
 
     var mapView = Backbone.View.extend({
 
+        tagName: "div",
+        id: "map",
+        
         template: Handlebars.compile(template),
 
         initialize: function () {
-
-          this.miei_eventi = new Events;
-          this.miei_eventi.firebase.on('value',this.render,this);
-          
           this.sw = new L.LatLng(-85.05113, -179.29687, true);
           this.ne = new L.LatLng(51.83578, 171.5625, true);
           this.bounds = new L.LatLngBounds(this.sw, this.ne);
@@ -19,9 +18,8 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
 
         render: function (eventName) {
           $(this.el).empty();
-          //this.mio_evento = this.miei_eventi.at(1); 
           $(this.el).html(this.template());
-          
+          $('#container').append($(this.el)); /* da trovare un modo migliore */
           this.map = L.map('map',{
               maxBounds: this.bounds,
               worldCopyJump: true
@@ -31,9 +29,7 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
              maxZoom: 3,
           continuousWorld: true,
              tms: true
-          }).addTo(map);
-          //map.setMaxBounds(bounds);
-          
+          }).addTo(this.map);
           
           return this;
         }
