@@ -1,10 +1,14 @@
-define(["zepto", "underscore", "backbone","handlebars","models/Event","collections/Events", "leaflet","text!templates/mapView.html" ],
-    function ($, _, Backbone, Handlebars,Event,Events,L,template) {
+define(["zepto", "underscore", "backbone","handlebars","models/Event","collections/Events", "leaflet","barcodescanner","text!templates/mapView.html" ],
+    function ($, _, Backbone, Handlebars,Event,Events,L,Barcodescanner,template) {
 
     var mapView = Backbone.View.extend({
 
         tagName: "div",
         id: "map",
+        
+        events: {
+            "touchend #findme" : "findme"
+        },
         
         template: Handlebars.compile(template),
 
@@ -32,6 +36,18 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
           }).addTo(this.map);
           
           return this;
+        },
+        
+        findme: function(){
+            window.plugins.barcodeScanner.scan( function(result) {
+                alert("We got a barcode\n" +
+                          "Result: " + result.text + "\n" +
+                          "Format: " + result.format + "\n" +
+                          "Cancelled: " + result.cancelled);
+            }, function(error) {
+                alert("Scanning failed: " + error);
+                        }
+            );
         }
       });
 
