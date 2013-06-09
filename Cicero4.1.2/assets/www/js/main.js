@@ -11,6 +11,7 @@ require.config({
     firebase: '../lib/firebase/firebase',
     backfire: '../lib/firebase/backfire',
     leaflet: '../lib/leaflet/leaflet',
+    barcodescanner: '../lib/barcodescanner/barcodescanner',
     templates: '../templates',
   },
   shim: {
@@ -36,6 +37,9 @@ require.config({
     },
     'leaflet': {
         exports: 'L'
+    },
+    'barcodescanner': {
+        exports: 'Barcodescanner'
     }
   }
 });
