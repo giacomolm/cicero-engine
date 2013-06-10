@@ -52,6 +52,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
 
         this.currentView = page;
         $('#container').append($(this.currentView.el));
+        this.currentView.trigger("inTheDom");
       }
 
     });
