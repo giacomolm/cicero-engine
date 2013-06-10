@@ -13,9 +13,11 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
         template: Handlebars.compile(template),
 
         initialize: function () {
+          this.on("inTheDom", this.addMap);  
           this.sw = new L.LatLng(-85.05113, -179.29687, true);
           this.ne = new L.LatLng(51.83578, 171.5625, true);
           this.bounds = new L.LatLngBounds(this.sw, this.ne);
+          this.myMarker = new L.marker();
           this.render();
 
         },
@@ -23,19 +25,23 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
         render: function (eventName) {
           $(this.el).empty();
           $(this.el).html(this.template());
-          $('#container').append($(this.el)); /* da trovare un modo migliore */
-          this.map = L.map('map',{
-              maxBounds: this.bounds,
-              worldCopyJump: true
-          }).setView([-38.82259, 36.91406], 1, true);
-          L.tileLayer('img/map/{z}/{x}/{y}.png', {
-             minZoom: 0,
-             maxZoom: 3,
-          continuousWorld: true,
-             tms: true
-          }).addTo(this.map);
           
           return this;
+        },
+        
+        addMap: function(){
+            this.map = L.map('map',{
+                maxBounds: this.bounds,
+                worldCopyJump: true
+            }).setView([-38.82259, 36.91406], 1, true);
+            L.tileLayer('img/map/{z}/{x}/{y}.png', {
+               minZoom: 0,
+               maxZoom: 3,
+            continuousWorld: true,
+               tms: true
+            }).addTo(this.map);
+            
+            return this;
         },
         
         findme: function(){
@@ -48,7 +54,10 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
                 alert("Scanning failed: " + error);
                         }
             );
+            this.myMarker.setLatLng([-38.82259, 36.91406]);
+            this.myMarker.addTo(this.map);
         }
+        
       });
 
     return mapView;
