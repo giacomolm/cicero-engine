@@ -288,6 +288,10 @@ textarea.invalid {
   line-height: 18px;
   bottom: 0px;
   z-index: 999998;
+  box-shadow: 3px 1px -3px 0px #112018;
+  -webkit-box-shadow: 3px 1px -3px 0px #112018;
+  -moz-box-shadow: 3px 1px -3px 0px #112018;
+  -o-box-shadow: 3px 1px -3px 0px #112018;
 }
 #footer a.html5 {
   position: absolute;
@@ -319,6 +323,31 @@ textarea.invalid {
 
 .footerMenuEnd img{
 	width : 38px;
+}
+
+.popupMenu{
+	width : 50%;
+	height : 25%;
+	position: fixed;
+	bottom: 56px;
+	right : 0;
+	border : 0px;
+	display : none;
+	  box-shadow: 1px 1px 3px 0px #112018;
+	  -webkit-box-shadow: 1px 1px 3px 0px #112018;
+	  -moz-box-shadow: 1px 1px 3px 0px #112018;
+	  -o-box-shadow: 1px 1px 3px 0px #112018;
+	    border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  text-align : center;
+  z-index : 1001;
+  color: #ddf2ff;
+  text-shadow: 1px 1px 1px #254736;
+  background: #509b75;
+  opacity: 0.85;
+  filter: alpha(opacity=85);
 }
 
 body {
@@ -665,6 +694,10 @@ body {
 }
 .loginbuttons div img {
   border: 0;
+}
+
+#guest{
+	text-decoration : underline;
 }
 .center {
   margin: 0px 0px;
