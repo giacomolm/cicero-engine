@@ -3,7 +3,9 @@ define(["zepto", "underscore", "backbone", "handlebars","text!templates/structur
 
     var structureView = Backbone.View.extend({
         events: {
-            "touchend #menu" : "toggleMenu"
+            "touchstart #menu_icon" : "toggleMenu",
+            "touchstart #map_icon" : "showMap",
+            "touchstart #search_icon" : "showSearch"
           },
           
         template: Handlebars.compile(template),
@@ -17,6 +19,13 @@ define(["zepto", "underscore", "backbone", "handlebars","text!templates/structur
             if(menuBut.style.display == 'none')
                menuBut.style.display = 'block';
             else menuBut.style.display = 'none';
+        },
+        
+        showMap: function () {
+            Backbone.history.navigate("map", {trigger: true});
+        },
+        showSearch: function () {
+            Backbone.history.navigate("search", {trigger: true});
         },
         
         render: function (eventName) {

@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView"],
-    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView) {
+define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView", "views/searchView"],
+    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView, searchView) {
 
     var AppRouter = Backbone.Router.extend({
 
@@ -7,7 +7,8 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
         "": "login",
         "login": "login",
         "map": "map",
-        "register": "register" 
+        "register": "register",
+        "search": "search"
       },
 
       initialize: function () {
@@ -43,6 +44,11 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
           $('body').append($(this.externalView.el));
           var register = new registerView();
           this.changePage(register);
+      },
+      
+      search: function(){
+          var search = new searchView();
+          this.changePage(search);
       },
       
       changePage: function (page) {
