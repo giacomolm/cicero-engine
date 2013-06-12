@@ -288,10 +288,10 @@ textarea.invalid {
   line-height: 18px;
   bottom: 0px;
   z-index: 999998;
-  box-shadow: 3px 1px -3px 0px #112018;
-  -webkit-box-shadow: 3px 1px -3px 0px #112018;
-  -moz-box-shadow: 3px 1px -3px 0px #112018;
-  -o-box-shadow: 3px 1px -3px 0px #112018;
+  box-shadow: 3px 1px 8px 5px #112018;
+  -webkit-box-shadow: 3px 1px 8px 5px #112018;
+  -moz-box-shadow: 3px 1px 8px 5px #112018;
+  -o-box-shadow: 3px 1px 8px 5px #112018;
 }
 #footer a.html5 {
   position: absolute;
