@@ -13,11 +13,13 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
         template: Handlebars.compile(template),
 
         initialize: function () {
-          this.on("inTheDom", this.addMap);  
+          this.on("inTheDom", this.addMap);
           this.sw = new L.LatLng(-85.05113, -179.29687, true);
           this.ne = new L.LatLng(51.83578, 171.5625, true);
           this.bounds = new L.LatLngBounds(this.sw, this.ne);
           this.myMarker = new L.marker();
+          //dobbiamo gestire la dimensione dinamica
+          //document.getElementById('container').style.height = window.innerHeight+"px";
           this.render();
 
         },
@@ -30,6 +32,9 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
         },
         
         addMap: function(){
+            //adattiamo la dimensione della mappa alla grandezza dello schermo
+            document.getElementById('map').style.height = (screen.height*0.7)+"px"
+            
             this.map = L.map('map',{
                 maxBounds: this.bounds,
                 worldCopyJump: true
