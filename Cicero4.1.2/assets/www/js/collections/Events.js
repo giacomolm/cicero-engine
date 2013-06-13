@@ -3,7 +3,7 @@ define(["zepto", "underscore", "backbone", "models/Event","backfire"],
 
     var Events = Backbone.Firebase.Collection.extend({
         model: Event,
-        firebase: new Firebase("https://cicero.firebaseio.com"),
+        firebase: new Firebase("https://cicero.firebaseio.com/events"),
 
       });
 

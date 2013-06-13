@@ -3,7 +3,7 @@ define(["zepto", "underscore", "backbone", "models/Like","backfire"],
 
     var Likes = Backbone.Firebase.Collection.extend({
         model: Like,
-        firebase: new Firebase("https://cicero.firebaseio.com"),
+        firebase: new Firebase("https://cicero.firebaseio.com/likes"),
       });
 
     return Likes;
