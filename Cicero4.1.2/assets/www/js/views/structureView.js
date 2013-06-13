@@ -12,6 +12,7 @@ define(["zepto", "underscore", "backbone", "handlebars","text!templates/structur
           },
           
         template: Handlebars.compile(template),
+        context : {viewName : "Map"},
 
         initialize: function () {
             this.render();
@@ -25,9 +26,11 @@ define(["zepto", "underscore", "backbone", "handlebars","text!templates/structur
         },
         
         showMap: function () {
+            this.context = {viewName : "Map"};
             Backbone.history.navigate("map", {trigger: true});
         },
         showSearch: function () {
+            this.context = {viewName : "Search"};
             Backbone.history.navigate("search", {trigger: true});
         },
         showFavourite: function () {
@@ -47,7 +50,7 @@ define(["zepto", "underscore", "backbone", "handlebars","text!templates/structur
         },
         render: function (eventName) {
             $(this.el).empty();
-            $(this.el).html(this.template());
+            $(this.el).html(this.template(this.context));
             return this;
         }
       });
