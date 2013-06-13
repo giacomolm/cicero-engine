@@ -3,7 +3,7 @@ define(["zepto", "underscore", "backbone", "models/Media","backfire"],
 
     var Medias = Backbone.Firebase.Collection.extend({
         model: Media,
-        firebase: new Firebase("https://cicero.firebaseio.com"),
+        firebase: new Firebase("https://cicero.firebaseio.com/medias"),
       });
 
     return Medias;

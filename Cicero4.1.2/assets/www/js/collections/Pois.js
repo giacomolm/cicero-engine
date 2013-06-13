@@ -3,7 +3,7 @@ define(["zepto", "underscore", "backbone", "models/Poi","backfire"],
 
     var Pois = Backbone.Firebase.Collection.extend({
         model: Poi,
-        firebase: new Firebase("https://cicero.firebaseio.com"),
+        firebase: new Firebase("https://cicero.firebaseio.com/pois"),
       });
 
     return Pois;

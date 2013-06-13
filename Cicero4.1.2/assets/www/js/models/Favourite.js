@@ -1,6 +1,6 @@
 define(["zepto", "underscore", "backbone"],
   function ($, _, Backbone) {
-    var Favorite = Backbone.Model.extend({
+    var Favourite = Backbone.Model.extend({
       defaults: {
     	  id: 0,
     	  user: 0, /*riferimento*/
@@ -10,6 +10,6 @@ define(["zepto", "underscore", "backbone"],
 
       });
 
-    return Favorite;
+    return Favourite;
 
   });
