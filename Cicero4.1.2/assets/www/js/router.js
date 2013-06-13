@@ -73,7 +73,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
           this.changePage(poiList);
       },
       
-      howToReachUs: function(){eventDetail
+      howToReachUs: function(){
           var howToReachUs = new howToReachUsView();
           this.changePage(howToReachUs);
       },
