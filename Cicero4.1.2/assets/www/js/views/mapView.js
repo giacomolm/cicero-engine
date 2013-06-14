@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone","handlebars","models/Event","collections/Events", "leaflet","barcodescanner","text!templates/mapView.html" ],
-    function ($, _, Backbone, Handlebars,Event,Events,L,Barcodescanner,template) {
+define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections/Pois", "leaflet","barcodescanner","text!templates/mapView.html" ],
+    function ($, _, Backbone, Handlebars,Poi,Pois,L,Barcodescanner,template) {
 
     var mapView = Backbone.View.extend({
 
@@ -14,12 +14,9 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
 
         initialize: function () {
           this.on("inTheDom", this.addMap);
-          this.sw = new L.LatLng(-85.05113, -179.29687, true);
-          this.ne = new L.LatLng(51.83578, 171.5625, true);
-          this.bounds = new L.LatLngBounds(this.sw, this.ne);
-          this.myMarker = new L.marker();
-          //dobbiamo gestire la dimensione dinamica
-          //document.getElementById('container').style.height = window.innerHeight+"px";
+          this.pois = new Pois();
+          this.pois.firebase.on("value",this.addPois,this);
+
           this.render();
 
         },
@@ -34,6 +31,11 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
         addMap: function(){
             //adattiamo la dimensione della mappa alla grandezza dello schermo
             document.getElementById('map').style.height = (screen.height*0.7)+"px"
+            
+            this.sw = new L.LatLng(-85.05113, -179.29687, true);
+            this.ne = new L.LatLng(51.83578, 171.5625, true);
+            this.bounds = new L.LatLngBounds(this.sw, this.ne);
+            this.myMarker = new L.marker();
             
             this.map = L.map('map',{
                 maxBounds: this.bounds,
@@ -61,6 +63,15 @@ define(["zepto", "underscore", "backbone","handlebars","models/Event","collectio
             );
             this.myMarker.setLatLng([-38.82259, 36.91406]);
             this.myMarker.addTo(this.map);
+        },
+        
+        addPois: function(){
+            alert("Arrivano Pois!");
+            alert(this.pois.length);
+            for(i=0;i<this.pois.length;i++){
+                this.ev = this.pois.at(i);
+                alert(this.pois.at(i).get("name"));
+            }
         }
         
       });
