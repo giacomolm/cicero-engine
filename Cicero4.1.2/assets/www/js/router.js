@@ -84,13 +84,15 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
       
       eventDetail: function(id){
-          var event_model = Events.getByCid(id);
+          var events = new Events();
+          var event_model = events.getByCid(id);
           var eventDetail = new eventDetailView({model:event_model});
           this.changePage(eventDetail); 
       },
       
       poiDetail: function(id){
-          var poi_model = Pois.getByCid(id);
+          var pois = new Pois()
+          var poi_model = pois.getByCid(id);
           var poiDetail = new poiDetailView({model:poi_model});
           this.changePage(poiDetail);
       },

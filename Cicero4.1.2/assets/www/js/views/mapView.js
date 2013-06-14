@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections/Pois", "leaflet","barcodescanner","text!templates/mapView.html" ],
-    function ($, _, Backbone, Handlebars,Poi,Pois,L,Barcodescanner,template) {
+define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections/Pois", "leaflet","barcodescanner","text!templates/mapView.html","text!templates/templateMarkers.html" ],
+    function ($, _, Backbone, Handlebars,Poi,Pois,L,Barcodescanner,template,templateMarkers) {
 
     var mapView = Backbone.View.extend({
 
@@ -11,6 +11,7 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         },
         
         template: Handlebars.compile(template),
+        templateMarkers: Handlebars.compile(templateMarkers),
 
         initialize: function () {
           this.on("inTheDom", this.addMap);
@@ -32,18 +33,18 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
             //adattiamo la dimensione della mappa alla grandezza dello schermo
             document.getElementById('map').style.height = (screen.height*0.7)+"px"
             
-            this.sw = new L.LatLng(-85.05113, -179.29687, true);
-            this.ne = new L.LatLng(51.83578, 171.5625, true);
+            this.sw = new L.LatLng(-85.11142,-180, true);
+            this.ne = new L.LatLng(11.0059,-44.64844, true);
             this.bounds = new L.LatLngBounds(this.sw, this.ne);
             this.myMarker = new L.marker();
             
             this.map = L.map('map',{
                 maxBounds: this.bounds,
                 worldCopyJump: true
-            }).setView([-38.82259, 36.91406], 1, true);
+            }).setView([-53.64464,-112.32422], 1, true);
             L.tileLayer('img/map/{z}/{x}/{y}.png', {
                minZoom: 0,
-               maxZoom: 3,
+               maxZoom: 6,
             continuousWorld: true,
                tms: true
             }).addTo(this.map);
@@ -53,24 +54,26 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         
         findme: function(){
             window.plugins.barcodeScanner.scan( function(result) {
-                alert("We got a barcode\n" +
-                          "Result: " + result.text + "\n" +
-                          "Format: " + result.format + "\n" +
-                          "Cancelled: " + result.cancelled);
-            }, function(error) {
-                alert("Scanning failed: " + error);
-                        }
-            );
-            this.myMarker.setLatLng([-38.82259, 36.91406]);
-            this.myMarker.addTo(this.map);
+                alert("test");
+                this.myMarker.setLatLng([-53.64464,-112.32422]);
+                this.myMarker.addTo(this.map);
+            }, 
+            function(error) {
+                console.log("Scanning failed: " + error);
+            }
+            );   
         },
         
         addPois: function(){
-            alert("Arrivano Pois!");
-            alert(this.pois.length);
             for(i=0;i<this.pois.length;i++){
-                this.ev = this.pois.at(i);
-                alert(this.pois.at(i).get("name"));
+                var poi = this.pois.at(i);
+                var marker = new L.marker();
+                marker.setLatLng(new L.LatLng(poi.get("coord")[0],poi.get("coord")[1]));
+                marker.setIcon(new L.icon({iconUrl:'img/markers/marker-icon.png'}));
+                var poiJson = poi.toJSON();
+                poiJson.cid = poi.cid;
+                marker.bindPopup(this.templateMarkers(poiJson), {closeButton: false});
+                marker.addTo(this.map);
             }
         }
         
