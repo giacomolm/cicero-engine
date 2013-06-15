@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars","views/titleView","text!templates/structureView.html"],
-    function ($, _, Backbone, Handlebars,titleView,template) {
+define(["zepto", "underscore", "backbone", "handlebars","text!templates/structureView.html"],
+    function ($, _, Backbone, Handlebars,template) {
     
     var structureView = Backbone.View.extend({
         events: {
@@ -14,7 +14,6 @@ define(["zepto", "underscore", "backbone", "handlebars","views/titleView","text!
         template: Handlebars.compile(template),
 
         initialize: function () {
-            this.titleView = new titleView();
             this.render();
         },
 
@@ -30,7 +29,6 @@ define(["zepto", "underscore", "backbone", "handlebars","views/titleView","text!
         },
         
         showSearch: function () {
-            this.context = {viewName : "Search"};
             Backbone.history.navigate("search", {trigger: true});
         },
         
@@ -57,7 +55,6 @@ define(["zepto", "underscore", "backbone", "handlebars","views/titleView","text!
         render: function (eventName) {
             $(this.el).empty();
             $(this.el).html(this.template());
-            $(this.el).append(this.titleView.render().el);
             return this;
         },
         

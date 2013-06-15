@@ -16,7 +16,6 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         initialize: function () {
           this.on("inTheDom", this.addMap);
           this.pois = new Pois();
-          this.pois.firebase.on("value",this.addPois,this);
 
           this.render();
 
@@ -30,7 +29,9 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         },
         
         addMap: function(){
-            //adattiamo la dimensione della mappa alla grandezza dello schermo
+            /*adattiamo la dimensione della mappa 
+             * alla grandezza dello schermo
+             * */
             document.getElementById('map').style.height = (window.innerHeight-(44+58))+"px"
             
             this.sw = new L.LatLng(-85.11142,-180, true);
@@ -48,6 +49,12 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
             continuousWorld: true,
                tms: true
             }).addTo(this.map);
+            
+            /*inserisco qui il bind in modo da evitare di caricare i poi quando
+             * la mappa non è ancora caricata nel caso ci si torni dopo
+             * aver visitato una sezione.
+             */
+            this.pois.firebase.on("value",this.addPois,this);
             
             return this;
         },
