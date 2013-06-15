@@ -3,8 +3,8 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
 
     var mapView = Backbone.View.extend({
 
-        tagName: "div",
-        id: "map",
+        //tagName: "div",
+        //id: "map",
         
         events: {
             "touchend #findme" : "findme"
@@ -60,13 +60,22 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         },
         
         findme: function(){
-            window.plugins.barcodeScanner.scan( function(result) {
-                alert("test");
-                this.myMarker.setLatLng([-53.64464,-112.32422]);
+            window.plugins.barcodeScanner.scan(_.bind(function(result) {
+                var data = result.text.split(' ');
+                if(!isNaN ( parseFloat (data[0]))  && !isNaN (parseFloat (data[1]))){
+                    var coords = new L.LatLng(data[0],data[1]);
+                    this.myMarker.setLatLng(coords);
+                    this.myMarker.setIcon(new L.icon({iconUrl:'img/markers/userMarker.png',iconSize: [22,22]}));
+                   
+                } else {
+                    this.myMarker.setLatLng([-53.64464,-112.32422]);
+                    this.myMarker.setIcon(new L.icon({iconUrl:'img/markers/questionMarker.png',iconSize: [22,22]}));
+                }
                 this.myMarker.addTo(this.map);
-            }, 
+                this.map.setView(coords,0,true);
+            },this), 
             function(error) {
-                console.log("Scanning failed: " + error);
+                console.log("Scanning problems: " + error);
             }
             );   
         },
