@@ -1035,3 +1035,9 @@ body {
   -moz-border-radius: 4px;
   -o-border-radius: 4px;
 }
+
+#findme {
+ position: absolute; 
+ z-index: 1000; 
+ right:0	
+}
