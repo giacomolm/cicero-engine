@@ -31,7 +31,7 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         
         addMap: function(){
             //adattiamo la dimensione della mappa alla grandezza dello schermo
-            document.getElementById('map').style.height = (screen.height*0.7)+"px"
+            document.getElementById('map').style.height = (window.innerHeight-(44+58))+"px"
             
             this.sw = new L.LatLng(-85.11142,-180, true);
             this.ne = new L.LatLng(11.0059,-44.64844, true);
