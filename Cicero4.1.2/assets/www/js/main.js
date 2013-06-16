@@ -10,6 +10,7 @@ require.config({
     handlebars: '../lib/handlebars/handlebars',
     firebase: '../lib/firebase/firebase',
     backfire: '../lib/firebase/backfire',
+    fireauth: '../lib/firebase/firebase-auth-client',
     leaflet: '../lib/leaflet/leaflet',
     barcodescanner: '../lib/barcodescanner/barcodescanner',
     templates: '../templates',
@@ -34,6 +35,10 @@ require.config({
     'backfire': {
     	deps: ['backbone','firebase'],
     	exports: 'Backfire'
+    },
+    'fireauth': {
+      deps: ['firebase'],
+      exports: 'Fireauth'
     },
     'leaflet': {
         exports: 'L'
