@@ -4,30 +4,16 @@ define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","t
     var loginView = Backbone.View.extend({
         
         events: {
-            "touchend #register" : "showRegistration",
-            "touchend #guest" : "showMap",
-            "touchend #facebook" : "loginFacebook",
-            "touchend #twitter" : "loginTwitter"
+            "touchstart #login" : "login",
+            "touchstart #register" : "showRegistration",
+            "touchstart #guest" : "showMap",
+            "touchstart #facebook" : "loginFacebook",
+            "touchstart #twitter" : "loginTwitter"
           },
           
         template: Handlebars.compile(template),
 
         initialize: function () {
-            this.firebaseRef = new Firebase('https://cicero.firebaseio.com');
-            this.authClient = new FirebaseAuthClient(this.firebaseRef, function(error, user) {
-                if (error) {
-                  
-                  var message = 'An error occurred.';
-                  navigator.notification.alert(message, function(){}, 'Failure!', 'Close');
-
-                } else if (user) {
-                  
-                  var message = 'User ID: ' + user.id + ', Provider: ' + user.provider;
-                  navigator.notification.alert(message, function(){}, 'Success!', 'Close');
-                  Backbone.history.navigate("map", {trigger: true});
-                  
-                }
-              });
             this.render();
         },
               
@@ -45,12 +31,28 @@ define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","t
             Backbone.history.navigate("map", {trigger: true});
         },
         
+        login: function(){
+            alert("entro login");
+            var user_email = $('#email').attr('value');
+            var user_password = $('#password').attr('value');
+            authClient.login('password', {
+                email: user_email,
+                password: user_password
+              });
+            if(auth.email != undefined){
+                Backbone.history.navigate("map", {trigger: true});
+            } else {
+                alert("login errato!");
+            }
+            
+        },
+        
         loginFacebook: function(){
-            this.authClient.login("facebook");
+            authClient.login("facebook");
         },
         
         loginTwitter: function(){
-            this.authClient.login("twitter");
+            authClient.login("twitter");
         }
         
       });
