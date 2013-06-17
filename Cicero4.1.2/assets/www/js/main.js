@@ -50,16 +50,33 @@ require.config({
 });
 
 /*Main dell'applicazione*/
-require(['zepto','domReady','underscore','backbone','router'],
-    function ($,domReady, _,Backbone,AppRouter) {
+require(['zepto','domReady','underscore','backbone','firebase','fireauth','router'],
+    function ($,domReady, _,Backbone,Firebase,Fireauth,AppRouter) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
     });
 
     function run() {
-    	//$('#test').append('zepto');
-    	//document.getElementById("devready").innerHTML = "OnDeviceReady fired.";
+        
+    	/* Gestione del login attraverso firebase 
+    	 * necessario mettere qui in modo che tali
+    	 * var siano visibili in tutta l'app
+    	 * */
+        firebaseRef = new Firebase('https://cicero.firebaseio.com');
+        authClient = new FirebaseAuthClient(firebaseRef, function(error, user) {
+            if (error) {
+                console.log("error during user login");
+            } else if (user) {
+              /* variabile globale auth accessibile da qualsiasi parte
+               * nell'app racchiude info e nome dell'utente
+               */
+              auth = user;
+              Backbone.history.navigate("map", {trigger: true});
+              
+            }
+          });
+        
     	new AppRouter();
     	Backbone.history.start();
     }

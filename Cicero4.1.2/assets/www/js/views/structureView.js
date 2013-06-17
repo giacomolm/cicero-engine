@@ -1,8 +1,9 @@
-define(["zepto", "underscore", "backbone", "handlebars","text!templates/structureView.html"],
-    function ($, _, Backbone, Handlebars,template) {
+define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","text!templates/structureView.html"],
+    function ($, _, Backbone, Handlebars,Firebase,Fireauth,template) {
     
     var structureView = Backbone.View.extend({
         events: {
+            "touchstart #logout" : "logout",
             "touchstart #menu_icon" : "toggleMenu",
             "touchstart #map_icon" : "showMap",
             "touchstart #search_icon" : "showSearch",
@@ -15,6 +16,11 @@ define(["zepto", "underscore", "backbone", "handlebars","text!templates/structur
 
         initialize: function () {
             this.render();
+        },
+        
+        logout: function(){
+            authClient.logout();
+            Backbone.history.navigate("login", {trigger: true});
         },
 
         toggleMenu: function (eventName) {
