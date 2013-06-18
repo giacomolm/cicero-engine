@@ -1,25 +1,22 @@
-define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collections/Pois","text!templates/searchView.html"],
-    function ($, _, Backbone, Handlebars,Poi,Pois,template) {
+define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","text!templates/searchView.html"],
+    function ($, _, Backbone, Handlebars, poiListView, template) {
 
     var searchView = Backbone.View.extend({
 
+        
         template: Handlebars.compile(template),
 
         initialize: function () {
-            this.pois = new Pois();
-            this.pois.firebase.on("value",this.render,this);
+            this.internalView = new poiListView();
             this.render();
         },
 
         render: function (eventName) {
             $(this.el).empty();
-            poiList = [];
-            for(i=0;i<this.pois.length;i++){
-                poi = this.pois.at(i);
-                poiList[i] =  {title : poi.get("name"), description : poi.get("descrizione")};
-            }
-            context = {poi : poiList};
-            $(this.el).html(this.template(context));
+            
+            $(this.el).html(this.template());
+            $(this.el).append($(this.internalView.el));
+           
             return this;
         },
         
