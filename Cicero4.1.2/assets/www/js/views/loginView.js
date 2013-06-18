@@ -32,19 +32,12 @@ define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","t
         },
         
         login: function(){
-            alert("entro login");
             var user_email = $('#email').attr('value');
             var user_password = $('#password').attr('value');
-            authClient.login('password', {
+            authClient.login("password", {
                 email: user_email,
                 password: user_password
               });
-            if(auth.email != undefined){
-                Backbone.history.navigate("map", {trigger: true});
-            } else {
-                alert("login errato!");
-            }
-            
         },
         
         loginFacebook: function(){

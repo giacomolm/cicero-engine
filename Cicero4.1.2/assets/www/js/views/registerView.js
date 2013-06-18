@@ -20,17 +20,18 @@ define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","t
         },
         
         register: function(){
-            alert("entro nella register");
+            alert("entro register");
             var user_email = $('#email').attr('value');
             var user_password = $('#password').attr('value');
             authClient.createUser(user_email, user_password, function(error, user) {
                 if (!error) {
-                  alert('User Id: ' + user.id + ', Email: ' + user.email);
+                  alert("entro nel login");
                   authClient.login('password', {
                       email: user_email,
                       password: user_password
                     });
-                  Backbone.history.navigate("map", {trigger: true});
+                } else {
+                    alert("Problem...");
                 }
               });
         }
