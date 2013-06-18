@@ -66,15 +66,18 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','route
         firebaseRef = new Firebase('https://cicero.firebaseio.com');
         authClient = new FirebaseAuthClient(firebaseRef, function(error, user) {
             if (error) {
-                console.log("error during user login");
+                alert("error during user login");
             } else if (user) {
-              /* variabile globale auth accessibile da qualsiasi parte
-               * nell'app racchiude info e nome dell'utente
-               */
-              auth = user;
-              Backbone.history.navigate("map", {trigger: true});
+                   /* variabile globale auth accessibile da qualsiasi parte
+                    * nell'app racchiude info e nome dell'utente
+                    */
+                    auth = user;
+                    Backbone.history.navigate("map", {trigger: true});
               
-            }
+                    } else {
+                            // user si slogga
+                            auth = undefined;
+                    }
           });
         
     	new AppRouter();

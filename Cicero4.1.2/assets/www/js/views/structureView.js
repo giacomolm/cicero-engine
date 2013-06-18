@@ -60,7 +60,12 @@ define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","t
         
         render: function (eventName) {
             $(this.el).empty();
-            $(this.el).html(this.template());
+            var logged;
+            if(typeof auth === 'undefined')
+                logged = false;
+            else
+                logged = true;
+            $(this.el).html(this.template({logged: logged}));
             return this;
         },
         
