@@ -46,7 +46,7 @@ textarea {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  width: 100%;
+  width: 98%;
   font-size: 11px;
   border-radius: 0;
   -webkit-border-radius: 0;
@@ -56,6 +56,10 @@ textarea {
 input.invalid,
 textarea.invalid {
   border: 1px solid red;
+}
+#search_field{
+width: 95%;
+margin-left : 5px;
 }
 /*
  if you want custom top bar and bottom bar background color for the gallery (portfolio page)
@@ -211,8 +215,11 @@ textarea.invalid {
   font-size: 22px;
   color: #ddf2ff !important;
 }
-.nav a {
+.nav span {
   margin: 5px;
+  margin-left : 10px;
+  margin-right : 10px;
+  text-align:center;
   width: 60px;
   height: 60px;
   display: inline-block;
@@ -232,7 +239,7 @@ textarea.invalid {
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 3px rgba(0, 0, 0, 0.1);
 }
-.nav a:active {
+.nav span:active {
   top: 1px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#eaeaea), to(#f6f6f6));
   background-image: -webkit-linear-gradient(top, #eaeaea, #f6f6f6);
@@ -392,6 +399,9 @@ body {
 .profileArea {
   margin-top: 5px;
 }
+.profileLeft{
+	
+}
 .profileArea .profilePicAreaContainer {
   background: #f2f2f2;
   text-align: center;
@@ -407,7 +417,6 @@ body {
 }
 .profileArea .profileCaptAreaContainer {
   text-align: center;
-  line-height: 3em;
 }
 .profileArea .profilePicAreaContainer,
 .profileArea .profilePicArea {
@@ -439,14 +448,26 @@ body {
 .profileArea .profileInfoArea .social img {
   height: 16px;
 }
+.profilePicAreaContainer{
+	margin-left:10px;
+}
+.profileCaptAreaContainer{
+	margin: 0 auto;
+	margin-top : 3px;
+	width : 120px;
+	line-height : 1.7em;
+	text-overflow:ellipsis;
+}
+.centerTable{
+	width : 150%;
+}
 .profileTable {
   text-align: center;
   vertical-align: middle;
-  display: table-cell;
   color: #7b7a7a;
   min-width: 160px;
-  margin-left: 15px;
-  width: 50%;
+    margin: 0 auto;
+  width : 40%;
 }
 .map {
   border-bottom: 0px solid #7b7a7a;
@@ -726,6 +747,7 @@ body {
   padding: 0px;
   text-align: center;
 }
+
 .bottom {
   bottom: 0px;
   margin-bottom: 10px;

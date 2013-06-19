@@ -7,13 +7,9 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
         
         template: Handlebars.compile(template),
 
-        initialize: function () {
-            this.pois = new Pois();
+        initialize: function (pois) {
+            this.pois = pois;
             this.pois.firebase.on("value",this.render,this);
-        },
-
-        templateLoaded: function (){
-            alert(document.getElementById('list_poi'));
         },
         
         render: function (eventName) {
@@ -22,9 +18,8 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
             for(i=0;i<this.pois.length;i++){
                 poi = this.pois.at(i);
                 $(this.el).append(new poiListItemView({
-                    title : poi.get("name"),
-                    description : poi.get("descrizione")
-                  }, poi.cid).render().el);
+                    model : poi
+                  }).render().el);
             }
             
             return this;

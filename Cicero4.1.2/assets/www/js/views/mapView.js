@@ -13,9 +13,9 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         template: Handlebars.compile(template),
         templateMarkers: Handlebars.compile(templateMarkers),
 
-        initialize: function () {
+        initialize: function (pois) {
           this.on("inTheDom", this.addMap);
-          this.pois = new Pois();
+          this.pois = pois;
 
           this.render();
 
