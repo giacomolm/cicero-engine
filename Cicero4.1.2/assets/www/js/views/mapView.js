@@ -2,9 +2,6 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
     function ($, _, Backbone, Handlebars,Poi,Pois,L,Barcodescanner,template,templateMarkers) {
 
     var mapView = Backbone.View.extend({
-
-        //tagName: "div",
-        //id: "map",
         
         events: {
             "touchend #findme" : "findme"
@@ -13,9 +10,8 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         template: Handlebars.compile(template),
         templateMarkers: Handlebars.compile(templateMarkers),
 
-        initialize: function (pois) {
+        initialize: function () {
           this.on("inTheDom", this.addMap);
-          this.pois = pois;
 
           this.render();
 
@@ -54,7 +50,7 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
              * la mappa non è ancora caricata nel caso ci si torni dopo
              * aver visitato una sezione.
              */
-            this.pois.firebase.on("value",this.addPois,this);
+            this.collection.firebase.on("value",this.addPois,this);
             
             return this;
         },
@@ -77,12 +73,12 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
             function(error) {
                 console.log("Scanning problems: " + error);
             }
-            );   
+         );
         },
         
         addPois: function(){
-            for(i=0;i<this.pois.length;i++){
-                var poi = this.pois.at(i);
+            for(i=0;i<this.collection.length;i++){
+                var poi = this.collection.at(i);
                 var marker = new L.marker();
                 marker.setLatLng(new L.LatLng(poi.get("coord")[0],poi.get("coord")[1]));
                 marker.setIcon(new L.icon({iconUrl:'img/markers/marker-icon.png'}));
