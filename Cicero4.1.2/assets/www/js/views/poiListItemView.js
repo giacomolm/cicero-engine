@@ -3,28 +3,25 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
 
     var poiListItemView = Backbone.View.extend({
         
-        tagName: "li",
-        
         template: Handlebars.compile(template),
         
         events: {
-            "touchend #itemView": "goToDetails"
+            "click #itemView": "goToDetails"
           },
 
-        initialize: function (context, cid) {
-            this.context = context; 
-            this.cid = cid;
-            this.render();
+        initialize: function () {
+            this.model.bind("change", this.render, this);
         },
 
         render: function (eventName) {
-            $(this.el).empty();
-            $(this.el).html(this.template(this.context));
+            var poi = this.model.toJSON();
+            poi.cid = this.model.cid;
+            $(this.el).html(this.template(poi));
             return this;
         },
         
         goToDetails: function () {
-            //Backbone.history.navigate("poiDetail/" + this.cid, {trigger: true});
+            Backbone.history.navigate("poiDetail/" + this.model.cid, {trigger: true});
           }
         
       });

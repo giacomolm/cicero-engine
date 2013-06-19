@@ -6,8 +6,8 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","tex
         
         template: Handlebars.compile(template),
 
-        initialize: function () {
-            this.internalView = new poiListView();
+        initialize: function (pois) {
+            this.internalView = new poiListView(pois);
             this.render();
         },
 

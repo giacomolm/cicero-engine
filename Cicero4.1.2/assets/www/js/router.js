@@ -21,6 +21,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       initialize: function () {
         this.externalView = undefined;  
         this.currentView = undefined;
+        this.pois = new Pois();
       },
       
       login: function(){
@@ -39,7 +40,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
           }
           this.externalView = new StructureView();
           $('body').append($(this.externalView.el));
-    	  var map = new mapView();
+    	  var map = new mapView(this.pois);
     	  this.changePage(map);
       },
 
@@ -54,7 +55,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
       
       search: function(){
-          var search = new searchView();
+          var search = new searchView(this.pois);
           this.changePage(search);
       },
       
@@ -91,9 +92,8 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
       
       poiDetail: function(id){
-          var pois = new Pois()
-          var poi_model = pois.getByCid(id);
-          var poiDetail = new poiDetailView({model:poi_model});
+          var poi = this.pois.get(id);
+          var poiDetail = new poiDetailView(poi);
           this.changePage(poiDetail);
       },
       
