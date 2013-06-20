@@ -1,17 +1,27 @@
-define(["zepto", "underscore", "backbone", "handlebars","text!templates/eventListView.html"],
-    function ($, _, Backbone, Handlebars,template) {
+define(["zepto", "underscore", "backbone", "handlebars","views/eventListItemView","text!templates/eventListView.html"],
+    function ($, _, Backbone, Handlebars, eventListItemView, template) {
 
     var eventListView = Backbone.View.extend({
 
+        tagName : "ul",
+        id : "eventListView",
+        className : "invisible",
+        
         template: Handlebars.compile(template),
 
         initialize: function () {
-            this.render();
+            this.collection.firebase.on("value",this.render,this);
         },
 
         render: function (eventName) {
-            $(this.el).empty();
             $(this.el).html(this.template());
+            
+            for(i=0;i<this.collection.length;i++){
+                event = this.collection.at(i);
+                $(this.el).append(new eventListItemView({
+                    model : event
+                  }).render().el);
+            }
             return this;
         }
       });

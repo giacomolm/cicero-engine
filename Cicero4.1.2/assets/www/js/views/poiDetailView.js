@@ -5,13 +5,12 @@ define(["zepto", "underscore", "backbone", "handlebars","text!templates/poiDetai
 
         template: Handlebars.compile(template),
 
-        initialize: function (poi) {
-            this.poi = poi;
+        initialize: function () {
             this.render();
         },
 
         render: function (eventName) {
-            $(this.el).html(this.template(this.poi.toJSON()));
+            $(this.el).html(this.template(this.model.toJSON()));
             return this;
         }
       });

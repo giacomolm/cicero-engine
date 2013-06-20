@@ -56,7 +56,8 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
       
       search: function(){
-          var search = new searchView(this.pois);
+          var search = new searchView({pois : this.pois});
+          search.setEvents(this.events);
           this.changePage(search);
       },
       
@@ -66,12 +67,12 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
       
       eventList: function(){
-          var eventList = new eventListView();
+          var eventList = new eventListView({collection: this.events});
           this.changePage(eventList);
       },
       
       poiList: function(){
-          var poitList = new poiListView();
+          var poitList = new poiListView({collection: this.pois});
           this.changePage(poiList);
       },
       
@@ -93,7 +94,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       
       poiDetail: function(id){
           var poi = this.pois.get(id);
-          var poiDetail = new poiDetailView(poi);
+          var poiDetail = new poiDetailView({model : poi});
           this.changePage(poiDetail);
       },
       
