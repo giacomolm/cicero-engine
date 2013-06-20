@@ -4,19 +4,19 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
     var poiListView = Backbone.View.extend({
 
         tagName : "ul",
+        id : "poiListView",
         
         template: Handlebars.compile(template),
 
-        initialize: function (pois) {
-            this.pois = pois;
-            this.pois.firebase.on("value",this.render,this);
+        initialize: function () {
+            this.collection.firebase.on("value",this.render,this);
         },
         
         render: function (eventName) {
             $(this.el).html(this.template());
             
-            for(i=0;i<this.pois.length;i++){
-                poi = this.pois.at(i);
+            for(i=0;i<this.collection.length;i++){
+                poi = this.collection.at(i);
                 $(this.el).append(new poiListItemView({
                     model : poi
                   }).render().el);

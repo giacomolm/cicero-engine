@@ -780,6 +780,8 @@ body {
 #pagePortfolio .tabsPortfolio {
   position: relative;
   height: 30px;
+  width : 70%;
+  margin : 0 auto;
   /*end ul*/
 
 }
@@ -812,19 +814,17 @@ body {
 }
 #pagePortfolio .tabsPortfolio ul li {
   display: inline-block;
+  float : left;
 }
 #pagePortfolio .tabsPortfolio ul li.second {
-  margin-left: -7px;
+  /*margin-left: -7px;*/
+  float : right;
 }
-#pagePortfolio .tabsPortfolio ul li a {
+#pagePortfolio .tabsPortfolio ul li div {
   font-size: 22px;
   color: #bababa;
 }
-#pagePortfolio .tabsPortfolio ul li a.active {
-  color: #414141;
-  position: relative;
-  text-shadow: 1px 1px 1px #fff;
-}
+
 #pagePortfolio .portfolioProjects {
   display: none;
   opacity: 0;
@@ -924,6 +924,7 @@ body {
 #pagePortfolio .grid .innerContent {
   padding: 0 !important;
 }
+
 .skills {
   color: #7b7a7a;
 }
@@ -1062,4 +1063,13 @@ body {
  position: absolute; 
  z-index: 1000; 
  right:0	
+}
+
+.tabActive {
+  color: #414141;
+  position: relative;
+  text-shadow: 1px 1px 1px #fff;
+}
+.invisible{
+		display : none;
 }
