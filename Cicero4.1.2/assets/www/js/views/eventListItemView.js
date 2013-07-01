@@ -20,7 +20,7 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Event","collecti
         },
         
         goToDetails: function () {
-            //Backbone.history.navigate("eventDetail/" + this.model.cid, {trigger: true});
+            Backbone.history.navigate("eventDetail/" + this.model.cid, {trigger: true});
           }
         
       });

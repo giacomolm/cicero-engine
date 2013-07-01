@@ -11,7 +11,7 @@ define(["zepto", "underscore", "backbone", "handlebars","text!templates/eventDet
 
         render: function (eventName) {
             $(this.el).empty();
-            $(this.el).html(this.template());
+            $(this.el).html(this.template(this.model.toJSON()));
             return this;
         }
       });

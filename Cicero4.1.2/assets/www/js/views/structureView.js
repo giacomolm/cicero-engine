@@ -4,7 +4,7 @@ define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","t
     var structureView = Backbone.View.extend({
         events: {
             "touchstart #logout" : "logout",
-            "touchstart #menu_icon" : "toggleMenu",
+            "touchend #menu_icon" : "toggleMenu",
             "touchstart #map_icon" : "showMap",
             "touchstart #search_icon" : "showSearch",
             "touchstart #favourite_icon" : "showFavourite",
@@ -24,10 +24,7 @@ define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","t
         },
 
         toggleMenu: function (eventName) {
-            menuBut = document.getElementById('popupMenu');
-            if(menuBut.style.display == 'none')
-               menuBut.style.display = 'block';
-            else menuBut.style.display = 'none';
+            $('#popupMenu').toggleClass('invisible');
         },
         
         showMap: function () {
