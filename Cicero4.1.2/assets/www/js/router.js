@@ -87,7 +87,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
       
       eventDetail: function(id){
-          var event_model = this.events.getByCid(id);
+          var event_model = this.events.get(id);
           var eventDetail = new eventDetailView({model:event_model});
           this.changePage(eventDetail); 
       },
