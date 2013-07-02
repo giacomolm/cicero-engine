@@ -8,9 +8,9 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
         events : {
             "click #poiTab" : "showPoi",
             "click #eventTab" : "showEvent",
-            
             "swipeRight" : "showPoi",
-            "swipeLeft" : "showEvent"
+            "swipeLeft" : "showEvent",
+            "touchend #search_btn" : "search"
         },
 
         initialize: function () {
@@ -19,6 +19,19 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
             this.render();
         },
 
+        setEvents: function(events){
+            this.events = events;
+            this.eventlistview = new eventListView({collection: events});
+            $(this.el).append($(this.eventlistview.el));
+        },
+        
+        search : function(){
+            this.searchedPois = this.pois.filter(function(poi) {
+                //alert(document.getElementById('search_field').value);
+                //return book.get("name") === true;
+              });
+        },
+        
         showPoi: function(){
             $('#poiTab').toggleClass('tabActive');
             $('#eventTab').toggleClass('tabActive');
@@ -39,12 +52,6 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
             $(this.el).append($(this.poilistview.el));
            
             return this;
-        },
-        
-        setEvents: function(events){
-            this.events = events;
-            this.eventlistview = new eventListView({collection: events});
-            $(this.el).append($(this.eventlistview.el));
         }
         
       });
