@@ -58,8 +58,9 @@ textarea.invalid {
   border: 1px solid red;
 }
 #search_field{
-width: 95%;
-margin-left : 5px;
+	font-size: 14px;
+	float:left;
+	padding-right: 30px;
 }
 /*
  if you want custom top bar and bottom bar background color for the gallery (portfolio page)
@@ -289,7 +290,7 @@ margin-left : 5px;
 }
 
 .container{
-
+	margin-bottom : 64px;
 }
 .clear{
 	clear : both;
@@ -1072,4 +1073,13 @@ body {
 }
 .invisible{
 		display : none;
+}
+#search_div{
+	white-space: nowrap;
+	margin-left : 5px;
+}
+#search_div img{
+	position : relative;
+	left : -30px;
+	margin-top : 1.6%;
 }

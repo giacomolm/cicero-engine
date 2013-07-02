@@ -3,6 +3,8 @@ define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","t
 
     var loginView = Backbone.View.extend({
         
+        className : "center",
+        
         events: {
             "touchstart #login" : "login",
             "touchstart #register" : "showRegistration",
