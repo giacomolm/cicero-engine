@@ -20,7 +20,6 @@ define(["zepto","underscore","backbone","handlebars","text!templates/structureVi
         
         logout: function(){
             authClient.logout();
-            Backbone.history.navigate("login", {trigger: true});
         },
 
         toggleMenu: function (eventName) {
@@ -58,13 +57,13 @@ define(["zepto","underscore","backbone","handlebars","text!templates/structureVi
         render: function (eventName) {
             $(this.el).empty();
             var logged;
-            if(typeof auth === 'undefined')
+            if(typeof cicero_user === 'undefined')
                 logged = false;
             else
                 logged = true;
             $(this.el).html(this.template({logged: logged}));
             return this;
-        },
+        }
         
       });
 

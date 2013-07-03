@@ -27,23 +27,21 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
       
       login: function(){
+          this.externalView.render();
           $('footer').first().addClass('invisible');
           var login = new loginView();
           this.changePage(login);
       },
       
       map: function(){
-          /*if(this.externalView){
-              this.externalView.remove();
-          }
-          this.externalView = new StructureView();
-          $('body').append($(this.externalView.el));*/
+          this.externalView.render();
           $('footer').first().removeClass('invisible');
     	  var map = new mapView({collection : this.pois});
     	  this.changePage(map);
       },
 
       register: function(){
+          this.externalView.render();
           $('footer').first().addClass('invisible');
           var register = new registerView();
           this.changePage(register);
