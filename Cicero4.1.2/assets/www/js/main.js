@@ -73,10 +73,11 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','route
                     */
                     cicero_user = user;
                     Backbone.history.navigate("map", {trigger: true});
-              
+
                     } else {
                             // user si slogga
                             cicero_user = undefined;
+                            Backbone.history.navigate("login", {trigger: true});
                     }
           });
         
