@@ -12,6 +12,11 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
             this.collection.firebase.on("value",this.render,this);
         },
         
+        setFilteredCollection: function(filtered){
+            this.collection = filtered;
+            this.render();
+        },
+        
         render: function (eventName) {
             $(this.el).html(this.template());
             

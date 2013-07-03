@@ -6,11 +6,12 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
         template: Handlebars.compile(template),
         
         events : {
-            "click #poiTab" : "showPoi",
-            "click #eventTab" : "showEvent",
+            "touchend #poiTab" : "showPoi",
+            "touchend #eventTab" : "showEvent",
             "swipeRight" : "showPoi",
             "swipeLeft" : "showEvent",
-            "touchend #search_btn" : "search"
+            "touchend #search_btn" : "search",
+            "keyup #search_field" : "search"
         },
 
         initialize: function () {
@@ -26,10 +27,19 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
         },
         
         search : function(){
-            this.searchedPois = this.pois.filter(function(poi) {
-                //alert(document.getElementById('search_field').value);
-                //return book.get("name") === true;
-              });
+            var query = document.getElementById('search_field').value;
+            this.searchedPois = new Backbone.Collection(this.pois.filter(function(poi) {
+                return poi.get('name').toLowerCase().indexOf(query) !== -1 ;
+            }));
+            this.poilistview.setFilteredCollection(this.searchedPois);
+            
+            this.searchedEvents = new Backbone.Collection(this.events.filter(function(event) {
+                return event.get('name').toLowerCase().indexOf(query) !== -1 ;
+            }));
+           
+            this.eventlistview.setFilteredCollection(this.searchedEvents);
+            
+            this.renderSearchResult();
         },
         
         showPoi: function(){
@@ -52,7 +62,13 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
             $(this.el).append($(this.poilistview.el));
            
             return this;
+        },
+        
+        renderSearchResult: function(){
+            $(this.el).append($(this.poilistview.el));
+            $(this.el).append($(this.eventlistview.el));
         }
+        
         
       });
 

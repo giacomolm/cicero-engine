@@ -46,13 +46,24 @@ textarea {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  width: 98%;
   font-size: 11px;
   border-radius: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   -o-border-radius: 0;
 }
+
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+	width: 98%;
+}
+
+#username{
+	width: 98%;
+}
+
 input.invalid,
 textarea.invalid {
   border: 1px solid red;
@@ -1075,11 +1086,23 @@ body {
 		display : none;
 }
 #search_div{
-	white-space: nowrap;
-	margin-left : 5px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	height : 30px;
+	width : 99%;
 }
-#search_div img{
-	position : relative;
-	left : -30px;
-	margin-top : 1.6%;
+#search_div .input{
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex : 1;
+}
+#search_div .search_btn{
+	width : 24px;
+}
+#search_div .search_btn img{
+	margin-top : 1.5%;
+}
+#search_field{
+	width : 100%;
 }
