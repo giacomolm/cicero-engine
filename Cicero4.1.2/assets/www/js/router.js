@@ -19,18 +19,15 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
 
       initialize: function () {
-        this.externalView = undefined;  
         this.currentView = undefined;
+        this.externalView = new StructureView();
+        $('body').append($(this.externalView.el));
         this.pois = new Pois();
         this.events = new Events();
       },
       
       login: function(){
-          if(this.externalView){
-              this.externalView.remove();
-          }
-          this.externalView = new StructureView();
-          $('body').append($(this.externalView.el));
+          $('footer').first().addClass('invisible');
           var login = new loginView();
           this.changePage(login);
       },
@@ -47,6 +44,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
 
       register: function(){
+          $('footer').first().addClass('invisible');
           var register = new registerView();
           this.changePage(register);
       },
