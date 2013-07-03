@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","text!templates/registerView.html"],
-    function ($, _, Backbone, Handlebars,Firebase,Fireauth,template) {
+define(["zepto","underscore","backbone","handlebars","text!templates/registerView.html"],
+    function ($, _, Backbone, Handlebars,template) {
 
     var registerView = Backbone.View.extend({
 
@@ -21,8 +21,8 @@ define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","t
         
         register: function(){
             alert("entro register");
-            var user_email = $('#email').attr('value');
-            var user_password = $('#password').attr('value');
+            var user_email = $('#email').val();
+            var user_password = $('#password').val();
             authClient.createUser(user_email, user_password, function(error, user) {
                 if (!error) {
                   alert("entro nel login");
