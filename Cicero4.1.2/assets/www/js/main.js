@@ -71,12 +71,12 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','route
                    /* variabile globale auth accessibile da qualsiasi parte
                     * nell'app racchiude info e nome dell'utente
                     */
-                    auth = user;
+                    cicero_user = user;
                     Backbone.history.navigate("map", {trigger: true});
               
                     } else {
                             // user si slogga
-                            auth = undefined;
+                            cicero_user = undefined;
                     }
           });
         

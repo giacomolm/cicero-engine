@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","text!templates/structureView.html"],
-    function ($, _, Backbone, Handlebars,Firebase,Fireauth,template) {
+define(["zepto","underscore","backbone","handlebars","text!templates/structureView.html"],
+    function ($, _, Backbone, Handlebars,template) {
     
     var structureView = Backbone.View.extend({
         events: {

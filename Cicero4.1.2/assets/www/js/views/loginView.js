@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","text!templates/loginView.html"],
-    function ($, _, Backbone, Handlebars,Firebase,Fireauth,template) {
+define(["zepto","underscore","backbone","handlebars","text!templates/loginView.html"],
+    function ($, _, Backbone, Handlebars,template) {
 
     var loginView = Backbone.View.extend({
         
@@ -34,8 +34,8 @@ define(["zepto", "underscore", "backbone", "handlebars","firebase","fireauth","t
         },
         
         login: function(){
-            var user_email = $('#email').attr('value');
-            var user_password = $('#password').attr('value');
+            var user_email = $('#email').val();
+            var user_password = $('#password').val();
             authClient.login("password", {
                 email: user_email,
                 password: user_password
