@@ -7,6 +7,7 @@ require.config({
     zepto: '../lib/zepto/zepto',
     underscore: '../lib/underscore/underscore-min',
     backbone: '../lib/backbone/backbone',
+    eventDispatcher: '../lib/backbone/eventDispatcher',
     handlebars: '../lib/handlebars/handlebars',
     firebase: '../lib/firebase/firebase',
     backfire: '../lib/firebase/backfire',
@@ -50,32 +51,27 @@ require.config({
 });
 
 /*Main dell'applicazione*/
-require(['zepto','domReady','underscore','backbone','firebase','fireauth','router'],
-    function ($,domReady, _,Backbone,Firebase,Fireauth,AppRouter) {
+require(['zepto','domReady','underscore','backbone','firebase','fireauth','eventDispatcher','router'],
+    function ($,domReady, _,Backbone,Firebase,Fireauth,EventDispatcher,AppRouter) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
     });
 
     function run() {
-        
-    	/* Gestione del login attraverso firebase 
-    	 * necessario mettere qui in modo che tali
-    	 * var siano visibili in tutta l'app
-    	 * */
+
         firebaseRef = new Firebase('https://cicero.firebaseio.com');
         authClient = new FirebaseAuthClient(firebaseRef, function(error, user) {
             if (error) {
-                alert("error during user login");
+                /*login error*/
+                EventDispatcher.trigger("login_error");
             } else if (user) {
-                   /* variabile globale auth accessibile da qualsiasi parte
-                    * nell'app racchiude info e nome dell'utente
-                    */
+                    /*user si logga*/
                     cicero_user = user;
                     Backbone.history.navigate("map", {trigger: true});
 
                     } else {
-                            // user si slogga
+                            /*user si slogga*/
                             cicero_user = undefined;
                             Backbone.history.navigate("login", {trigger: true});
                     }
