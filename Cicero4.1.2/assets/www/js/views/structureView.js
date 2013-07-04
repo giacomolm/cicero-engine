@@ -1,5 +1,5 @@
-define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!templates/structureView.html"],
-    function ($, _, Backbone, Handlebars,EventDispatcher,template) {
+define(["zepto","underscore","backbone","handlebars","text!templates/structureView.html"],
+    function ($, _, Backbone, Handlebars,template) {
     
     var structureView = Backbone.View.extend({
         events: {
@@ -16,12 +16,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!tem
         template: Handlebars.compile(template),
 
         initialize: function () {
-            EventDispatcher.on("login_error",this.login_error);
             this.render();
-        },
-
-        login_error: function(){
-            alert("error during user login");
         },
         
         logout: function(){

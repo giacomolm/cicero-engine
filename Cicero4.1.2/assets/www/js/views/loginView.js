@@ -1,5 +1,5 @@
-define(["zepto","underscore","backbone","handlebars","text!templates/loginView.html"],
-    function ($, _, Backbone, Handlebars,template) {
+define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!templates/loginView.html"],
+    function ($, _, Backbone, Handlebars,EventDispatcher,template) {
 
     var loginView = Backbone.View.extend({
         
@@ -16,6 +16,7 @@ define(["zepto","underscore","backbone","handlebars","text!templates/loginView.h
         template: Handlebars.compile(template),
 
         initialize: function () {
+            EventDispatcher.on("login_error",this.login_error);
             this.render();
         },
               
@@ -48,6 +49,10 @@ define(["zepto","underscore","backbone","handlebars","text!templates/loginView.h
         
         loginTwitter: function(){
             authClient.login("twitter");
+        },
+
+        login_error: function(){
+            alert("error during user login");
         }
         
       });
