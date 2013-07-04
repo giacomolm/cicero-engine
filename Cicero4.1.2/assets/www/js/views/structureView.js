@@ -5,6 +5,7 @@ define(["zepto","underscore","backbone","handlebars","text!templates/structureVi
         events: {
             "touchstart #logout" : "logout",
             "touchend #menu_icon" : "toggleMenu",
+            "touchend #back": "back",
             "touchstart #map_icon" : "showMap",
             "touchstart #search_icon" : "showSearch",
             "touchstart #favourite_icon" : "showFavourite",
@@ -24,6 +25,10 @@ define(["zepto","underscore","backbone","handlebars","text!templates/structureVi
 
         toggleMenu: function (eventName) {
             $('#popupMenu').toggleClass('invisible');
+        },
+
+        back: function(){
+            window.history.back();
         },
         
         showMap: function () {
@@ -54,15 +59,18 @@ define(["zepto","underscore","backbone","handlebars","text!templates/structureVi
             Backbone.history.navigate("eventList", {trigger: true});
         },
         
-        render: function (eventName) {
+        render: function () {
             $(this.el).empty();
-            var logged;
-            if(typeof cicero_user === 'undefined')
-                logged = false;
-            else
-                logged = true;
-            $(this.el).html(this.template({logged: logged}));
+            $(this.el).html(this.template());
+            this.setLogout();
             return this;
+        },
+
+        setLogout: function(){
+            if(typeof cicero_user === 'undefined')
+                $('#logout').addClass('invisible');
+            else
+                $('#logout').removeClass('invisible');
         }
         
       });
