@@ -1,5 +1,5 @@
-define(["zepto","underscore","backbone","handlebars","text!templates/structureView.html"],
-    function ($, _, Backbone, Handlebars,template) {
+define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!templates/structureView.html"],
+    function ($, _, Backbone, Handlebars,EventDispatcher,template) {
     
     var structureView = Backbone.View.extend({
         events: {
@@ -16,11 +16,23 @@ define(["zepto","underscore","backbone","handlebars","text!templates/structureVi
         template: Handlebars.compile(template),
 
         initialize: function () {
+            EventDispatcher.on("login_error",this.login_error);
             this.render();
+        },
+
+        login_error: function(){
+            alert("error during user login");
         },
         
         logout: function(){
             authClient.logout();
+        },
+
+        setLogout: function(){
+            if(typeof cicero_user === 'undefined')
+                $('#logout').addClass('invisible');
+            else
+                $('#logout').removeClass('invisible');
         },
 
         toggleMenu: function (eventName) {
@@ -64,13 +76,6 @@ define(["zepto","underscore","backbone","handlebars","text!templates/structureVi
             $(this.el).html(this.template());
             this.setLogout();
             return this;
-        },
-
-        setLogout: function(){
-            if(typeof cicero_user === 'undefined')
-                $('#logout').addClass('invisible');
-            else
-                $('#logout').removeClass('invisible');
         }
         
       });
