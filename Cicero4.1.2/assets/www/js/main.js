@@ -14,7 +14,7 @@ require.config({
     fireauth: '../lib/firebase/firebase-auth-client',
     leaflet: '../lib/leaflet/leaflet',
     barcodescanner: '../lib/barcodescanner/barcodescanner',
-    templates: '../templates',
+    templates: '../templates'
   },
   shim: {
     'zepto': {
@@ -64,7 +64,17 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','event
         authClient = new FirebaseAuthClient(firebaseRef, function(error, user) {
             if (error) {
                 /*login error*/
-                EventDispatcher.trigger("login_error");
+                switch(error.code) {
+                    case 'INVALID_EMAIL':
+                    case 'INVALID_PASSWORD':
+                        EventDispatcher.trigger("login_fields_error");
+                        break;
+                    case 'INVALID_USER':
+                        EventDispatcher.trigger("login_user_error");
+                        break;
+                    case 'UNKNOWN_ERROR':
+                        EventDispatcher.trigger("login_unknown_error");
+                }
             } else if (user) {
                     /*user si logga*/
                     cicero_user = user;

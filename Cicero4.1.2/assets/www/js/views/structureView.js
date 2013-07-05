@@ -1,5 +1,5 @@
-define(["zepto","underscore","backbone","handlebars","text!templates/structureView.html"],
-    function ($, _, Backbone, Handlebars,template) {
+define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!templates/structureView.html"],
+    function ($, _, Backbone, Handlebars,EventDispatcher,template) {
     
     var structureView = Backbone.View.extend({
         events: {
@@ -16,6 +16,8 @@ define(["zepto","underscore","backbone","handlebars","text!templates/structureVi
         template: Handlebars.compile(template),
 
         initialize: function () {
+            EventDispatcher.on("show_spinner",this.show_spinner);
+            EventDispatcher.on("hide_spinner",this.hide_spinner);
             this.render();
         },
         
@@ -64,6 +66,14 @@ define(["zepto","underscore","backbone","handlebars","text!templates/structureVi
         
         showEventList: function () {
             Backbone.history.navigate("eventList", {trigger: true});
+        },
+
+        show_spinner: function(){
+            $('#spinner').removeClass("invisible");
+        },
+
+        hide_spinner: function(){
+            $('#spinner').addClass("invisible");
         },
         
         render: function () {

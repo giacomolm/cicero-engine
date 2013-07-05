@@ -20,12 +20,10 @@ define(["zepto","underscore","backbone","handlebars","text!templates/registerVie
         },
         
         register: function(){
-            alert("entro register");
             var user_email = $('#email').val();
             var user_password = $('#password').val();
             authClient.createUser(user_email, user_password, function(error, user) {
                 if (!error) {
-                  alert("entro nel login");
                   authClient.login('password', {
                       email: user_email,
                       password: user_password

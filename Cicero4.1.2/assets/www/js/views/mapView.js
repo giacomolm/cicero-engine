@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections/Pois", "leaflet","barcodescanner","text!templates/mapView.html","text!templates/templateMarkers.html" ],
-    function ($, _, Backbone, Handlebars,Poi,Pois,L,Barcodescanner,template,templateMarkers) {
+define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections/Pois", "leaflet","barcodescanner","eventDispatcher","text!templates/mapView.html","text!templates/templateMarkers.html" ],
+    function ($, _, Backbone, Handlebars,Poi,Pois,L,Barcodescanner,EventDispatcher,template,templateMarkers) {
 
     var mapView = Backbone.View.extend({
         
@@ -51,6 +51,7 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
              * aver visitato una sezione.
              */
             this.collection.firebase.on("value",this.addPois,this);
+            EventDispatcher.trigger("show_spinner");
             
             return this;
         },
@@ -77,6 +78,7 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         },
         
         addPois: function(){
+            EventDispatcher.trigger("hide_spinner");
             for(i=0;i<this.collection.length;i++){
                 var poi = this.collection.at(i);
                 var marker = new L.marker();
