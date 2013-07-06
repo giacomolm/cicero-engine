@@ -67,17 +67,18 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','event
                 switch(error.code) {
                     case 'INVALID_EMAIL':
                     case 'INVALID_PASSWORD':
-                        EventDispatcher.trigger("login_fields_error");
+                        EventDispatcher.trigger("login_error","invaild user or email");
                         break;
                     case 'INVALID_USER':
-                        EventDispatcher.trigger("login_user_error");
+                        EventDispatcher.trigger("login_error","user does not exist.");
                         break;
                     case 'UNKNOWN_ERROR':
-                        EventDispatcher.trigger("login_unknown_error");
+                        EventDispatcher.trigger("login_error","unknown error, please contact event administrator.");
                 }
             } else if (user) {
                     /*user si logga*/
                     cicero_user = user;
+                    EventDispatcher.trigger("hide_spinner");
                     Backbone.history.navigate("map", {trigger: true});
 
                     } else {

@@ -50,8 +50,9 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
              * la mappa non è ancora caricata nel caso ci si torni dopo
              * aver visitato una sezione.
              */
-            this.collection.firebase.on("value",this.addPois,this);
             EventDispatcher.trigger("show_spinner");
+            this.collection.firebase.on("value",this.addPois,this);
+
             
             return this;
         },

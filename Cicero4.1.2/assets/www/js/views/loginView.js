@@ -16,9 +16,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!tem
         template: Handlebars.compile(template),
 
         initialize: function () {
-            EventDispatcher.on("login_fields_error",this.login_fields_error);
-            EventDispatcher.on("login_user_error",this.login_user_error);
-            EventDispatcher.on("login_unknown_error",this.login_unknown_error);
+            EventDispatcher.on("login_error",this.login_error);
             this.render();
         },
               
@@ -55,24 +53,11 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!tem
             authClient.login("twitter");
         },
 
-        login_fields_error: function(){
+        login_error: function(message){
             EventDispatcher.trigger("hide_spinner");
-            $('#error').html("invaild user or email.");
-            $('#error').removeClass('invisible');
-        },
-
-        login_user_error: function(){
-            EventDispatcher.trigger("hide_spinner");
-            $('#error').html("user does not exist.");
-            $('#error').removeClass('invisible');
-        },
-
-        login_unknown_error: function(){
-            EventDispatcher.trigger("hide_spinner");
-            $('#error').html("unknown error, please contact event administrator.");
+            $('#error').html(message);
             $('#error').removeClass('invisible');
         }
-        
       });
 
     return loginView;
