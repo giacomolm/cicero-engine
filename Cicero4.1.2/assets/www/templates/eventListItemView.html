@@ -7,14 +7,16 @@
                 <img src="http://www.vineola.de/images/manufacturers/MiglianicoLogo.jpg" alt="">
               </a>
               <div class="description">
-                <div class="title">
-                  {{name}}
-                </div>
-                <div class="about">
-                   {{description}}
-                </div>
-                <span class="website" id="arrow" >&raquo;</span>
-              </div>
+				<div class="title">
+				  {{name}}
+				</div>
+				<div id="blue#{{cid}}" class="button_blue invisible" style="float:right; position:relative"> <button class="ui-button-primary ui-corner-all ui-button"  id="add_button">+</button></div>
+				<div id="red#{{cid}}" class="button_red invisible" style="float:right; position:relative"> <button class="ui-button-error ui-corner-all ui-button"  id="remove_button">-</button></div>
+				<div class="about">
+				   {{descrizione}}
+				</div>
+				<span class="website" id="arrow" >&raquo;</span>
+		      </div>
               <div class="clearfix"></div>
             </div>
 		</li>

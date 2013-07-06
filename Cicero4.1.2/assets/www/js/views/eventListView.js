@@ -23,7 +23,8 @@ define(["zepto", "underscore", "backbone", "handlebars","views/eventListItemView
             for(i=0;i<this.collection.length;i++){
                 event = this.collection.at(i);
                 $(this.el).append(new eventListItemView({
-                    model : event
+                    model : event,
+                    favourites : this.options.favourites
                   }).render().el);
             }
             return this;

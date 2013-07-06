@@ -23,7 +23,8 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
             for(i=0;i<this.collection.length;i++){
                 poi = this.collection.at(i);
                 $(this.el).append(new poiListItemView({
-                    model : poi
+                    model : poi,
+                    favourites : this.options.favourites
                   }).render().el);
             }
             

@@ -792,7 +792,7 @@ body {
 #pagePortfolio .tabsPortfolio {
   position: relative;
   height: 30px;
-  width : 70%;
+  width : 50%;
   margin : 0 auto;
   /*end ul*/
 
@@ -820,6 +820,12 @@ body {
 #pagePortfolio .tabsPortfolio .instruction.lefter {
   left: 3%;
 }
+
+.edit{
+	float : left;
+	margin-left: 2%;
+}
+
 #pagePortfolio .tabsPortfolio ul {
   display: block;
   text-align: center;
@@ -908,6 +914,7 @@ body {
   top: 0;
   color: #509b75;
   padding: 0 10px 0 10px;
+  margin: 0 5px 0 5px;
   font-size: 20px;
   height: 100%;
   display: block;
