@@ -17,8 +17,10 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
 
         initialize: function () {
             this.pois = this.options.pois;
+            //assegno l'intera collezione alla ricerca, altrimenti l'operazione di filtro elimina i valori
+            this.searchedPois = this.pois;
             this.favourites = new Favourites();
-            this.poilistview = new poiListView({collection: this.pois, favourites : this.favourites});
+            this.poilistview = new poiListView({collection: this.searchedPois, favourites : this.favourites});
             //this.events = this.options.events;
             //this.eventlistview = new eventListView({collection: this.events});
             this.render();
@@ -26,22 +28,23 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
 
         setEvents: function(events){
             this.events = events;
-            this.eventlistview = new eventListView({collection: events, favourites : this.favourites});
+            this.searchedEvents = this.events;
+            this.eventlistview = new eventListView({collection: events, favourites : this.searchedEvents});
             $(this.el).append($(this.eventlistview.el));
         },
         
         search : function(){
             var query = document.getElementById('search_field').value;
-            this.pois = new Backbone.Collection(this.pois.filter(function(poi) {
+            this.searchedPois = new Backbone.Collection(this.pois.filter(function(poi) {
                 return poi.get('name').toLowerCase().indexOf(query) !== -1 ;
             }));
-            this.poilistview.setFilteredCollection(this.pois);
+            this.poilistview.setFilteredCollection(this.searchedPois);
             
-            this.events = new Backbone.Collection(this.events.filter(function(event) {
+            this.searchedEvents = new Backbone.Collection(this.events.filter(function(event) {
                 return event.get('name').toLowerCase().indexOf(query) !== -1 ;
             }));
            
-            this.eventlistview.setFilteredCollection(this.events);
+            this.eventlistview.setFilteredCollection(this.searchedEvents);
             
             this.renderSearchResult();
         },
