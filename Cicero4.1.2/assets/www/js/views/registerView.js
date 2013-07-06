@@ -1,10 +1,10 @@
-define(["zepto","underscore","backbone","handlebars","text!templates/registerView.html"],
-    function ($, _, Backbone, Handlebars,template) {
+define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!templates/registerView.html"],
+    function ($, _, Backbone, Handlebars,EventDispatcher,template) {
 
     var registerView = Backbone.View.extend({
 
         events: {
-            "touchstart #buttonSubmit": "register"
+            "touchstart #register": "register"
         },
         
         template: Handlebars.compile(template),
@@ -20,6 +20,8 @@ define(["zepto","underscore","backbone","handlebars","text!templates/registerVie
         },
         
         register: function(){
+            EventDispatcher.trigger("show_spinner");
+            $('#error').addClass('invisible');
             var user_email = $('#email').val();
             var user_password = $('#password').val();
             authClient.createUser(user_email, user_password, function(error, user) {
@@ -29,8 +31,16 @@ define(["zepto","underscore","backbone","handlebars","text!templates/registerVie
                       password: user_password
                     });
                 } else {
-                    alert("Problem...");
+                    $('#error').removeClass('invisible');
+                    switch(error.code) {
+                        case 'EMAIL_TAKEN':
+                            $('#error').html("The specified email address is already in use.");
+                            break;
+                        case 'UNKNOWN_ERROR':
+                            $('#error').html("unknown error, please contact event administrator.");
+                    }
                 }
+                EventDispatcher.trigger("hide_spinner");
               });
         }
         
