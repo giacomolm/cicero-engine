@@ -7,8 +7,7 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
         
         events: {
             "click #itemView": "goToDetails",
-            "touchend #add_button": "addToFav",
-            "touchend #remove_button": "removeToFav",
+            "touchend #edit_favourite": "editFav",
           },
 
         initialize: function () {
@@ -18,30 +17,30 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
             this.listenTo(this.favourites, 'remove', this.removed);
         },
 
-        addToFav: function(){
-            user_id = 0;
-            if(this.favourites.includesCid(user_id, this.model.cid)==0)
-                this.favourites.add({user : user_id, id_ref : this.model.cid, type : 'poi'});
-        },
-        removeToFav: function(){
+        editFav: function(){        
             user_id = 0;
             result = this.favourites.includesCid(user_id, this.model.cid);
-            if(result !=0 )
+            if(result==0)
+                this.favourites.add({user : user_id, id_ref : this.model.cid, type : 'poi'});
+            else 
                 this.favourites.remove(this.favourites.get(result));
         },
+
         added: function(){
             if(document.getElementById('edit')){
-                if( $('#edit').hasClass("ui-button-error")&& this.favourites.includesCid(0, this.model.cid)!=0){
-                    document.getElementById('red#'+this.model.cid).className = "button_red";
-                    document.getElementById('blue#'+this.model.cid).className = "button_blue invisible";
+                if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(0, this.model.cid)!=0){
+                    document.getElementById('favourite#'+this.model.cid).className = "favourite_icon_active";
+                    //document.getElementById('red#'+this.model.cid).className = "button_red";
+                    //document.getElementById('blue#'+this.model.cid).className = "button_blue invisible";
                 }
             }
         },
         removed: function(){
             if(document.getElementById('edit')){
-                if( $('#edit').hasClass("ui-button-error")&& this.favourites.includesCid(0, this.model.cid)==0){
-                    document.getElementById('red#'+this.model.cid).className = "button_red invisible";
-                    document.getElementById('blue#'+this.model.cid).className = "button_blue";
+                if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(0, this.model.cid)==0){
+                    document.getElementById('favourite#'+this.model.cid).className = "favourite_icon";
+                    //document.getElementById('red#'+this.model.cid).className = "button_red invisible";
+                    //document.getElementById('blue#'+this.model.cid).className = "button_blue";
                 }
             }
         },
@@ -55,7 +54,7 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
         goToDetails: function () {
             //il controllo serve per evitare il click sul bottone di add/remove nella vista favourite si propaghi sul div che lo contiene
             if(document.getElementById('edit')){
-              if(! $('#edit').hasClass("ui-button-error"))
+              if(! $('#edit').hasClass("edit_active"))
                   Backbone.history.navigate("poiDetail/" + this.model.cid, {trigger: true});
             } 
             else Backbone.history.navigate("poiDetail/" + this.model.cid, {trigger: true});

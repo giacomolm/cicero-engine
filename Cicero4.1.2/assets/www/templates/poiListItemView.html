@@ -2,14 +2,16 @@
       <div style="display: block; opacity: 1;" id="gridView" class="portfolioProjects list">
       	<li>
 	    <div class="groupBox innerContent" id="itemView">
-		<a class="thumb" href="img/portfolio/1.jpg">
+	    
+		<a class="thumb" href="">
 			<img src="http://www.vineola.de/images/manufacturers/MiglianicoLogo.jpg" alt="Project X: iPhone Application Design">
 		</a>
 	      <div class="description">
 			<div class="title">
 			  {{name}}
 			</div>
-			<div id="blue#{{cid}}" class="button_blue invisible" style="float:right; position:relative"> <button class="ui-button-primary ui-corner-all ui-button"  id="add_button">+</button></div>
+			<div id="favourite#{{cid}}" class="favourite_icon invisible" ><img id="edit_favourite" style="float:right" src="./img/favourite.png"></div>
+			<div id="blue#{{cid}}" class="button_blue invisible" style="float:right; position:relative"> <button class="ui-button-primary ui-corner-all ui-button"  >+</button></div>
 			<div id="red#{{cid}}" class="button_red invisible" style="float:right; position:relative"> <button class="ui-button-error ui-corner-all ui-button"  id="remove_button">-</button></div>
 			<div class="about">
 			   {{descrizione}}

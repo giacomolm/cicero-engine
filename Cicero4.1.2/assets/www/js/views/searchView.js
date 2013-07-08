@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","views/eventListView","collections/Favourites","text!templates/searchView.html"],
-    function ($, _, Backbone, Handlebars, poiListView, eventListView, Favourites, template) {
+define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","views/eventListView","text!templates/searchView.html"],
+    function ($, _, Backbone, Handlebars, poiListView, eventListView, template) {
 
     var searchView = Backbone.View.extend({
 
@@ -16,20 +16,25 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
         },
 
         initialize: function () {
-            this.pois = this.options.pois;
+            this.favourites = this.options.favourites;
             //assegno l'intera collezione alla ricerca, altrimenti l'operazione di filtro elimina i valori
-            this.searchedPois = this.pois;
-            this.favourites = new Favourites();
-            this.poilistview = new poiListView({collection: this.searchedPois, favourites : this.favourites});
-            //this.events = this.options.events;
-            //this.eventlistview = new eventListView({collection: this.events});
+            //this.searchedPois = this.pois;
+            //this.poilistview = new poiListView({collection: this.searchedPois, favourites : this.favourites});
+            
             this.render();
         },
 
+        setPois: function(pois){
+            this.pois = pois;
+            this.searchedPois = this.pois;
+            this.poilistview = new poiListView({collection: this.searchedPois, favourites : this.favourites});
+            $(this.el).append($(this.poilistview.el));
+        },
+        
         setEvents: function(events){
             this.events = events;
             this.searchedEvents = this.events;
-            this.eventlistview = new eventListView({collection: events, favourites : this.searchedEvents});
+            this.eventlistview = new eventListView({collection: events, favourites : this.favourites});
             $(this.el).append($(this.eventlistview.el));
         },
         
@@ -51,10 +56,10 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
         
         edit: function(){
             
-            if($('#edit').hasClass("ui-button-primary")){
-                $('#edit').removeClass("ui-button-primary");
-                $('#edit').addClass("ui-button-error");
-                $('#edit').html("Exit");
+            if(! $('#edit').hasClass("edit_active")){
+                
+                $('#edit').addClass("edit_active");
+                $('#edit').addClass("favourite_icon_active");
                 
                 var elements = document.getElementsByClassName("website");
                 for(var i=0; i<elements.length; i++) {
@@ -63,37 +68,40 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
                 for(var i=0; i<this.pois.length; i++){
                     user_id = 0; //ATTENZIONE - devo prenderlo dalla sessione corrente
                     cid = this.pois.at(i).cid;
-                    if(this.favourites.includesCid(user_id,cid)!=0)
-                        document.getElementById('red#'+cid).className = "button_red";
-                    else
-                        document.getElementById('blue#'+cid).className = "button_blue";
+                    if(this.favourites.includesCid(user_id,cid)!=0){
+                        document.getElementById('favourite#'+cid).className="favourite_icon favourite_icon_active";                        
+                    }
+                    else{
+                        document.getElementById('favourite#'+cid).className="favourite_icon";      
+                    }
                 }
                 for(var i=0; i<this.events.length; i++){
                     user_id = 0; //ATTENZIONE - devo prenderlo dalla sessione corrente
                     cid = this.events.at(i).cid;
-                    if(this.favourites.includesCid(user_id,cid)!=0)
-                        document.getElementById('red#'+cid).className = "button_red";
-                    else
-                        document.getElementById('blue#'+cid).className = "button_blue";
+                    if(this.favourites.includesCid(user_id,cid)!=0){
+                        document.getElementById('favourite#'+cid).className="favourite_icon favourite_icon_active";                      
+                    }
+                    else{
+                        document.getElementById('favourite#'+cid).className="favourite_icon";                        
+                    }
                 }
             }
             else{
-                $('#edit').removeClass("ui-button-error");
-                $('#edit').addClass("ui-button-primary");
-                $('#edit').html("Edit");
+                
+                $('#edit').removeClass("edit_active");
+                $('#edit').removeClass("favourite_icon_active");
+                
                 var elements = document.getElementsByClassName("website");
                 for(var i=0; i<elements.length; i++) {
                     elements[i].className = "website";
                 }
                 for(var i=0; i<this.pois.length; i++){
                     cid = this.pois.at(i).cid;
-                    document.getElementById('blue#'+cid).className = "button_blue invisible";
-                    document.getElementById('red#'+cid).className = "button_red invisible";
+                    document.getElementById('favourite#'+cid).className+=" invisible";
                 }
                 for(var i=0; i<this.events.length; i++){
                     cid = this.events.at(i).cid;
-                    document.getElementById('blue#'+cid).className = "button_blue invisible";
-                    document.getElementById('red#'+cid).className = "button_red invisible";
+                    document.getElementById('favourite#'+cid).className+=" invisible";
                 }
             }
             
@@ -116,7 +124,7 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
         render: function (eventName) {
             $(this.el).empty();
             $(this.el).html(this.template());
-            $(this.el).append($(this.poilistview.el));
+            //$(this.el).append($(this.poilistview.el));
             //$(this.el).append($(this.eventlistview.el));
             return this;
         },
