@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView", "views/searchView", "views/favouriteView","views/eventListView","views/poiListView","views/howToReachUsView","views/nearbyPlacesView","views/eventDetailView","views/poiDetailView","collections/Events","collections/Pois"],
-    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView,searchView,favouriteView,eventListView,poiListView, howToReachUsView,nearbyPlacesView,eventDetailView,poiDetailView,Events,Pois) {
+define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView", "views/searchView", "views/favouriteView","views/eventListView","views/poiListView","views/howToReachUsView","views/nearbyPlacesView","views/eventDetailView","views/poiDetailView","collections/Events","collections/Pois","collections/Favourites"],
+    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView,searchView,favouriteView,eventListView,poiListView, howToReachUsView,nearbyPlacesView,eventDetailView,poiDetailView,Events,Pois,Favourites) {
 
     var AppRouter = Backbone.Router.extend({
 
@@ -24,6 +24,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
         $('body').append($(this.externalView.el));
         this.pois = new Pois();
         this.events = new Events();
+        this.favourites = new Favourites();
       },
       
       login: function(){
@@ -48,13 +49,15 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       },
       
       search: function(){
-          var search = new searchView({pois : this.pois});
+          var search = new searchView({favourites : this.favourites});
+          search.setPois(this.pois);
           search.setEvents(this.events);
           this.changePage(search);
       },
       
       favourite: function(){
-          var favourite = new favouriteView();
+          var favourite = new favouriteView({favourites : this.favourites});
+          favourite.setFavouritesPois(this.pois);
           this.changePage(favourite);
       },
       

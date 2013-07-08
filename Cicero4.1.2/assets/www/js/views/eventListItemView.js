@@ -7,8 +7,7 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Event","collecti
         
         events: {
             "click #itemView": "goToDetails",
-            "touchend #add_button": "addToFav",
-            "touchend #remove_button": "removeToFav",
+            "touchend #edit_favourite": "editFav",
           },
 
         initialize: function () {
@@ -17,31 +16,26 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Event","collecti
             this.listenTo(this.favourites, 'add', this.added);
             this.listenTo(this.favourites, 'remove', this.removed);
         },
-        addToFav: function(){
-            user_id = 0;
-            if(this.favourites.includesCid(user_id, this.model.cid)==0)
-                this.favourites.add({user : user_id, id_ref : this.model.cid, type : 'event'});
-        },
-        removeToFav: function(){
+        editFav: function(){
             user_id = 0;
             result = this.favourites.includesCid(user_id, this.model.cid);
-            if(result !=0 )
+            if(result==0)
+                this.favourites.add({user : user_id, id_ref : this.model.cid, type : 'event'});
+            else 
                 this.favourites.remove(this.favourites.get(result));
         },
         added: function(){
             if(document.getElementById('edit')){
-                if( $('#edit').hasClass("ui-button-error")&& this.favourites.includesCid(0, this.model.cid)!=0){
-                    document.getElementById('red#'+this.model.cid).className = "button_red";
-                    document.getElementById('blue#'+this.model.cid).className = "button_blue invisible";
+                if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(0, this.model.cid)!=0){
+                    document.getElementById('favourite#'+this.model.cid).className = "favourite_icon_active";
                 }
             }
         },
         removed: function(){
             if(document.getElementById('edit')){
-                if( $('#edit').hasClass("ui-button-error")&& this.favourites.includesCid(0, this.model.cid)==0){
-                    document.getElementById('red#'+this.model.cid).className = "button_red invisible";
-                    document.getElementById('blue#'+this.model.cid).className = "button_blue";
-                }
+                if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(0, this.model.cid)==0){
+                    document.getElementById('favourite#'+this.model.cid).className = "favourite_icon";
+                    }
             }
         },
 
@@ -54,7 +48,7 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Event","collecti
         
         goToDetails: function () {
             if(document.getElementById('edit')){
-                if(! $('#edit').hasClass("ui-button-error"))
+                if(! $('#edit').hasClass("edit_active"))
                     Backbone.history.navigate("eventDetail/" + this.model.cid, {trigger: true});
             }
             else Backbone.history.navigate("eventDetail/" + this.model.cid, {trigger: true});
