@@ -13,10 +13,8 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","col
 
         setFavouritesPois: function(pois){               
             
-            this.poilistview = new poiListView({collection:pois, favourites : this.favourites});
-            
             this.favouritesPois = this.getFavouritesPois(this.favourites,pois);
-            this.poilistview.setFilteredCollection(this.favouritesPois);
+            this.poilistview = new poiListView({collection:this.favouritesPois, favourites : this.favourites});
             
             $(this.el).append($(this.poilistview.el));
         },

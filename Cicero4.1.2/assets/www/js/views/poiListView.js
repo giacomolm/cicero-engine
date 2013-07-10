@@ -9,7 +9,11 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
         template: Handlebars.compile(template),
 
         initialize: function () {
-            this.collection.firebase.on("value",this.render,this);
+            //if i need to load remote collection, i need to wait an event
+            if (this.collection instanceof Backbone.Firebase)
+                   this.collection.firebase.on("value",this.render,this);
+            //else i can display immediately the collection passed
+            else this.render();
         },
         
         setFilteredCollection: function(filtered){
