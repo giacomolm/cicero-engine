@@ -8,6 +8,8 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
         events: {
             "click #itemView": "goToDetails",
             "touchend #edit_favourite": "editFav",
+            "swipeLeft" : "editFav",
+            "swipeRight" : "editFav",
           },
 
         initialize: function () {
@@ -15,23 +17,23 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
             this.favourites = this.options.favourites;
             this.listenTo(this.favourites, 'add', this.added);
             this.listenTo(this.favourites, 'remove', this.removed);
+            this.user_id = 0;
         },
-
+        
         editFav: function(){        
-            user_id = 0;
-            result = this.favourites.includesCid(user_id, this.model.cid);
+            
+            result = this.favourites.includesCid(this.user_id, this.model.cid);
             if(result==0)
-                this.favourites.add({user : user_id, id_ref : this.model.cid, type : 'poi'});
-            else 
+                this.favourites.add({user : this.user_id, id_ref : this.model.cid, type : 'poi'});        
+            else{
                 this.favourites.remove(this.favourites.get(result));
+            }
         },
 
         added: function(){
             if(document.getElementById('edit')){
                 if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(0, this.model.cid)!=0){
-                    document.getElementById('favourite#'+this.model.cid).className = "favourite_icon_active";
-                    //document.getElementById('red#'+this.model.cid).className = "button_red";
-                    //document.getElementById('blue#'+this.model.cid).className = "button_blue invisible";
+                    document.getElementById('favourite#'+this.model.cid).className = "favourite_icon_active";                                      
                 }
             }
         },
@@ -39,8 +41,6 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
             if(document.getElementById('edit')){
                 if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(0, this.model.cid)==0){
                     document.getElementById('favourite#'+this.model.cid).className = "favourite_icon";
-                    //document.getElementById('red#'+this.model.cid).className = "button_red invisible";
-                    //document.getElementById('blue#'+this.model.cid).className = "button_blue";
                 }
             }
         },
@@ -58,7 +58,6 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
                   Backbone.history.navigate("poiDetail/" + this.model.cid, {trigger: true});
             } 
             else Backbone.history.navigate("poiDetail/" + this.model.cid, {trigger: true});
-                
           }
         
       });

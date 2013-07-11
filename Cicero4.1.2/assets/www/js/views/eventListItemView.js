@@ -8,6 +8,8 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Event","collecti
         events: {
             "click #itemView": "goToDetails",
             "touchend #edit_favourite": "editFav",
+            "swipeLeft" : "editFav",
+            "swipeRight" : "editFav",
           },
 
         initialize: function () {
@@ -15,10 +17,10 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Event","collecti
             this.favourites = this.options.favourites;
             this.listenTo(this.favourites, 'add', this.added);
             this.listenTo(this.favourites, 'remove', this.removed);
+            this.user_id = 0;
         },
         editFav: function(){
-            user_id = 0;
-            result = this.favourites.includesCid(user_id, this.model.cid);
+            result = this.favourites.includesCid(this.user_id, this.model.cid);
             if(result==0)
                 this.favourites.add({user : user_id, id_ref : this.model.cid, type : 'event'});
             else 

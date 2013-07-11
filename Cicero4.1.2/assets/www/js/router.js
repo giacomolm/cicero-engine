@@ -58,6 +58,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       favourite: function(){
           var favourite = new favouriteView({favourites : this.favourites});
           favourite.setFavouritesPois(this.pois);
+          favourite.setFavouritesEvents(this.events);
           this.changePage(favourite);
       },
       

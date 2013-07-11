@@ -7,9 +7,7 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
         
         events : {
             "touchend #poiTab" : "showPoi",
-            "touchend #eventTab" : "showEvent",
-            "swipeRight" : "showPoi",
-            "swipeLeft" : "showEvent",
+            "touchend #eventTab" : "showEvent",            
             "touchend #search_btn" : "search",
             "keyup #search_field" : "search",
             "touchend #edit" : "edit",
