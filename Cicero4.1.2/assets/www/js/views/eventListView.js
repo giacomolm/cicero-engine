@@ -10,7 +10,9 @@ define(["zepto", "underscore", "backbone", "handlebars","views/eventListItemView
         template: Handlebars.compile(template),
 
         initialize: function () {
-            this.collection.firebase.on("value",this.render,this);
+            if (this.collection instanceof Backbone.Firebase)
+                this.collection.firebase.on("value",this.render,this);
+            else this.render();
         },
         
         setFilteredCollection: function(filtered){

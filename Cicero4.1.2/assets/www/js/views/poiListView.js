@@ -13,7 +13,9 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
             if (this.collection instanceof Backbone.Firebase)
                    this.collection.firebase.on("value",this.render,this);
             //else i can display immediately the collection passed
-            else this.render();
+            else {
+                this.render();
+            }
         },
         
         setFilteredCollection: function(filtered){
