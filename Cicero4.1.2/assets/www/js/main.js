@@ -51,8 +51,8 @@ require.config({
 });
 
 /*Main dell'applicazione*/
-require(['zepto','domReady','underscore','backbone','firebase','fireauth','eventDispatcher','router'],
-    function ($,domReady, _,Backbone,Firebase,Fireauth,EventDispatcher,AppRouter) {
+require(['zepto','domReady','underscore','backbone','firebase','fireauth','models/User','collections/Users','eventDispatcher','router'],
+    function ($,domReady, _,Backbone,Firebase,Fireauth,User,Users,EventDispatcher,AppRouter) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
@@ -78,9 +78,21 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','event
             } else if (user) {
                     /*user si logga*/
                     cicero_user = user;
-                    EventDispatcher.trigger("hide_spinner");
-                    Backbone.history.navigate("map", {trigger: true});
-
+                    var users = new Users();
+                    users.firebase.on('value',function(){
+                        if(cicero_user.provider == 'password'){
+                            var user = users.findWhere({id: cicero_user.id, type: 'pw'});
+                            cicero_user.displayName = user.get('name');
+                        } else {
+                            var social_user = users.findWhere({id: cicero_user.id,type: cicero_user.provider});
+                            if(social_user == undefined){
+                                var new_social_user = new User({id: cicero_user.id, name: cicero_user.displayName, type: cicero_user.provider});
+                                users.add(new_social_user);
+                            }
+                        }
+                        EventDispatcher.trigger("hide_spinner");
+                        Backbone.history.navigate("map", {trigger: true});
+                    },this);
                     } else {
                             /*user si slogga*/
                             cicero_user = undefined;
