@@ -28,33 +28,27 @@ define(["zepto","underscore","backbone","handlebars","models/User","collections/
             var user_email = $('#email').val();
             var username = $('#username').val();
             var user_password = $('#password').val();
-            if(username == '' || username.length <5){
-                $('#error').removeClass('invisible');
-                $('#error').html("Username must be at least 5 characters");
-                EventDispatcher.trigger("hide_spinner");
-                return;
 
-            }
-            if(user_password == '' || user_password.length < 5){
+            var errors = '';
+            if(username == '' || username.length <5)
+                errors+= 'Username must be at least 5 characters. ';
+            if(user_password == '' || user_password.length < 5)
+                errors+= "Password must be at least 5 characters. ";
+            if(this.users.where({name: username}).length > 0)
+                errors+= "Username already choosen. ";
+
+            if(errors){
                 $('#error').removeClass('invisible');
-                $('#error').html("Password must be at least 5 characters");
+                $('#error').html(errors);
                 EventDispatcher.trigger("hide_spinner");
                 return;
             }
-            if(this.users.where({name: username}).length > 0){
-                $('#error').removeClass('invisible');
-                $('#error').html("Username already choosen");
-                EventDispatcher.trigger("hide_spinner");
-                return;
-            }
+
             authClient.createUser(user_email, user_password, _.bind(function(error, user) {
                 if (!error) {
-                  var nuser = new User({id: user.id, name: username, type: "pw"});
+                  var nuser = new User({id: user.id, name: username, type: "password"});
                   this.users.add(nuser);
-                  authClient.login('password', {
-                      email: user_email,
-                      password: user_password
-                    });
+                  Backbone.history.navigate("login", {trigger: true});
                 } else {
                     $('#error').removeClass('invisible');
                     switch(error.code) {
