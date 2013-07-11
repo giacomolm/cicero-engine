@@ -81,8 +81,9 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','model
                     var users = new Users();
                     users.firebase.on('value',function(){
                         if(cicero_user.provider == 'password'){
-                            var user = users.findWhere({id: cicero_user.id, type: 'pw'});
+                            var user = users.findWhere({id: cicero_user.id, type:'password'});
                             cicero_user.displayName = user.get('name');
+                            alert(cicero_user.displayName);
                         } else {
                             var social_user = users.findWhere({id: cicero_user.id,type: cicero_user.provider});
                             if(social_user == undefined){
