@@ -5,13 +5,13 @@ define(["zepto", "underscore", "backbone", "models/Favourite","backfire"],
         model: Favourite,
         firebase: new Firebase("https://cicero.firebaseio.com/favourites"),
         
-        includesCid: function(user, cid){
+        includesCid: function(user, id){
             for(i=0; i<this.length; i++){
-                if(this.at(i).get("user") == user && this.at(i).get("id_ref") == cid)
+                if(this.at(i).get("user") == user && this.at(i).get("id_ref") == id)
                     return this.at(i).get("id");
             }
             
-            return 0;
+            return -1;
         }
       });
 

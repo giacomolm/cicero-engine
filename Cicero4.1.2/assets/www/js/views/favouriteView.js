@@ -95,7 +95,8 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
             if(this.eventlistview){               
                 $('#eventListView',  $(this.el)).remove();
                 $(this.el).append($(this.eventlistview.el));
-                //if ((! $('#eventTab').hasClass('tabActive'))&&(!$('#eventListView').hasClass('invisible')))  $('#eventListView').toggleClass('invisible');
+                
+                if ($('#eventTab').hasClass('tabActive'))  document.getElementById('eventListView').className = "";
             }
         }
         

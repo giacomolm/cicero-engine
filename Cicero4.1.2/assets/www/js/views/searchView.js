@@ -65,22 +65,23 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
                 }
                 for(var i=0; i<this.pois.length; i++){
                     user_id = 0; //ATTENZIONE - devo prenderlo dalla sessione corrente
-                    cid = this.pois.at(i).cid;
-                    if(this.favourites.includesCid(user_id,cid)!=0){
-                        document.getElementById('favourite#'+cid).className="favourite_icon favourite_icon_active";                        
+                    id = this.pois.at(i).id;
+                    if(this.favourites.includesCid(user_id,id)!=-1){
+                        document.getElementById('favourite#'+id).className="favourite_icon favourite_icon_active";                        
                     }
                     else{
-                        document.getElementById('favourite#'+cid).className="favourite_icon";      
+                        document.getElementById('favourite#'+id).className="favourite_icon";      
                     }
                 }
                 for(var i=0; i<this.events.length; i++){
                     user_id = 0; //ATTENZIONE - devo prenderlo dalla sessione corrente
-                    cid = this.events.at(i).cid;
-                    if(this.favourites.includesCid(user_id,cid)!=0){
-                        document.getElementById('favourite#'+cid).className="favourite_icon favourite_icon_active";                      
+                    id = this.events.at(i).id;
+                    
+                    if(this.favourites.includesCid(user_id,id)!=-1){
+                        document.getElementById('favourite#'+id).className="favourite_icon favourite_icon_active";                      
                     }
                     else{
-                        document.getElementById('favourite#'+cid).className="favourite_icon";                        
+                        document.getElementById('favourite#'+id).className="favourite_icon";                        
                     }
                 }
             }
@@ -94,12 +95,12 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
                     elements[i].className = "website";
                 }
                 for(var i=0; i<this.pois.length; i++){
-                    cid = this.pois.at(i).cid;
-                    document.getElementById('favourite#'+cid).className+=" invisible";
+                    id = this.pois.at(i).id;
+                    document.getElementById('favourite#'+id).className+=" invisible";
                 }
                 for(var i=0; i<this.events.length; i++){
-                    cid = this.events.at(i).cid;
-                    document.getElementById('favourite#'+cid).className+=" invisible";
+                    id = this.events.at(i).id;
+                    document.getElementById('favourite#'+id).className+=" invisible";
                 }
             }
             

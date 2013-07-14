@@ -24,8 +24,13 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
         $('body').append($(this.externalView.el));
         this.pois = new Pois();
         this.events = new Events();
+        this.events.comparator = function(event) {
+            return event.get("date");
+          };
         this.favourites = new Favourites();
       },
+      
+      
       
       login: function(){
           this.externalView.setLogout();
