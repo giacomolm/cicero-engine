@@ -8,7 +8,7 @@ define(["zepto", "underscore", "backbone"],
       	title: undefined,
       	description: undefined,
       	//logo: undefined,
-      	//date: undefined
+      	date: undefined
       }
 
       });
