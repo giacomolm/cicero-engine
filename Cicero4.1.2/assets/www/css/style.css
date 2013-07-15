@@ -1140,3 +1140,23 @@ body {
 	width : 100%;
 }
 
+.media_container{
+	width : 99%;
+	height : 200px;
+	background-color : white;
+	overflow-x: auto;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.media_container li{
+		float:left
+	}
+
+.media_container li a{
+		float:left
+	}
+.media_container a img{
+		height : 190px;
+		margin : 5px;
+}

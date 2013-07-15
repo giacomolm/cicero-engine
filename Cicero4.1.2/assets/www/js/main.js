@@ -14,9 +14,9 @@ require.config({
     fireauth: '../lib/firebase/firebase-auth-client',
     leaflet: '../lib/leaflet/leaflet',
     barcodescanner: '../lib/barcodescanner/barcodescanner',
-    statusbarnotification: '../lib/statusbarnotification/statusbarnotification',
-    ciceronotifier: '../lib/modules/ciceroNotifier',
-    templates: '../templates'
+    templates: '../templates',
+    photoswipe: '../lib/photoswipe/photoswipe',
+    klass: '../lib/photoswipe/klass'
   },
   shim: {
     'zepto': {
@@ -49,19 +49,19 @@ require.config({
     'barcodescanner': {
         exports: 'Barcodescanner'
     },
-    'statusbarnotification': {
-        exports: 'Statusbarnotification'
+    'klass': {
+        exports: 'Klass'
     },
-    'ciceronotifier': {
-        deps: ['statusbarnotification'],
-        exports: 'Ciceronotifier'
-    }
+    'photoswipe': {
+        deps: ['klass'],
+        exports: 'Photoswipe'
+    },
   }
 });
 
 /*Main dell'applicazione*/
-require(['zepto','domReady','underscore','backbone','firebase','fireauth','models/User','collections/Users','eventDispatcher','ciceronotifier','router'],
-    function ($,domReady, _,Backbone,Firebase,Fireauth,User,Users,EventDispatcher,Ciceronotifier,AppRouter) {
+require(['zepto','domReady','underscore','backbone','firebase','fireauth','models/User','collections/Users','eventDispatcher','router'],
+    function ($,domReady, _,Backbone,Firebase,Fireauth,User,Users,EventDispatcher,AppRouter) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
@@ -92,6 +92,7 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','model
                         if(cicero_user.provider == 'password'){
                             var user = users.findWhere({id: cicero_user.id, type:'password'});
                             cicero_user.displayName = user.get('name');
+                            alert(cicero_user.displayName);
                         } else {
                             var social_user = users.findWhere({id: cicero_user.id,type: cicero_user.provider});
                             if(social_user == undefined){
@@ -108,7 +109,7 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','model
                             Backbone.history.navigate("login", {trigger: true});
                     }
           });
-        
+
     	new AppRouter();
     	Backbone.history.start();
     }
