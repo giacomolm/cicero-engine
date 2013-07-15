@@ -30,8 +30,6 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
         this.favourites = new Favourites();
       },
       
-      
-      
       login: function(){
           this.externalView.setLogout();
           $('footer').first().addClass('invisible');
