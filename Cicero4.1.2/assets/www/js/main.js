@@ -14,9 +14,11 @@ require.config({
     fireauth: '../lib/firebase/firebase-auth-client',
     leaflet: '../lib/leaflet/leaflet',
     barcodescanner: '../lib/barcodescanner/barcodescanner',
-    templates: '../templates',
     photoswipe: '../lib/photoswipe/photoswipe',
-    klass: '../lib/photoswipe/klass'
+    klass: '../lib/photoswipe/klass',
+    statusbarnotification: '../lib/statusbarnotification/statusbarnotification',
+    ciceronotifier: '../lib/modules/ciceroNotifier',
+    templates: '../templates',
   },
   shim: {
     'zepto': {
@@ -49,6 +51,12 @@ require.config({
     'barcodescanner': {
         exports: 'Barcodescanner'
     },
+    'statusbarnotification':{
+        exports: 'Statusbarnotification'
+    },
+    'ciceronotifier':{
+        exports: 'Ciceronotifier',
+    },
     'klass': {
         exports: 'Klass'
     },
@@ -60,14 +68,16 @@ require.config({
 });
 
 /*Main dell'applicazione*/
-require(['zepto','domReady','underscore','backbone','firebase','fireauth','models/User','collections/Users','eventDispatcher','router'],
-    function ($,domReady, _,Backbone,Firebase,Fireauth,User,Users,EventDispatcher,AppRouter) {
+require(['zepto','domReady','underscore','backbone','firebase','fireauth','models/User','collections/Users','ciceronotifier','eventDispatcher','router'],
+    function ($,domReady, _,Backbone,Firebase,Fireauth,User,Users,Ciceronotifier,EventDispatcher,AppRouter) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
     });
 
     function run() {
+
+        Ciceronotifier.notify();
 
         firebaseRef = new Firebase('https://cicero.firebaseio.com');
         authClient = new FirebaseAuthClient(firebaseRef, function(error, user) {

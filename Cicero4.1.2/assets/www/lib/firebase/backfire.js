@@ -210,20 +210,24 @@ Backbone.Firebase.Collection = Backbone.Collection.extend({
 
   add: function(models, options) {
     var parsed = this._parseModels(models);
+    options = options ? _.clone(options) : {};
+    options.success = _.isFunction(options.success) ? options.success : function() {};
+
     for (var i = 0; i < parsed.length; i++) {
       var model = parsed[i];
-      this.firebase.ref().child(model.id).set(model);
+      this.firebase.ref().child(model.id).set(model, _.bind(options.success, model));
     }
-    // TODO: Implement options.success
   },
 
   remove: function(models, options) {
     var parsed = this._parseModels(models);
+    options = options ? _.clone(options) : {};
+    options.success = _.isFunction(options.success) ? options.success : function() {};
+
     for (var i = 0; i < parsed.length; i++) {
       var model = parsed[i];
-      this.firebase.ref().child(model.id).set(null);
+      this.firebase.ref().child(model.id).set(null, _.bind(options.success, model));
     }
-    // TODO: Implement options.success
   },
 
   create: function(model, options) {
@@ -286,6 +290,12 @@ Backbone.Firebase.Collection = Backbone.Collection.extend({
       // TODO: Investigate: what is the right way to handle this case?
       throw new Error("Could not find model with ID " + model.id);
     }
+
+    var diff = _.difference(_.keys(item.attributes), _.keys(model));
+    _.each(diff, function(key) {
+      item.unset(key);
+    });
+
     item.set(model);
   },
 
