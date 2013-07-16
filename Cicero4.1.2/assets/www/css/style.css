@@ -1160,3 +1160,18 @@ body {
 		height : 190px;
 		margin : 5px;
 }
+
+.message{
+	text-align:center;
+	font-size: 15px;
+	margin-top : 5px
+}
+
+.close{
+	text-align:right;
+	float : right;
+	font-size: 20px;
+	margin-top: -5px;
+	margin-right : 5px;
+	
+}

@@ -17,27 +17,36 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Event","collecti
             this.favourites = this.options.favourites;
             this.listenTo(this.favourites, 'add', this.added);
             this.listenTo(this.favourites, 'remove', this.removed);
-            this.user_id = 0;
+            this.user = cicero_user;
         },
         editFav: function(){
-            result = this.favourites.includesCid(this.user_id, this.model.id);
-            if(result==-1)
-                this.favourites.add({user : this.user_id, id_ref : this.model.id, type : 'event'});
-            else 
-                this.favourites.remove(this.favourites.get(result));
+            if(this.user != undefined){
+                result = this.favourites.includesCid(this.user.id, this.model.id, "event");
+                if(result==-1)
+                    this.favourites.add({user : this.user.id, id_ref : this.model.id, type : 'event'});
+                else 
+                    this.favourites.remove(this.favourites.get(result));
+            }
         },
         added: function(){
-            if(document.getElementById('edit')){
-                if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(0, this.model.id)!=-1){
-                    document.getElementById('favourite#'+this.model.id).className = "favourite_icon_active";
+            if(this.user != undefined){
+                if(document.getElementById('edit')){
+                    var result = this.favourites.includesCid(this.user.id, this.model.id, "event");
+                    
+                    if( $('#edit').hasClass("edit_active")&& result != -1 ){
+                        document.getElementById('favouriteevent#'+this.model.id).className = "favourite_icon_active";
+                    }
                 }
             }
         },
         removed: function(){
-            if(document.getElementById('edit')){
-                if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(0, this.model.id)==-1){
-                    document.getElementById('favourite#'+this.model.id).className = "favourite_icon";
-                    }
+            if(this.user != undefined){
+                if(document.getElementById('edit')){                
+                    
+                    if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(cicero_user.id, this.model.id, "event")==-1){
+                        document.getElementById('favouriteevent#'+this.model.id).className = "favourite_icon";
+                        }
+                }
             }
         },
 
