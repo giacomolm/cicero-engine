@@ -12,40 +12,48 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
         
         initialize: function () {
             this.favourites = this.options.favourites;
-            this.favourites.firebase.on("value", this.refresh,this);
+            
             //this.listenTo(this.favourites,"change",this.refresh);
-            this.user_id = 0;
+            this.user = cicero_user;
+            
+            if (this.user!=undefined) {
+                this.favourites.firebase.on("value", this.refresh,this);
+                this.user_id = cicero_user.id;
+            }
             this.render();
         },
 
         setFavouritesPois: function(pois){               
-            
-            if(pois!=undefined) this.pois = pois;
-            if(this.pois instanceof Backbone.Collection){     
-                this.favouritesPois = this.getFavourites(this.favourites,this.pois);
-                this.poilistview = new poiListView({collection:this.favouritesPois, favourites : this.favourites});
-                
-            }
-            
-            this.renderPois();
+           if(this.user!=undefined){ 
+                if(pois!=undefined) this.pois = pois;
+                if(this.pois instanceof Backbone.Collection){     
+                    this.favouritesPois = this.getFavourites(this.favourites,this.pois,"poi");
+                    this.poilistview = new poiListView({collection:this.favouritesPois, favourites : this.favourites});
+                    
+                }
+                this.renderPois();
+           }
         },
         
-        setFavouritesEvents: function(events){               
-            if(events!=undefined) this.events = events
-            if(this.events instanceof Backbone.Collection){
-                
-                this.favouritesEvents = this.getFavourites(this.favourites,this.events);
-                this.eventlistview = new eventListView({collection:this.favouritesEvents, favourites : this.favourites});
+        setFavouritesEvents: function(events){ 
+            if(this.user!=undefined){
+                if(events!=undefined) this.events = events
+                if(this.events instanceof Backbone.Collection){
+                    
+                    this.favouritesEvents = this.getFavourites(this.favourites,this.events, "event");
+                    this.eventlistview = new eventListView({collection:this.favouritesEvents, favourites : this.favourites});
+                }
+                this.renderEvents();
             }
             
-            this.renderEvents();
         },
         
         //Attention: it return a simple Backbone.Collection
-        getFavourites: function(favourites,list){
+        getFavourites: function(favourites,list,type){
             var collection =  new Backbone.Collection();
             for(i=0; i<favourites.length; i++){
-                  collection.add(list.get(favourites.at(i).get("id_ref")));
+                    if(favourites.at(i).get("user")==this.user.id && favourites.at(i).get("type")==type)
+                        collection.add(list.get(favourites.at(i).get("id_ref")));
             }
             return collection;
         },
@@ -79,8 +87,14 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
             var event_tab = $('#eventTab').hasClass('tabActive'); 
             $(this.el).empty();
             $(this.el).html(this.template());
-            this.renderPois();
-            this.renderEvents();
+            if(cicero_user != undefined){
+                this.renderPois();
+                this.renderEvents();
+            }
+            else{
+                $('#message').html("You need to login to store element in favourite");
+                $('#message_div').show();
+            }
             return this;
         },
         

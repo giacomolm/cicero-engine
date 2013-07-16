@@ -17,34 +17,39 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Poi","collection
             this.favourites = this.options.favourites;
             this.listenTo(this.favourites, 'add', this.added);
             this.listenTo(this.favourites, 'remove', this.removed);
-            this.user_id = 0;
+            this.user = cicero_user;
         },
         
         editFav: function(){        
-            
-            result = this.favourites.includesCid(this.user_id, this.model.id);
-            if(result==-1)
-                this.favourites.add({user : this.user_id, id_ref : this.model.id, type : 'poi'});        
-            else{
-                this.favourites.remove(this.favourites.get(result));
+            if(this.user!=undefined){
+                result = this.favourites.includesCid(this.user.id, this.model.id, 'poi');
+                if(result==-1)
+                    this.favourites.add({user : this.user.id, id_ref : this.model.id, type : 'poi'});        
+                else{
+                    this.favourites.remove(this.favourites.get(result));
+                }
             }
         },
 
         added: function(){
+          if(this.user != undefined){ 
             if(document.getElementById('edit')){
-                if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(0, this.model.id)!=-1){
-                    document.getElementById('favourite#'+this.model.id).className = "favourite_icon_active";                                      
+                if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(cicero_user.id, this.model.id, "poi")!=-1){
+                    document.getElementById('favouritepoi#'+this.model.id).className = "favourite_icon_active";                                      
                 }
             }
+          }
         },
         removed: function(){
+            
             if(document.getElementById('edit')){
-                if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(0, this.model.id)==-1){
-                    document.getElementById('favourite#'+this.model.id).className = "favourite_icon";
+                if( $('#edit').hasClass("edit_active")&& this.favourites.includesCid(cicero_user.id, this.model.id, "poi")==-1){
+                    document.getElementById('favouritepoi#'+this.model.id).className = "favourite_icon";
                 }
             }
         },
         render: function (eventName) {
+            
             var poi = this.model.toJSON();
             poi.id = this.model.id;
             $(this.el).html(this.template(poi));

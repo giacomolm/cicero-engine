@@ -1,4 +1,4 @@
-<div id="pageHome" class="page" >
+<div id="pageHome" class="page" name="{{id}}">
 	<div class="content">
 		<div class="groupBox innerContent ">
 			<div class="profileArea">
@@ -9,17 +9,17 @@
 							    <img src="http://www.vineola.de/images/manufacturers/MiglianicoLogo.jpg" alt="Profile Pic" />
 							</div>
 					    </div>
-					    <div class="profileCaptAreaContainer"></div>
+					    <div class="profileCaptAreaContainer">{{name}}</div>
 			    </div>
 	     		<div class="centerTable">
 	            	<div class="profileTable">
 						<div class="left">
 							<div class="nav left"><span><img src="img/marker.png"></span><br>Map</div>
-							<div class="nav left"><span><img src="img/poi.png"></span><br>POI</div>
+							<div class="nav left"><span><img src="img/event.png"></span><br>POI Events</div>
 						</div>
 						<div class="">
 							<div class="nav left"><span><img src="img/heart.png"></span><br>Like It !</div>
-							<div class="nav left"><span><img src="img/favourite.png"></span><br>Favourite</div>
+							<div class="nav left"><span class="favourite_icon" id="favourite_logo" name="{{id}}"><img id="img_fav" src="img/favourite.png" /></span><br>Favourite</div>
 						</div>
 	            	</div>
 	            </div>
@@ -43,11 +43,21 @@
                 </li>
                 <li>
 	    			<p class="key"> Summary</p>
-                    <p class="value"></p>
+                    <p class="value">{{descrizione}}</p>
                 </li>
                 <li>
 					<p class="key"> Media</p>
-                    <p class="value"> </p>
+                    <p class="value">
+                    	<div class="media_container" id="Gallery">
+                    		
+                    			<a href="http://media02.hongkiat.com/action-sequence-photography/sports-action-01-.jpg"><img src="http://media02.hongkiat.com/action-sequence-photography/sports-action-01-.jpg" alt="Image 01" /></a> 
+                    			<a href="http://media02.hongkiat.com/action-sequence-photography/sequence-backmobe.jpg"><img src="http://media02.hongkiat.com/action-sequence-photography/sequence-backmobe.jpg" alt="Image 02" /></a> 
+                    			<a href="http://media02.hongkiat.com/action-sequence-photography/xfighters-madrid.jpg"><img src="http://media02.hongkiat.com/action-sequence-photography/xfighters-madrid.jpg" alt="Image 03" /></a> 
+                    			<a href="http://media02.hongkiat.com/action-sequence-photography/Bjorn-Dunkerbeck.jpg"><img src="http://media02.hongkiat.com/action-sequence-photography/Bjorn-Dunkerbeck.jpg" alt="Image 04" /></a> 
+                    			<a href="http://media02.hongkiat.com/action-sequence-photography/Strobed-Sequence.jpg"><img src="http://media02.hongkiat.com/action-sequence-photography/Strobed-Sequence.jpg" alt="Image 05" /></a> 
+                    		                   		
+                    	</div>
+                    </p>
                 </li>
 			    <li>
 				<p class="key"> Comments</p>
