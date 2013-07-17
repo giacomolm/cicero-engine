@@ -100,7 +100,7 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
                     }
                     for(var i=0; i<this.events.length; i++){
                         id = this.events.at(i).id;
-                        document.getElementById('favouritevent#'+id).className+=" invisible";
+                        document.getElementById('favouriteevent#'+id).className+=" invisible";
                     }
                 }
             }

@@ -18,7 +18,7 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
         },
 
         checkFavourite: function(){
-            
+            this.user = cicero_user;
             if(window.document.querySelectorAll('#Gallery a').length>0){
                 myPhotoSwipe = Code.PhotoSwipe.attach( 
                         window.document.querySelectorAll('#Gallery a'), 
@@ -30,8 +30,8 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             if(fav_icon!=undefined && this.user != undefined){
                 favourites = new Favourites();
                 id = $("#pageHome").attr('name'); // per semplicità ho salvato l'id nel primo tag del template
-                result = favourites.includesCid(this.user.id, id);
-                if(result==-1){
+                result = favourites.includesCid(this.user.id, id,'event');
+                if(result!=-1){
                     $('#favourite_logo').toggleClass("favourite_icon");                    
                 }
             }
@@ -42,10 +42,10 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
                 fav_icon = document.getElementById('favourite_logo');
                 
                 if(fav_icon!=undefined){
-                    result = this.favourites.includesCid(this.user.id, this.model.id);
+                    result = this.favourites.includesCid(this.user.id, this.model.id, 'event');
                     if(result==-1){
                         $('#favourite_logo').toggleClass("favourite_icon");
-                        this.favourites.add({user : this.user.id, id_ref : this.model.id, type : 'poi'});
+                        this.favourites.add({user : this.user.id, id_ref : this.model.id, type : 'event'});
                     }
                     else{
                         $('#favourite_logo').toggleClass("favourite_icon");
