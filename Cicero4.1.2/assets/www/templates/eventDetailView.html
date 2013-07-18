@@ -49,13 +49,23 @@
 					<p class="key"> Media</p>
                     <p class="value">
                     	<div class="media_container" id="Gallery">
-                    		
-                    			<a href="http://media02.hongkiat.com/action-sequence-photography/sports-action-01-.jpg"><img src="http://media02.hongkiat.com/action-sequence-photography/sports-action-01-.jpg" alt="Image 01" /></a> 
-                    			<a href="http://media02.hongkiat.com/action-sequence-photography/sequence-backmobe.jpg"><img src="http://media02.hongkiat.com/action-sequence-photography/sequence-backmobe.jpg" alt="Image 02" /></a> 
-                    			<a href="http://media02.hongkiat.com/action-sequence-photography/xfighters-madrid.jpg"><img src="http://media02.hongkiat.com/action-sequence-photography/xfighters-madrid.jpg" alt="Image 03" /></a> 
-                    			<a href="http://media02.hongkiat.com/action-sequence-photography/Bjorn-Dunkerbeck.jpg"><img src="http://media02.hongkiat.com/action-sequence-photography/Bjorn-Dunkerbeck.jpg" alt="Image 04" /></a> 
-                    			<a href="http://media02.hongkiat.com/action-sequence-photography/Strobed-Sequence.jpg"><img src="http://media02.hongkiat.com/action-sequence-photography/Strobed-Sequence.jpg" alt="Image 05" /></a> 
-                    		                   		
+                    			<table>
+                    			 <tr>
+                    			{{#each medias}}
+                    				{{#ifCond type}}
+                    					<td>
+									    <a href="{{url}}"><img src="{{url}}" alt="Image 00" /></a>
+									    </td>
+									{{else}}
+										<td>
+									    <video controls preload height="190">
+									      <source src="{{url}}" />
+									    </video>
+									    </td>
+									{{/ifCond}}
+								{{/each}}
+								 </tr>
+								</table>         		
                     	</div>
                     </p>
                 </li>

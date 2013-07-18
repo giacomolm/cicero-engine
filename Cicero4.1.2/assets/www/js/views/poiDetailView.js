@@ -1,9 +1,16 @@
-define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","collections/Favourites","text!templates/poiDetailView.html"],
-    function ($, _, Backbone, Handlebars,Klass,Photoswipe,Favourites,template) {
+define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","collections/Favourites","collections/Medias","text!templates/poiDetailView.html"],
+    function ($, _, Backbone, Handlebars,Klass,Photoswipe,Favourites,Medias,template) {
 
     var poiDetailView = Backbone.View.extend({
 
         template: Handlebars.compile(template),
+        
+        ifcond : Handlebars.registerHelper('ifCond', function(v1,  options) {
+            if(v1 === "img") {
+              return options.fn(this);
+            }
+            return options.inverse(this);
+          }),
         
         events: {
             "click #favourite_logo": "updateFavourite",
@@ -21,6 +28,8 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             
             $(document).on('DOMSubtreeModified', this.checkFavourite, this);
             this.user = cicero_user;
+            if(this.medias == undefined) this.medias = new Medias();
+            this.medias.firebase.on("value",this.render,this);
         },
 
         checkFavourite: function(){
@@ -69,11 +78,14 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
         
         
         render: function (eventName) {
-            $(this.el).html(this.template(this.model.toJSON()));
-            this.trigger('inTheDom');
+            //this.model.medias = this.medias.getMedias(this.model.id,'poi');
+            jsonModel = this.model.toJSON();
+            if(this.medias!=undefined)jsonModel.medias = this.medias.getMedias(this.model.id,'poi').toJSON();
+            $(this.el).html(this.template(jsonModel));
             
             return this;
-        }
+        },
+        
       });
 
     return poiDetailView;

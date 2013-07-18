@@ -23,7 +23,7 @@ define(["zepto", "underscore", "backbone", "handlebars","models/Event","collecti
             if(this.user != undefined){
                 result = this.favourites.includesCid(this.user.id, this.model.id, "event");
                 if(result==-1)
-                    this.favourites.add({user : this.user.id, id_ref : this.model.id, type : 'event'});
+                    this.favourites.add({user : this.user.id, id_ref : this.model.id, type : 'event', notified:"no"});
                 else 
                     this.favourites.remove(this.favourites.get(result));
             }
