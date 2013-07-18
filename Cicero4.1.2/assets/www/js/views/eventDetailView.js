@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","collections/Favourites","text!templates/eventDetailView.html"],
-    function ($, _, Backbone, Handlebars,Klass,Photoswipe,Favourites,template) {
+define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","collections/Favourites","collections/Medias","text!templates/eventDetailView.html"],
+    function ($, _, Backbone, Handlebars,Klass,Photoswipe,Favourites,Medias,template) {
 
     var eventDetailView = Backbone.View.extend({
 
@@ -15,6 +15,9 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             this.favourites = new Favourites();
             this.user = cicero_user;
             $(document).on('DOMSubtreeModified', this.checkFavourite, this);
+
+            if(this.medias == undefined) this.medias = new Medias();
+            this.medias.firebase.on("value",this.render,this);
         },
 
         checkFavourite: function(){
@@ -45,7 +48,7 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
                     result = this.favourites.includesCid(this.user.id, this.model.id, 'event');
                     if(result==-1){
                         $('#favourite_logo').toggleClass("favourite_icon");
-                        this.favourites.add({user : this.user.id, id_ref : this.model.id, type : 'event'});
+                        this.favourites.add({user : this.user.id, id_ref : this.model.id, type : 'event', notified:"no"});
                     }
                     else{
                         $('#favourite_logo').toggleClass("favourite_icon");
@@ -60,8 +63,9 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
         },
         
         render: function (eventName) {
-            $(this.el).empty();
-            $(this.el).html(this.template(this.model.toJSON()));
+            jsonModel = this.model.toJSON();
+            if(this.medias!=undefined)jsonModel.medias = this.medias.getMedias(this.model.id,'event').toJSON();
+            $(this.el).html(this.template(jsonModel));
             return this;
         }
       });
