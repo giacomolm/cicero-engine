@@ -5,7 +5,8 @@ define(["zepto", "underscore", "backbone"],
     	  id: 0,
     	  user: 0, /*riferimento*/
     	  id_ref: 0,
-    	  type: undefined	
+    	  type: undefined, /* poi or event*/
+          notified: 'no'
       }
 
       });

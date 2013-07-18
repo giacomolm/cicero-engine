@@ -18,7 +18,7 @@ require.config({
     klass: '../lib/photoswipe/klass',
     statusbarnotification: '../lib/statusbarnotification/statusbarnotification',
     ciceronotifier: '../lib/modules/ciceroNotifier',
-    templates: '../templates',
+    templates: '../templates'
   },
   shim: {
     'zepto': {
@@ -55,7 +55,7 @@ require.config({
         exports: 'Statusbarnotification'
     },
     'ciceronotifier':{
-        exports: 'Ciceronotifier',
+        exports: 'Ciceronotifier'
     },
     'klass': {
         exports: 'Klass'
@@ -63,7 +63,7 @@ require.config({
     'photoswipe': {
         deps: ['klass'],
         exports: 'Photoswipe'
-    },
+    }
   }
 });
 
@@ -76,8 +76,6 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','model
     });
 
     function run() {
-
-        Ciceronotifier.notify();
 
         firebaseRef = new Firebase('https://cicero.firebaseio.com');
         authClient = new FirebaseAuthClient(firebaseRef, function(error, user) {
@@ -110,6 +108,7 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','model
                                 users.add(new_social_user);
                             }
                         }
+                        Ciceronotifier.on();
                         EventDispatcher.trigger("hide_spinner");
                         Backbone.history.navigate("map", {trigger: true});
                     },this);

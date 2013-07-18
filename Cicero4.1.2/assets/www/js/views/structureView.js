@@ -1,5 +1,5 @@
-define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!templates/structureView.html"],
-    function ($, _, Backbone, Handlebars,EventDispatcher,template) {
+define(["zepto","underscore","backbone","handlebars","eventDispatcher",'ciceronotifier',"text!templates/structureView.html"],
+    function ($, _, Backbone, Handlebars,EventDispatcher,Ciceronotifier,template) {
     
     var structureView = Backbone.View.extend({
         events: {
@@ -22,6 +22,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!tem
         },
         
         logout: function(){
+            Ciceronotifier.off();
             authClient.logout();
         },
 
