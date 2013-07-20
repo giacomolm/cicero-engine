@@ -1,4 +1,4 @@
-define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","async!https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false","text!templates/howToReachUsView.html"],
+define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","async!https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false!callback","text!templates/howToReachUsView.html"],
     function ($, _, Backbone, Handlebars,EventDispatcher,google,template) {
 
     var howToReachUsView = Backbone.View.extend({
