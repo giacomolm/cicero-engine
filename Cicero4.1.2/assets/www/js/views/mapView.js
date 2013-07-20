@@ -4,20 +4,56 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
     var mapView = Backbone.View.extend({
         
         events: {
-            "touchend #findme" : "findme"
+            "touchstart #findme" : "findme",
+            "touchstart #floor0":  "floor0",
+            "touchstart #floor1":  "floor1"
         },
         
         template: Handlebars.compile(template),
         templateMarkers: Handlebars.compile(templateMarkers),
 
-        initialize: function () {
-          this.on("inTheDom", this.addMap);
+        initialize: function (options) { /* we can pass in the options floor, centerLat and centerLng*/
 
+            /* by default floor is 0, if another one is passed we use it*/
+            this.floor = 0;
+            if(this.options.floor)
+                this.floor = this.options.floor;
+
+            /*getting map bound and center by reading mapadata file*/
+            var mapdata = $.ajax({type: "GET", url:'img/map/floor'+this.floor+'/mapdata',async: false}).responseText;
+            var res = mapdata.split(',');
+            this.swLat = res[0];
+            this.swLng = res[1];
+            this.neLat = res[2];
+            this.neLng = res[3];
+            this.centerLat = res[4];
+            this.centerLng = res[5];
+
+
+          /*default latitude value indicates map latitude center, if another one is passed we use it*/
+          if(this.options.centerLat)
+            this.centerLat = this.options.centerLat;
+
+          /*default longitude value indicates map longitude center, if another one is passed we use it*/
+          if(this.options.centerLng)
+            this.centerLng = this.options.centerLng;
+
+          /*we define zoom 1 by default, if option centerLat and centerLng
+            are defined we put it to 5, in this way we focus on a specific
+            marker. When we have to change floor only, we have only to
+            specify floor option leaving the others undefined, in that way
+            centerLat and centerLng are retrieved  from mapdata file.
+          */
+          this.zoom = 1;
+          if(this.options.centerLat && this.options.centerLng)
+            this.zoom = 5;
+
+          this.on("inTheDom", this.addMap);
           this.render();
 
         },
 
-        render: function (eventName) {
+        render: function() {
           $(this.el).empty();
           $(this.el).html(this.template());
           
@@ -25,31 +61,29 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         },
         
         addMap: function(){
-            /*adattiamo la dimensione della mappa 
-             * alla grandezza dello schermo
-             * */
-            document.getElementById('map').style.height = (window.innerHeight-(44+58))+"px"
-            
-            this.sw = new L.LatLng(-85.11142,-180, true);
-            this.ne = new L.LatLng(11.0059,-44.64844, true);
+
+            /* filling screen by adapting map height*/
+            document.getElementById('map').style.height = (window.innerHeight-(44+58))+"px";
+
+            /*bounds setting*/
+            this.sw = new L.LatLng(this.swLat,this.swLng, true);
+            this.ne = new L.LatLng(this.neLat,this.neLng, true);
             this.bounds = new L.LatLngBounds(this.sw, this.ne);
             this.myMarker = new L.marker();
-            
+
+
             this.map = L.map('map',{
                 maxBounds: this.bounds,
                 worldCopyJump: true
-            }).setView([-53.64464,-112.32422], 1, true);
-            L.tileLayer('img/map/{z}/{x}/{y}.png', {
+            }).setView([this.centerLat,this.centerLng], this.zoom, true);
+            L.tileLayer('img/map/floor'+this.floor+'/{z}/{x}/{y}.png', {
                minZoom: 0,
                maxZoom: 6,
             continuousWorld: true,
                tms: true
             }).addTo(this.map);
             
-            /*inserisco qui il bind in modo da evitare di caricare i poi quando
-             * la mappa non è ancora caricata nel caso ci si torni dopo
-             * aver visitato una sezione.
-             */
+            /*once map is loaded we attach addPois event*/
             EventDispatcher.trigger("show_spinner");
             this.collection.firebase.on("value",this.addPois,this);
 
@@ -82,14 +116,24 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
             EventDispatcher.trigger("hide_spinner");
             for(i=0;i<this.collection.length;i++){
                 var poi = this.collection.at(i);
-                var marker = new L.marker();
-                marker.setLatLng(new L.LatLng(poi.get("coord")[0],poi.get("coord")[1]));
-                marker.setIcon(new L.icon({iconUrl:'img/markers/marker-icon.png'}));
-                var poiJson = poi.toJSON();
-                poiJson.cid = poi.cid;
-                marker.bindPopup(this.templateMarkers(poiJson), {closeButton: false});
-                marker.addTo(this.map);
+                if(poi.get("coord")[2] == this.floor){ /*checking if poi is in the current displayed floor*/
+                    var marker = new L.marker();
+                    marker.setLatLng(new L.LatLng(poi.get("coord")[0],poi.get("coord")[1]));
+                    marker.setIcon(new L.icon({iconUrl:'img/markers/marker-icon.png'}));
+                    var poiJson = poi.toJSON();
+                    poiJson.cid = poi.cid;
+                    marker.bindPopup(this.templateMarkers(poiJson), {closeButton: false});
+                    marker.addTo(this.map);
+                }
             }
+        },
+
+        floor0: function(){
+            Backbone.history.navigate("map/0", {trigger: true});
+        },
+
+        floor1: function(){
+            Backbone.history.navigate("map/1", {trigger: true});
         }
         
       });

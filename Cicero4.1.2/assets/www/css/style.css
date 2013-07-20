@@ -1098,8 +1098,21 @@ body {
 
 #findme {
  position: absolute; 
- z-index: 1000; 
- right:0	
+ z-index: 1000;
+ top: 58px;
+ right:10px
+}
+
+.floor_container {
+    position: absolute;
+    z-index: 100;
+    bottom: 70px;
+    left: 10px
+}
+
+.floor {
+  float: left;
+  margin-right: 6px;
 }
 
 #error{
