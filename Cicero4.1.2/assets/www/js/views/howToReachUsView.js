@@ -1,7 +1,10 @@
-define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","async!https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false!callback","text!templates/howToReachUsView.html"],
+define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","async!https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=mapLoaded","text!templates/howToReachUsView.html"],
     function ($, _, Backbone, Handlebars,EventDispatcher,google,template) {
 
     var howToReachUsView = Backbone.View.extend({
+    	
+    	cLoad: false,
+    	gLoad: false,
 
         template: Handlebars.compile(template),
         context: {
@@ -19,15 +22,17 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","async
         setCoord:function (Position){
         	this.context.xPos= Position.coords.latitude;
         	this.context.yPos= Position.coords.longitude;
-        	this.gooDir();  
+        	this.cLoad=true;
+        	this.allLoaded();  
         },
         coordNotSetted:function (Position){
         	this.context.xPos= 42.35718;
         	this.context.yPos= 13.363579;
-        	this.gooDir();  
+        	this.cLoad=true;
+        	this.allLoaded();  
         },
 
-        gooDir: function(){
+        mapLoaded: function(){
         	/*PROVA GOOGLE*/
         	
         	var directionsService = new google.google.maps.DirectionsService();
@@ -42,9 +47,13 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","async
         	      test=response.routes[0].legs[0].distance;
         	    }
         	  });
-        	
+        	this.gLoad=true;
         	/*FINE PROVA GOOGLE*/
-        	this.render();
+        	this.allLoaded();
+        },
+        
+        allLoaded: function(){
+        	if(this.cLoad && this.gLoad) this.render();
         },
         
         render: function (eventName) {
