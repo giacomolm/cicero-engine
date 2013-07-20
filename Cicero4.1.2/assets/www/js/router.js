@@ -7,6 +7,8 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
         "": "login",
         "login": "login",
         "map": "map",
+        "map/:floor": "mapfloor",
+        "map/:floor/:lat/:lng": "mapcenter",
         "register": "register",
         "search": "search",
         "favourite": "favourite",
@@ -42,6 +44,16 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
           $('footer').first().removeClass('invisible');
     	  var map = new mapView({collection : this.pois});
     	  this.changePage(map);
+      },
+
+      mapfloor: function(floor){
+          var map = new mapView({collection: this.pois,floor: floor});
+          this.changePage(map);
+      },
+
+      mapcenter:function(floor,lat,lng){
+          var map = new mapView({collection: this.pois,floor: floor, centerLat: lat, centerLng: lng});
+          this.changePage(map);
       },
 
       register: function(){
