@@ -28,7 +28,7 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         	
         	var directionsService = new google.maps.DirectionsService();
         	var arr = new google.maps.LatLng(42.358175, 13.364621);
-        	var par = new google.maps.LatLng(xPos, yPos);
+        	var par = new google.maps.LatLng(this.xPos, this.yPos);
         	var request = {
         		      origin:par,
         		      destination: arr,
