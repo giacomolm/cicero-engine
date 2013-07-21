@@ -42,7 +42,7 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         		directionsDisplay = new google.maps.DirectionsRenderer();
         		var mapOptions = {
         			    zoom:7,
-        			    mapTypeId: google.maps.MapTypeId.ROADMAP,
+        			    mapTypeId: google.maps.MapTypeId.ROADMAP
         			    //center: response.routes[0].leg[0].start_location
         			  };
         		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
