@@ -1,11 +1,9 @@
-define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","async!https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=mapLoaded","text!templates/howToReachUsView.html"],
-    function ($, _, Backbone, Handlebars,EventDispatcher,google,template) {
+define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!templates/howToReachUsView.html","async!https://maps.googleapis.com/maps/api/js?key=AIzaSyA0VJtE1wqPiwTV6Up4gPSAVu884ew_yMA&sensor=false"],
+    function ($, _, Backbone, Handlebars,EventDispatcher,template) {
 
     var howToReachUsView = Backbone.View.extend({
     	
-    	cLoad: false,
-    	gLoad: false,
-
+    	
         template: Handlebars.compile(template),
         context: {
         	xPos: 42.35718,
@@ -16,46 +14,42 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","async
 
         initialize: function () {
         	EventDispatcher.trigger("show_spinner");
-        	navigator.geolocation.getCurrentPosition(_.bind(this.setCoord,this), _.bind(this.coordNotSetted,this));            
+        	//navigator.geolocation.getCurrentPosition(_.bind(this.setCoord,this), _.bind(this.coordNotSetted,this)); 
+        	this.gMap();
         },
         /*handles per la geolocalizzazione*/
         setCoord:function (Position){
         	this.context.xPos= Position.coords.latitude;
         	this.context.yPos= Position.coords.longitude;
-        	this.cLoad=true;
-        	this.allLoaded();  
+        	this.gMap();  
         },
         coordNotSetted:function (Position){
         	this.context.xPos= 42.35718;
         	this.context.yPos= 13.363579;
-        	this.cLoad=true;
-        	this.allLoaded();  
+        	this.gMap();  
         },
 
-        mapLoaded: function(){
+        gMap: function(){
         	/*PROVA GOOGLE*/
         	
-        	var directionsService = new google.google.maps.DirectionsService();
+        	var directionsService = new google.maps.DirectionsService();
         	var request = {
         		      origin:"Roma",
         		      destination:"Milano",
-        		      travelMode: google.google.maps.DirectionsTravelMode.DRIVING
+        		      travelMode: google.maps.DirectionsTravelMode.DRIVING
         		  };
         	directionsService.route(request, function(response, status) {
-        	    if (status == google.google.maps.DirectionsStatus.OK) {
+        	    if (status == google.maps.DirectionsStatus.OK) {
         	      this.context.status=status;
-        	      test=response.routes[0].legs[0].distance;
+        	      this.test=response.routes[0].legs[0].distance;
         	    }
         	  });
         	this.gLoad=true;
         	/*FINE PROVA GOOGLE*/
-        	this.allLoaded();
+        	this.render();
         },
         
-        allLoaded: function(){
-        	if(this.cLoad && this.gLoad) this.render();
-        },
-        
+               
         render: function (eventName) {
         	
         	
