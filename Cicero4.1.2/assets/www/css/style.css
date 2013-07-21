@@ -1181,3 +1181,28 @@ body {
 	margin-right : 5px;
 	
 }
+
+.comment_username{
+	text-align : right;
+	color : grey;
+}
+
+hr{
+	width:50%;
+	text-align:center;
+	margin-left:25%;
+	height : 1px;
+}
+
+.arrow_down{
+	-webkit-transition-duration: 0.8s;
+    -webkit-transition-property: transform;
+}
+
+.arrow_up{
+	-webkit-transform:rotate(180deg);	
+}
+.logintext{
+	text-decoration : underline;
+	color : blue;
+}

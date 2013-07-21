@@ -70,8 +70,22 @@
                     </p>
                 </li>
 			    <li>
-				<p class="key"> Comments</p>
-		        <p class="value"> </p>
+					<div id="commentsHeader">
+				    	<img id="arrow" class="arrow_down" src="./img/arrow.png" style="float:right">
+						<div id="comment_title" class="key">Comments ({{comments_num}})</div>
+					</div>
+					<div class="clearfix"></div>
+			        <p class="value invisible" id="Comments"> </p>
+			        <div class="clearfix"></div>
+			        <br><br>
+			        <div id="messageForm" class="invisible">
+						<textarea id="Message"  name="Message" placeholder="Message"></textarea>
+						<input class="button buttonStrong right" type="submit" id="send" name="buttonSubmit" value="Send">
+						<div class="clearfix"></div>
+					</div>
+					<div id="loginText" class="invisible">
+						If you want to comment, you need to <span id="login" class="logintext">login</span>
+					</div>
 		        </li>
 		
               </ul>
