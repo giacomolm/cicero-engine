@@ -9,7 +9,8 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         	xPos: 42.35718,
         	yPos: 13.363579,
         	status: "free",
-        	test: "bho"
+        	test: "bho",
+        		jjj: "fanculo"
         },
 
         initialize: function () {
@@ -44,7 +45,8 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         tiPregoDio: function(response, status){
         	if (status == google.maps.DirectionsStatus.OK) {
       	      this.context.status=status;
-      	      this.test=response.routes[0].legs[0].distance;
+      	      this.context.test=response.routes[0].legs[0].distance;
+      	    this.context.jjj=response;
       	    }   
         	this.render();
         },
