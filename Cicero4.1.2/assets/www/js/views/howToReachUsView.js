@@ -5,28 +5,21 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
     	
     	
         template: Handlebars.compile(template),
-        context: {
-        	xPos: 42.35718,
-        	yPos: 13.363579,
-        	status: "free",
-        	test: "bho",
-        		jjj: "fanculo"
-        },
+       	xPos: 42.358175, 
+       	yPos: 13.364621,
 
         initialize: function () {
         	EventDispatcher.trigger("show_spinner");
-        	//navigator.geolocation.getCurrentPosition(_.bind(this.setCoord,this), _.bind(this.coordNotSetted,this)); 
-        	this.gMap();
+        	navigator.geolocation.getCurrentPosition(_.bind(this.setCoord,this), _.bind(this.coordNotSetted,this)); 
+        	
         },
         /*handles per la geolocalizzazione*/
         setCoord:function (Position){
-        	this.context.xPos= Position.coords.latitude;
-        	this.context.yPos= Position.coords.longitude;
+        	this.xPos= Position.coords.latitude;
+        	this.yPos= Position.coords.longitude;
         	this.gMap();  
         },
         coordNotSetted:function (Position){
-        	this.context.xPos= 42.35718;
-        	this.context.yPos= 13.363579;
         	this.gMap();  
         },
 
@@ -34,29 +27,37 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         	/*PROVA GOOGLE*/
         	
         	var directionsService = new google.maps.DirectionsService();
+        	var arr = new google.maps.LatLng(42.358175, 13.364621);
+        	var par = new google.maps.LatLng(xPos, yPos);
         	var request = {
-        		      origin:"Roma",
-        		      destination:"Milano",
+        		      origin:par,
+        		      destination: arr,
         		      travelMode: google.maps.DirectionsTravelMode.DRIVING
         		  };
-        	directionsService.route(request, _.bind(this.tiPregoDio,this));
+        	directionsService.route(request, _.bind(this.gReq,this));
         	
         },
-        tiPregoDio: function(response, status){
+        gReq: function(response, status){
         	if (status == google.maps.DirectionsStatus.OK) {
-      	      this.context.status=status;
-      	      this.context.test=response.routes[0].legs[0].distance;
-      	    this.context.jjj=response;
-      	    }   
+        		directionsDisplay = new google.maps.DirectionsRenderer();
+        		var mapOptions = {
+        			    zoom:7,
+        			    mapTypeId: google.maps.MapTypeId.ROADMAP,
+        			    center: response.routes[0].leg[0].start_location
+        			  };
+        		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        		directionsDisplay.setMap(map);
+        		directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+        		
+      	    }
+        	
         	this.render();
         },
         
                
         render: function (eventName) {
         	
-        	
-        	
-            $(this.el).empty();
+        	$(this.el).empty();
             $(this.el).html(this.template(this.context));
             EventDispatcher.trigger("hide_spinner");
             return this;
