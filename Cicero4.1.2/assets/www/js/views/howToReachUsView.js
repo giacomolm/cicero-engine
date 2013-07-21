@@ -38,14 +38,14 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         		      destination:"Milano",
         		      travelMode: google.maps.DirectionsTravelMode.DRIVING
         		  };
-        	directionsService.route(request, function(response, status) {
-        	    if (status == google.maps.DirectionsStatus.OK) {
-        	      this.context.status=status;
-        	      this.test=response.routes[0].legs[0].distance;
-        	    }
-        	  });
-        	this.gLoad=true;
-        	/*FINE PROVA GOOGLE*/
+        	directionsService.route(request, _.bind(this.tiPregoDio,this));
+        	
+        },
+        tiPregoDio: function(response, status){
+        	if (status == google.maps.DirectionsStatus.OK) {
+      	      this.context.status=status;
+      	      this.test=response.routes[0].legs[0].distance;
+      	    }   
         	this.render();
         },
         
