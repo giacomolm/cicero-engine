@@ -14,21 +14,13 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
 
         initialize: function (options) { /* we can pass in the options floor, centerLat and centerLng*/
 
-            /* by default floor is 0, if another one is passed we use it*/
-            this.floor = 0;
-            if(this.options.floor)
-                this.floor = this.options.floor;
+          /* by default floor is 0, if another one is passed we use it*/
+          this.floor = 0;
+          if(this.options.floor)
+            this.floor = this.options.floor;
 
-            /*getting map bound and center by reading mapadata file*/
-            var mapdata = $.ajax({type: "GET", url:'img/map/floor'+this.floor+'/mapdata',async: false}).responseText;
-            var res = mapdata.split(',');
-            this.swLat = res[0];
-            this.swLng = res[1];
-            this.neLat = res[2];
-            this.neLng = res[3];
-            this.centerLat = res[4];
-            this.centerLng = res[5];
-
+          /*we load mapdata*/
+          this.loadMapdata();
 
           /*default latitude value indicates map latitude center, if another one is passed we use it*/
           if(this.options.centerLat)
@@ -53,6 +45,18 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
 
         },
 
+        loadMapdata: function(){
+            /*getting map bound and center by reading mapadata file*/
+            var mapdata = $.ajax({type: "GET", url:'img/map/floor'+this.floor+'/mapdata',async: false}).responseText;
+            var res = mapdata.split(',');
+            this.swLat = res[0];
+            this.swLng = res[1];
+            this.neLat = res[2];
+            this.neLng = res[3];
+            this.centerLat = res[4];
+            this.centerLng = res[5];
+        },
+
         render: function() {
           $(this.el).empty();
           $(this.el).html(this.template());
@@ -69,7 +73,7 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
             this.sw = new L.LatLng(this.swLat,this.swLng, true);
             this.ne = new L.LatLng(this.neLat,this.neLng, true);
             this.bounds = new L.LatLngBounds(this.sw, this.ne);
-            this.myMarker = new L.marker();
+
 
 
             this.map = L.map('map',{
@@ -93,18 +97,30 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         
         findme: function(){
             window.plugins.barcodeScanner.scan(_.bind(function(result) {
-                var data = result.text.split(' ');
-                if(!isNaN ( parseFloat (data[0]))  && !isNaN (parseFloat (data[1]))){
+                var data = result.text.split(',');
+                if(!isNaN(parseFloat(data[0])) && !isNaN(parseFloat(data[1])) && !isNaN(parseInt(data[2]))){
+
+                    this.myMarker = new L.marker();
+
+                    /* if map isn't in the current floor*/
+                    if(this.floor != data[2]){
+                        this.floor = data[2];
+                        this.loadMapdata();
+                        this.map.remove(); /* it destroys the current loaded map */
+                        this.addMap();
+                    }
+
                     var coords = new L.LatLng(data[0],data[1]);
                     this.myMarker.setLatLng(coords);
                     this.myMarker.setIcon(new L.icon({iconUrl:'img/markers/userMarker.png',iconSize: [22,22]}));
                    
                 } else {
-                    this.myMarker.setLatLng([-53.64464,-112.32422]);
+                    this.myMarker.setLatLng([this.centerLat,this.centerLng]);
                     this.myMarker.setIcon(new L.icon({iconUrl:'img/markers/questionMarker.png',iconSize: [22,22]}));
                 }
+
                 this.myMarker.addTo(this.map);
-                this.map.setView(coords,0,true);
+                //this.map.setView(coords,0,true); /* it causes a leaflet bug... probably it will be fixed in the new version.*/
             },this), 
             function(error) {
                 console.log("Scanning problems: " + error);
