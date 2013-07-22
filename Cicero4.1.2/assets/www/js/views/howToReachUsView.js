@@ -5,15 +5,17 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
     	
     	
         template: Handlebars.compile(template),
+        
+        /*coordinates of the event*/
        	xPos: 42.358175, 
        	yPos: 13.364621,
 
         initialize: function () {
         	EventDispatcher.trigger("show_spinner");
         	navigator.geolocation.getCurrentPosition(_.bind(this.setCoord,this), _.bind(this.coordNotSetted,this)); 
-        	
         },
-        /*handles per la geolocalizzazione*/
+        
+        /*geolocalizzation handles*/
         setCoord:function (Position){
         	this.xPos= Position.coords.latitude;
         	this.yPos= Position.coords.longitude;
@@ -23,9 +25,9 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         	this.gMap();  
         },
 
-        gMap: function(){
-        	/*PROVA GOOGLE*/
-        	
+        
+        /*after geolocalizzating the device we can ask route to google*/
+        gMap: function(){        	
         	var directionsService = new google.maps.DirectionsService();
         	var arr = new google.maps.LatLng(42.358175, 13.364621);
         	var par = new google.maps.LatLng(this.xPos, this.yPos);
@@ -37,13 +39,15 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         	directionsService.route(request, _.bind(this.gReq,this));
         	
         },
+        
         gReq: function(response, status){
+        	this.render();
         	if (status == google.maps.DirectionsStatus.OK) {
         		directionsDisplay = new google.maps.DirectionsRenderer();
         		var mapOptions = {
         			    zoom:7,
-        			    mapTypeId: google.maps.MapTypeId.ROADMAP
-        			    //center: response.routes[0].leg[0].start_location
+        			    mapTypeId: google.maps.MapTypeId.ROADMAP,
+        			    center: response.routes[0].leg[0].start_location
         			  };
         		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
         		directionsDisplay.setMap(map);
@@ -51,14 +55,14 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         		
       	    }
         	
-        	this.render();
+        	
         },
         
                
         render: function (eventName) {
         	
         	$(this.el).empty();
-            $(this.el).html(this.template(this.context));
+            $(this.el).html(this.template());
             EventDispatcher.trigger("hide_spinner");
             return this;
         }
