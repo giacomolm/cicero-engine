@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","collections/Favourites","collections/Comments","collections/Medias","views/commentView","text!templates/eventDetailView.html"],
-    function ($, _, Backbone, Handlebars,Klass,Photoswipe,Favourites,Comments,Medias,commentView,template) {
+define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","collections/Favourites","collections/Comments","collections/Medias","collections/Likes","views/commentView","text!templates/eventDetailView.html"],
+    function ($, _, Backbone, Handlebars,Klass,Photoswipe,Favourites,Comments,Medias,Likes,commentView,template) {
 
     var eventDetailView = Backbone.View.extend({
 
@@ -16,7 +16,8 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             "click #favourite_logo": "updateFavourite",
             "click #send" : "send",
             "click #commentsHeader": "showComments",
-            "click #login": "login"
+            "click #login": "login",
+            "mousedown #like_button": "manageLikes"
             //"load #img_fav": "checkFavourite"
         },
 
@@ -41,6 +42,9 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
 
             if(this.medias == undefined) this.medias = new Medias();
             this.medias.firebase.on("value",this.manageMedia,this);
+            
+            this.likes = new Likes();
+            this.likes.firebase.on("value",this.checkLikes,this);
         },
 
         checkFavourite: function(medias){
@@ -111,7 +115,56 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
                 $("#Message").val("");
             }
         },
+        checkLikes:function(){
+            if(this.user!=undefined){
+                if(this.likes!=undefined){
+                    //nella variabile result ho l'id se questo esiste, altrimenti -1
+                    var result = this.likes.getLikes(this.user.id,this.model.id,"event");
+                    if(result != -1){
+                        $(document).on('DOMNodeInsertedIntoDocument', this.showLike, this);
+                        this.showLike();
+                    }
+                }
+            }
+        },
         
+        manageLikes:function(){            
+            if(this.user!=undefined){
+                if(this.likes!=undefined){
+                    //nella variabile result ho l'id se questo esiste, altrimenti -1
+                    var result = this.likes.getLikes(this.user.id,this.model.id,"event");
+                    if(result == -1){
+                        $("#like_logo").addClass("pulse");
+                        this.likes.add({"id_ref" : this.model.id, "type" : "event", "user" : this.user.id});                         
+                        this.showLike();
+                    }
+                    else{
+                        $("#like_logo").removeClass("pulse");
+                        this.likes.remove(this.likes.get(result));
+                        this.removeLike();
+                    }
+                }
+            }
+            else{
+                $('#message').html("You need to login to like elements");
+                $('#message_div').show();
+            }
+        },
+        
+        showLike: function(){
+            if(document.getElementById('like_div')){
+                var likes = new Likes();
+                var num_likes = likes.getNumLikes(this.model.id, "event");
+                $('#like_div').html(num_likes+" Likes");
+                $(document).off('DOMNodeInsertedIntoDocument', this.showLike);
+            }
+        },
+        
+        removeLike: function(){
+            if(document.getElementById('like_div')){
+                $('#like_div').html("Likes It!");                
+            }
+        },
         render: function (eventName) {
             jsonModel = this.model.toJSON();
             if(this.medias!=undefined)jsonModel.medias = this.medias.getMedias(this.model.id,'event').toJSON();
