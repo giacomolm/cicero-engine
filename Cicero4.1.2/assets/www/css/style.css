@@ -1206,3 +1206,22 @@ hr{
 	text-decoration : underline;
 	color : blue;
 }
+
+.pulse {
+	-webkit-animation-name: 'pulse_animation';
+	-webkit-animation-duration: 1000ms;
+	-webkit-transform-origin:70% 70%;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes pulse_animation {
+	0% { -webkit-transform: scale(1); }
+	30% { -webkit-transform: scale(1); }
+	40% { -webkit-transform: scale(1.09); }
+	50% { -webkit-transform: scale(1.1); }
+	60% { -webkit-transform: scale(1.11); }
+	70% { -webkit-transform: scale(1.1); }
+	80% { -webkit-transform: scale(1.09); }
+	100% { -webkit-transform: scale(1); }
+}
