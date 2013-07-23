@@ -113,15 +113,16 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         findme: function(){
             window.plugins.barcodeScanner.scan(_.bind(function(result) {
                 var data = result.text.split(',');
+
+                /* if it is present a marker we delete it from map*/
+                if(this.myMarker != undefined){
+                    this.map.removeLayer(this.myMarker);
+                }
+
+                /*initialize myMarker object*/
+                this.myMarker = new L.marker();
+
                 if(!isNaN(parseFloat(data[0])) && !isNaN(parseFloat(data[1])) && !isNaN(parseInt(data[2]))){
-
-                    /* if it is present a marker we delete it from map*/
-                    if(this.myMarker != undefined){
-                        this.map.removeLayer(this.myMarker);
-                    }
-
-                    /*initialize myMarker object*/
-                    this.myMarker = new L.marker();
 
                     /* if map isn't in the current floor*/
                     if(this.floor != data[2]){
