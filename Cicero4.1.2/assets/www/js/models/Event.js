@@ -3,7 +3,7 @@ define(["zepto", "underscore", "backbone"],
     var Event = Backbone.Model.extend({
       defaults: {
     	//id: 0,
-    	//poi: 0,
+    	poi: 0,
     	name: undefined,
       	title: undefined,
       	description: undefined,

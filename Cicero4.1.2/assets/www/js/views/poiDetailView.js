@@ -17,15 +17,16 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             "click #send" : "send",
             "click #commentsHeader": "showComments",
             "click #login": "login",
-            "mousedown #like_button": "manageLikes"
-            //"load #img_fav": "checkFavourite"
+            "mousedown #like_button": "manageLikes",
+            "click #map_button": "map"
+            //"load #img_fav": "checkFavourite" 
         },
 
         initialize: function () {
             this.render();
+            
             this.favourites = new Favourites();
-            if(this.favourites!= undefined && this.favourites.length==0)
-                 this.favourites.on("add", this.updateFavourite, this);
+            this.favourites.on("value", this.checkFavourite, this);
             
             if(this.comments==undefined){
                 this.comments = new Comments();
@@ -33,57 +34,46 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
                     return comment.get("date");
                   };
                 this.comments.firebase.on("value",this.renderComments,this);
-            }
+            }                     
             
-            $(document).on('DOMSubtreeModified', this.checkFavourite, this);
             this.user = cicero_user;
-            if(this.medias == undefined) this.medias = new Medias();
-                      
-            this.medias.firebase.on("value",this.manageMedia,this);
+            this.medias = new Medias();
+            this.medias.firebase.on("value",this.render,this);
             
             this.likes = new Likes();
             this.likes.firebase.on("value",this.checkLikes,this);
+            
+            this.on('inTheDom', this.checkStatus, this);
         },
 
-        checkFavourite: function(medias){
-            //nel caso il checkMedia non è chiamato automaticamente dall'evento DOMSubtreeModified, controllo se devo staccare l'evente
-            if(medias instanceof Medias){
-                if(medias.length==0)
-                    $(document).off('DOMSubtreeModified', this.checkFavourite);
-            }
-            else{
-                this.user = cicero_user;            
+        //Quando il DOM è effettivamente pronto, allora posso modificare il contenuto
+        checkStatus: function(){            
+
+                //this.user = cicero_user;
+                //Collegato la libreria di Photoswipe sugli elementi 
                 if(window.document.querySelectorAll('#Gallery a').length>0){
                     myPhotoSwipe = Code.PhotoSwipe.attach( 
                             window.document.querySelectorAll('#Gallery a'), 
                                     { enableMouseWheel: false , enableKeyboard: false } );
-                    $(document).off('DOMSubtreeModified', this.checkFavourite);
+                    
                 }                     
                
-                fav_icon = document.getElementById('favourite_logo');
-                
-                if(fav_icon!=undefined && this.user != undefined){
-                    favourites = new Favourites();
-                    id = $("#pageHome").attr('name'); // per semplicità ho salvato l'id nel primo tag del template
-                    
-                    if(favourites > 0 && id!=null){
-                        result = favourites.includesCid(this.user.id, id, 'poi');
-                        
-                        if(result!=-1){
-                            $('#favourite_logo').toggleClass("favourite_icon");                    
-                        }
-                        $(document).off('DOMSubtreeModified', this.checkFavourite);
-                    }
-                }
-            }
+                this.checkFavourite();
+                this.checkLikes();
             
         },
         
-        manageMedia : function(){            
-            this.render();
-            //in questo caso sono sicuro che i media sono stati correttamente caricati, quindi devo poter staccare l'evento se il numero di immagini nei media è 0
-            this.checkFavourite(this.medias);  
-            
+        checkFavourite: function(){
+            if(this.user!=undefined){
+                fav_icon = document.getElementById('favourite_logo');
+                
+                if(fav_icon!=undefined){
+                    result = this.favourites.includesCid(this.user.id, this.model.id, 'poi');
+                    if(result!=-1){
+                        $('#favourite_logo').toggleClass("favourite_icon");                        
+                    }
+                }
+            }
         },
         
         updateFavourite: function(){
@@ -120,8 +110,7 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
                 if(this.likes!=undefined){
                     //nella variabile result ho l'id se questo esiste, altrimenti -1
                     var result = this.likes.getLikes(this.user.id,this.model.id,"poi");
-                    if(result != -1){
-                        $(document).on('DOMNodeInsertedIntoDocument', this.showLike, this);
+                    if(result != -1){                                                
                         this.showLike();
                     }
                 }
@@ -151,12 +140,13 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             }
         },
         
-        showLike: function(){
+        showLike: function(){            
             if(document.getElementById('like_div')){
                 var likes = new Likes();
-                var num_likes = likes.getNumLikes(this.model.id, "poi");
+                id = this.model.id;
+                var num_likes = likes.getNumLikes(id, "poi");
                 $('#like_div').html(num_likes+" Likes");
-                $(document).off('DOMNodeInsertedIntoDocument', this.showLike);
+                
             }
         },
         
@@ -166,12 +156,16 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             }
         },
         
+        map:function(){
+            Backbone.history.navigate("map/"+this.model.get("coord")[2]+"/"+this.model.get("coord")[0]+"/"+this.model.get("coord")[1], {trigger: true});  
+        },
+        
         render: function (eventName) {
             jsonModel = this.model.toJSON();
             if(this.medias!=undefined)jsonModel.medias = this.medias.getMedias(this.model.id,'poi').toJSON();
             if(this.comments!=undefined)jsonModel.comments_num = this.comments.getComments(this.model.id, "poi").length;;
             $(this.el).html(this.template(jsonModel));
-            
+            this.trigger("inTheDom");
             return this;
         },
         
