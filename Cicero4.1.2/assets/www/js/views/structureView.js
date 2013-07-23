@@ -18,6 +18,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
         initialize: function () {
             EventDispatcher.on("show_spinner",this.show_spinner);
             EventDispatcher.on("hide_spinner",this.hide_spinner);
+            EventDispatcher.on("changeTitle",this.changeTitle);
             this.render();
         },
         
@@ -75,6 +76,10 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
 
         hide_spinner: function(){
             $('#spinner').addClass("invisible");
+        },
+
+        changeTitle: function(title){
+            $('#viewTitle').html(title);
         },
         
         render: function () {
