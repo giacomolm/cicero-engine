@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="5a167ca7-35ab-473b-b775-1345cbfb8e06" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/mapView.js" afterPath="$PROJECT_DIR$/js/views/mapView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/router.js" afterPath="$PROJECT_DIR$/js/router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/structureView.js" afterPath="$PROJECT_DIR$/js/views/structureView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/loginView.js" afterPath="$PROJECT_DIR$/js/views/loginView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/registerView.js" afterPath="$PROJECT_DIR$/js/views/registerView.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="www.iws" />
@@ -16,8 +15,8 @@
     <file path="/structureView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374584438324" ignored="false" />
     <file path="/loginView.html" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1373147466989" ignored="false" />
     <file path="/main.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374158904295" ignored="false" />
-    <file path="/loginView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1373101980513" ignored="false" />
-    <file path="/registerView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1373556381269" ignored="false" />
+    <file path="/loginView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374586319664" ignored="false" />
+    <file path="/registerView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374586667864" ignored="false" />
     <file path="/structureView.html" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1373064811631" ignored="false" />
     <file path="/searchView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1372927713601" ignored="false" />
     <file path="/eventDispatcher.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1372941861035" ignored="false" />
@@ -57,19 +56,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mapView.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="mapView.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/views/mapView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="51" selection-start="835" selection-end="835" vertical-scroll-proportion="0.41129032">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="structureView.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/views/structureView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="12" selection-start="2687" selection-end="2687" vertical-scroll-proportion="0.0">
+            <state line="17" column="51" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -78,7 +68,16 @@
       <file leaf-file-name="loginView.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/views/loginView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="18" column="59" selection-start="700" selection-end="700" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registerView.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/views/registerView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="62" selection-start="500" selection-end="500" vertical-scroll-proportion="0.29032257">
               <folding />
             </state>
           </provider>
@@ -94,12 +93,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/views/loginView.js" />
         <option value="$PROJECT_DIR$/templates/registerView.html" />
         <option value="$PROJECT_DIR$/templates/loginView.html" />
         <option value="$PROJECT_DIR$/js/views/searchView.js" />
         <option value="$PROJECT_DIR$/js/models/User.js" />
-        <option value="$PROJECT_DIR$/js/views/registerView.js" />
         <option value="$PROJECT_DIR$/js/models/Favourite.js" />
         <option value="$PROJECT_DIR$/lib/modules/ciceroNotifier.js" />
         <option value="$PROJECT_DIR$/js/main.js" />
@@ -110,6 +107,8 @@
         <option value="$PROJECT_DIR$/js/views/structureView.js" />
         <option value="$PROJECT_DIR$/js/router.js" />
         <option value="$PROJECT_DIR$/js/views/mapView.js" />
+        <option value="$PROJECT_DIR$/js/views/loginView.js" />
+        <option value="$PROJECT_DIR$/js/views/registerView.js" />
       </list>
     </option>
   </component>
@@ -297,7 +296,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3341289" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27048528" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -373,14 +372,16 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/views/mapView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="51" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/models/Favourite.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="44" selection-start="241" selection-end="241" vertical-scroll-proportion="0.11891279" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/registerView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="50" selection-start="2011" selection-end="2011" vertical-scroll-proportion="0.3951613" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/icons.png">
@@ -420,37 +421,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/modules/ciceroNotifier.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="61" selection-start="2678" selection-end="2678" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/modules/ciceroAuthentication.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="8" selection-start="1" selection-end="1" vertical-scroll-proportion="0.023696683">
-          <folding />
-        </state>
+        <state line="42" column="61" selection-start="2678" selection-end="2678" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="24" selection-start="4038" selection-end="4088" vertical-scroll-proportion="1.4112903">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/loginView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/structureView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="12" selection-start="2687" selection-end="2687" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="112" column="24" selection-start="4038" selection-end="4088" vertical-scroll-proportion="1.4112903" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/router.js">
@@ -460,9 +436,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/structureView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="12" selection-start="2687" selection-end="2687" vertical-scroll-proportion="0.5645161" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/views/mapView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="51" selection-start="835" selection-end="835" vertical-scroll-proportion="0.41129032">
+        <state line="17" column="51" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/loginView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="59" selection-start="700" selection-end="700" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/registerView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="62" selection-start="500" selection-end="500" vertical-scroll-proportion="0.29032257">
           <folding />
         </state>
       </provider>
