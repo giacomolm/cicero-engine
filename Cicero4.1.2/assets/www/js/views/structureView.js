@@ -10,7 +10,8 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
             "touchstart #search_icon" : "showSearch",
             "touchstart #favourite_icon" : "showFavourite",
             "touchstart #navigation_icon" : "showReachUs",
-            "touchstart #nearby_icon" : "showNearby"
+            "touchstart #nearby_icon" : "showNearby",
+            "touchstart #news_icon" : "showNewssList"
           },
           
         template: Handlebars.compile(template),
@@ -69,6 +70,11 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
         showEventList: function () {
             Backbone.history.navigate("eventList", {trigger: true});
         },
+
+        showNewssList: function () {
+            Backbone.history.navigate("newssList", {trigger: true});
+        },
+
 
         show_spinner: function(){
             $('#spinner').removeClass("invisible");
