@@ -18,8 +18,8 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             "click #commentsHeader": "showComments",
             "click #login": "login",
             "mousedown #like_button": "manageLikes",
-            "click #map_button": "map"
-            //"load #img_fav": "checkFavourite"
+            "click #map_button": "map",
+            "click #poi_logo": "poiRef"
         },
 
         initialize: function () {
@@ -163,6 +163,11 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
         map:function(){
             if(this.poi)
                 Backbone.history.navigate("map/"+this.poi.get("coord")[2]+"/"+this.poi.get("coord")[0]+"/"+this.poi.get("coord")[1], {trigger: true});  
+        },
+        
+        poiRef: function(){
+            if(this.poi)
+                Backbone.history.navigate("poiDetail/"+this.poi.id, {trigger: true});
         },
         
         render: function (eventName) {

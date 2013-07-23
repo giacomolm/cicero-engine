@@ -18,8 +18,8 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             "click #commentsHeader": "showComments",
             "click #login": "login",
             "mousedown #like_button": "manageLikes",
-            "click #map_button": "map"
-            //"load #img_fav": "checkFavourite" 
+            "click #map_button": "map",
+            "click #event_logo": "poiEvent" 
         },
 
         initialize: function () {
@@ -57,7 +57,6 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
                                     { enableMouseWheel: false , enableKeyboard: false } );
                     
                 }                     
-               
                 this.checkFavourite();
                 this.checkLikes();
             
@@ -158,6 +157,10 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
         
         map:function(){
             Backbone.history.navigate("map/"+this.model.get("coord")[2]+"/"+this.model.get("coord")[0]+"/"+this.model.get("coord")[1], {trigger: true});  
+        },
+        
+        poiEvent: function(){
+            Backbone.history.navigate("poiEvent/"+this.model.id, {trigger: true});
         },
         
         render: function (eventName) {

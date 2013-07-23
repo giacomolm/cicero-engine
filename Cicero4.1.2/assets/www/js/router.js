@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView", "views/searchView", "views/favouriteView","views/eventListView","views/poiListView","views/howToReachUsView","views/nearbyPlacesView","views/eventDetailView","views/poiDetailView","views/newssListView","collections/Events","collections/Pois","collections/Favourites"],
-    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView,searchView,favouriteView,eventListView,poiListView, howToReachUsView,nearbyPlacesView,eventDetailView,poiDetailView,newssListView,Events,Pois,Favourites) {
+define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView", "views/searchView", "views/favouriteView","views/eventListView","views/poiListView","views/howToReachUsView","views/nearbyPlacesView","views/eventDetailView","views/poiDetailView","views/poiEventView","views/newssListView","collections/Events","collections/Pois","collections/Favourites"],
+    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView,searchView,favouriteView,eventListView,poiListView, howToReachUsView,nearbyPlacesView,eventDetailView,poiDetailView,poiEventView,newssListView,Events,Pois,Favourites) {
 
     var AppRouter = Backbone.Router.extend({
 
@@ -18,7 +18,8 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
         "nearbyPlaces": "nearbyPlaces",
         "newssList": "newssList",
         "eventDetail/:id": "eventDetail",
-        "poiDetail/:id": "poiDetail"
+        "poiDetail/:id": "poiDetail",
+        "poiEvent/:id": "poiEvent"
       },
 
       initialize: function () {
@@ -113,6 +114,12 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
           var poi = this.pois.get(id);
           var poiDetail = new poiDetailView({model : poi});
           this.changePage(poiDetail);
+      },
+      
+      poiEvent: function(id){
+          var poi = this.pois.get(id);
+          var poiEvent = new poiEventView({model : poi});
+          this.changePage(poiEvent);
       },
       
       changePage: function (page) {
