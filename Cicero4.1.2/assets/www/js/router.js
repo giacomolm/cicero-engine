@@ -116,7 +116,6 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
 
         this.currentView = page;
         $('#container').append($(this.currentView.el));
-        $('#viewTitle').html(window.location.hash);
         this.currentView.trigger("inTheDom");
       }
 

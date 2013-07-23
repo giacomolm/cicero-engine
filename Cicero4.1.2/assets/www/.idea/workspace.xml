@@ -3,15 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="5a167ca7-35ab-473b-b775-1345cbfb8e06" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/mapView.js" afterPath="$PROJECT_DIR$/js/views/mapView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/router.js" afterPath="$PROJECT_DIR$/js/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/structureView.js" afterPath="$PROJECT_DIR$/js/views/structureView.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Comments.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1369814688590" ignored="false" />
-    <file path="/mapView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374569145115" ignored="false" />
+    <file path="/mapView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374584516806" ignored="false" />
     <file path="/Events.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1369842763042" ignored="false" />
     <file path="/router.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374329095006" ignored="false" />
-    <file path="/structureView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374159402866" ignored="false" />
+    <file path="/structureView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374584438324" ignored="false" />
     <file path="/loginView.html" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1373147466989" ignored="false" />
     <file path="/main.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374158904295" ignored="false" />
     <file path="/loginView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1373101980513" ignored="false" />
@@ -46,10 +48,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="router.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/router.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="117" column="55" selection-start="4212" selection-end="4212" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="mapView.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/views/mapView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="49" selection-start="3885" selection-end="3885" vertical-scroll-proportion="0.61129034">
+            <state line="17" column="51" selection-start="835" selection-end="835" vertical-scroll-proportion="0.41129032">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="structureView.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/views/structureView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="82" column="12" selection-start="2687" selection-end="2687" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loginView.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/views/loginView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -65,7 +94,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/structureView.html" />
         <option value="$PROJECT_DIR$/js/views/loginView.js" />
         <option value="$PROJECT_DIR$/templates/registerView.html" />
         <option value="$PROJECT_DIR$/templates/loginView.html" />
@@ -74,12 +102,13 @@
         <option value="$PROJECT_DIR$/js/views/registerView.js" />
         <option value="$PROJECT_DIR$/js/models/Favourite.js" />
         <option value="$PROJECT_DIR$/lib/modules/ciceroNotifier.js" />
-        <option value="$PROJECT_DIR$/js/views/structureView.js" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/templates/mapView.html" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/js/router.js" />
         <option value="$PROJECT_DIR$/js/views/howToReachUsView.js" />
+        <option value="$PROJECT_DIR$/lib/modules/ciceroAuthentication.js" />
+        <option value="$PROJECT_DIR$/js/views/structureView.js" />
+        <option value="$PROJECT_DIR$/js/router.js" />
         <option value="$PROJECT_DIR$/js/views/mapView.js" />
       </list>
     </option>
@@ -122,6 +151,62 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="www" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -212,7 +297,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3341289" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3341289" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -288,34 +373,14 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/views/poiListItemView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.7419355" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/models/Event.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/models/Favourite.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="44" selection-start="241" selection-end="241" vertical-scroll-proportion="0.11891279" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/structureView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="33" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.024193548" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/views/registerView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="50" column="50" selection-start="2011" selection-end="2011" vertical-scroll-proportion="0.3951613" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="24" selection-start="4038" selection-end="4088" vertical-scroll-proportion="0.8356322" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/icons.png">
@@ -335,23 +400,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1114" column="17" selection-start="22441" selection-end="22441" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="44" selection-start="837" selection-end="837" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1114" column="17" selection-start="22441" selection-end="22441" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/views/howToReachUsView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="54" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.66129035">
-          <folding />
-        </state>
+        <state line="60" column="54" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.66129035" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/views/poiDetailView.js">
@@ -361,19 +415,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/mapView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="27" selection-start="27" selection-end="27" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
+        <state line="0" column="27" selection-start="27" selection-end="27" vertical-scroll-proportion="-0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/modules/ciceroNotifier.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="61" selection-start="2678" selection-end="2678" vertical-scroll-proportion="0.023696683" />
+        <state line="42" column="61" selection-start="2678" selection-end="2678" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/modules/ciceroAuthentication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="8" selection-start="1" selection-end="1" vertical-scroll-proportion="0.023696683">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="24" selection-start="4038" selection-end="4088" vertical-scroll-proportion="1.4112903">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/loginView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/structureView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="12" selection-start="2687" selection-end="2687" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="55" selection-start="4212" selection-end="4212" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/views/mapView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="49" selection-start="3885" selection-end="3885" vertical-scroll-proportion="0.61129034">
+        <state line="17" column="51" selection-start="835" selection-end="835" vertical-scroll-proportion="0.41129032">
           <folding />
         </state>
       </provider>
