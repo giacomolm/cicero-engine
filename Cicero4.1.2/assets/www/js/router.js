@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView", "views/searchView", "views/favouriteView","views/eventListView","views/poiListView","views/howToReachUsView","views/nearbyPlacesView","views/eventDetailView","views/poiDetailView","collections/Events","collections/Pois","collections/Favourites"],
-    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView,searchView,favouriteView,eventListView,poiListView, howToReachUsView,nearbyPlacesView,eventDetailView,poiDetailView,Events,Pois,Favourites) {
+define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView", "views/searchView", "views/favouriteView","views/eventListView","views/poiListView","views/howToReachUsView","views/nearbyPlacesView","views/eventDetailView","views/poiDetailView","views/newssListView","collections/Events","collections/Pois","collections/Favourites"],
+    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView,searchView,favouriteView,eventListView,poiListView, howToReachUsView,nearbyPlacesView,eventDetailView,poiDetailView,newssListView,Events,Pois,Favourites) {
 
     var AppRouter = Backbone.Router.extend({
 
@@ -16,6 +16,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
         "poiList": "poiList",
         "howToReachUs": "howToReachUs",
         "nearbyPlaces": "nearbyPlaces",
+        "newssList": "newssList",
         "eventDetail/:id": "eventDetail",
         "poiDetail/:id": "poiDetail"
       },
@@ -95,6 +96,11 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       nearbyPlaces: function(){
           var nearbyPlaces = new nearbyPlacesView();
           this.changePage(nearbyPlaces);
+      },
+
+      newssList: function(){
+          var newssList = new newssListView();
+          this.changePage(newssList);
       },
       
       eventDetail: function(id){

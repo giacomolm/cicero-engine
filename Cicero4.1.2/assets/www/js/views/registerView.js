@@ -36,7 +36,7 @@ define(["zepto","underscore","backbone","handlebars","models/User","collections/
             if(user_password == '' || user_password.length < 5)
                 errors+= "Password must be at least 5 characters. ";
             if(this.users.where({name: username}).length > 0)
-                errors+= "Username already choosen. ";
+                errors+= "Username already chosen. ";
 
             if(errors){
                 $('#error').removeClass('invisible');
