@@ -10,6 +10,7 @@ define(["zepto","underscore","backbone","handlebars","models/User","collections/
         template: Handlebars.compile(template),
 
         initialize: function () {
+            EventDispatcher.trigger("changeTitle","Register");
             this.users = new Users();
             EventDispatcher.trigger("show_spinner");
             this.users.firebase.on("value",this.render,this);
