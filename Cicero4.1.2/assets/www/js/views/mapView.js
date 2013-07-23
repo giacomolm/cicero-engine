@@ -105,7 +105,7 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
             /*once map is loaded we attach addPois event*/
             EventDispatcher.trigger("show_spinner");
             this.collection.firebase.on("value",this.addPois,this);
-
+            this.zoom = 1;
             
             return this;
         },
