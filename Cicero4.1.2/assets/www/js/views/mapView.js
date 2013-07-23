@@ -86,6 +86,18 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
             continuousWorld: true,
                tms: true
             }).addTo(this.map);
+
+            /*if myMarker is presents and it's in the current floor, we attach it to the map*/
+            if(this.myMarker != undefined && this.myMarker.floor == this.floor){
+                alert("adding marker...");
+                this.map.removeLayer(this.myMarker);
+                var coords = this.myMarker.getLatLng();
+                this.myMarker = new L.marker();
+                this.myMarker.setLatLng(coords);
+                this.myMarker.floor = this.floor;
+                this.myMarker.setIcon(new L.icon({iconUrl:'img/markers/userMarker.png',iconSize: [22,22]}));
+                this.myMarker.addTo(this.map);
+            }
             
             /*once map is loaded we attach addPois event*/
             EventDispatcher.trigger("show_spinner");
@@ -100,6 +112,12 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
                 var data = result.text.split(',');
                 if(!isNaN(parseFloat(data[0])) && !isNaN(parseFloat(data[1])) && !isNaN(parseInt(data[2]))){
 
+                    /* if it is present a marker we delete it from map*/
+                    if(this.myMarker != undefined){
+                        this.map.removeLayer(this.myMarker);
+                    }
+
+                    /*initialize myMarker object*/
                     this.myMarker = new L.marker();
 
                     /* if map isn't in the current floor*/
@@ -109,6 +127,8 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
                         this.map.remove(); /* it destroys the current loaded map */
                         this.addMap();
                     }
+
+                    this.myMarker.floor = this.floor; /* setting marker floor */
 
                     var coords = new L.LatLng(data[0],data[1]);
                     this.myMarker.setLatLng(coords);
@@ -145,11 +165,17 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         },
 
         floor0: function(){
-            Backbone.history.navigate("map/0", {trigger: true});
+            this.floor = 0;
+            this.loadMapdata();
+            this.map.remove(); /* it destroys the current loaded map */
+            this.addMap();
         },
 
         floor1: function(){
-            Backbone.history.navigate("map/1", {trigger: true});
+            this.floor = 1;
+            this.loadMapdata();
+            this.map.remove(); /* it destroys the current loaded map */
+            this.addMap();
         }
         
       });
