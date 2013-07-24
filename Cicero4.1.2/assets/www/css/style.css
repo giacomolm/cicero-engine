@@ -1236,3 +1236,35 @@ hr{
 	80% { -webkit-transform: scale(1.09); }
 	100% { -webkit-transform: scale(1); }
 }
+
+
+
+/*css matteo*/
+
+#gmap-cont{
+	margin-bottom: 60px;
+}
+
+#form-cont{
+	height: 10%;
+    width: 90%;
+    margin-left: 5%;
+}
+
+#map-canvas{
+	height: 40%;
+    width: 90%;
+    margin-up: 10%;
+    margin-left: 5%;
+}
+
+#map-form{
+	height: 10%;
+    width: 90%;
+}
+
+#directionsPanel{
+    height: 40%;
+    width: 90%;
+}
+
