@@ -4,34 +4,92 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
     var howToReachUsView = Backbone.View.extend({
     	
     	
+    	
+    	events: {
+            "touchstart #route" : "route",
+            "touchstart #find" : "find"
+          },
+    	
         template: Handlebars.compile(template),
         
         /*coordinates of the event*/
-       	xPos: 42.358175, 
-       	yPos: 13.364621,
+       	xPos: 42.357957,
+       	yPos: 13.364427,
+       	myXPos: 42.357957,
+       	myYPos: 13.364427,
+       	myLoc: "roma",
+       	state:1,
 
         initialize: function () {
+        	
+        	
+        	
+        	
         	EventDispatcher.trigger("show_spinner");
-        	navigator.geolocation.getCurrentPosition(_.bind(this.setCoord,this), _.bind(this.coordNotSetted,this)); 
+        	
+        	this.on("inTheDom", this.InitMap);
+        	this.render();
         },
+        
+        
+
+        /*Initializzation with a event-centered map*/
+        InitMap: function(){
+        	
+        	document.getElementById('gmap-cont').style.height = (window.innerHeight-120)+"px";
+        	
+        	
+        	if(this.state==1){
+        	this.state=2;
+        	var mapOptions = {
+        		    zoom: 8,
+        		    center: new google.maps.LatLng(this.xPos, this.yPos),
+        		    mapTypeId: google.maps.MapTypeId.ROADMAP
+        		  };
+        	var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+        	var marker = new google.maps.Marker({
+        	      position: new google.maps.LatLng(this.xPos, this.yPos),
+        	      map: map,
+        	      title:"Parchi d'Abruzzo"
+        	  });
+        	
+        	}
+        },
+        
+        
+        find:function(){
+        	
+        	navigator.geolocation.getCurrentPosition(_.bind(this.setCoord,this), _.bind(this.coordNotSetted,this)); 
+        	
+        },
+        
+        route: function(){
+        	
+        	this.myLoc=document.getElementById('Partenza').value;
+        	this.gMap2();
+        	
+        },
+        
+        
         
         /*geolocalizzation handles*/
         setCoord:function (Position){
-        	this.xPos= Position.coords.latitude;
-        	this.yPos= Position.coords.longitude;
-        	this.gMap();  
+        	this.myXPos= Position.coords.latitude;
+        	this.myYPos= Position.coords.longitude;
+        	this.gMap();
         },
         coordNotSetted:function (Position){
-        	this.gMap();  
+        	alert("Unable to Geolocalize");
         },
-
+        
         
         /*after geolocalizzating the device we can ask route to google*/
-        gMap: function(){        	
-        	var directionsService = new google.maps.DirectionsService();
-        	var arr = new google.maps.LatLng(42.358175, 13.364621);
-        	var par = new google.maps.LatLng(this.xPos, this.yPos);
-        	var request = {
+        gMap: function(){        
+        	
+        	directionsService = new google.maps.DirectionsService();
+        	arr = new google.maps.LatLng(42.358175, 13.364621);
+        	par = new google.maps.LatLng(this.myXPos, this.myYPos);
+        	request = {
         		      origin:par,
         		      destination: arr,
         		      travelMode: google.maps.DirectionsTravelMode.DRIVING
@@ -40,18 +98,35 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         	
         },
         
+        gMap2: function(){        
+	        	
+	        directionsService = new google.maps.DirectionsService();
+	        arr = new google.maps.LatLng(42.358175, 13.364621);
+	        par = this.myLoc;
+	        request = {
+	        	      origin:par,
+	        	      destination: arr,
+	        	      travelMode: google.maps.DirectionsTravelMode.DRIVING
+	        };
+	        directionsService.route(request, _.bind(this.gReq,this));
+	        	
+	       },
+        
         gReq: function(response, status){
-        	this.render();
+        	
         	if (status == google.maps.DirectionsStatus.OK) {
+        		document.getElementById('map-canvas').style.height = ((window.innerHeight-120)/2)+"px";
+        		document.getElementById('directionsPanel').style.height = ((window.innerHeight-120)/2)+"px";
         		directionsDisplay = new google.maps.DirectionsRenderer();
         		var mapOptions = {
         			    zoom:7,
         			    mapTypeId: google.maps.MapTypeId.ROADMAP,
-        			    center: response.routes[0].leg[0].start_location
-        			  };
+        			    };
         		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
         		directionsDisplay.setMap(map);
+        		
         		directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+        		directionsDisplay.setDirections(response);
         		
       	    }
         	
