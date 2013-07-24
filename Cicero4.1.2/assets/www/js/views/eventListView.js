@@ -5,7 +5,7 @@ define(["zepto", "underscore", "backbone", "handlebars","views/eventListItemView
 
         tagName : "ul",
         id : "eventListView",
-        className : "invisible",
+        //className : "invisible",
         
         template: Handlebars.compile(template),
 

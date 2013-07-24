@@ -380,9 +380,10 @@ textarea.invalid {
 .popupIcon {
   float: left;
   text-align: center;
-  margin: 5px;
+  margin: 1%;
   opacity: 1;
   filter: alpha(opacity=100);
+  width : 48%;
 }
 
 .popupIcon img{
