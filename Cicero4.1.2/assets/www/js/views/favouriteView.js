@@ -42,6 +42,7 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
                     
                     this.favouritesEvents = this.getFavourites(this.favourites,this.events, "event");
                     this.eventlistview = new eventListView({collection:this.favouritesEvents, favourites : this.favourites});
+                    $(this.eventlistview.el).toggleClass("invisible");
                 }
                 this.renderEvents();
             }

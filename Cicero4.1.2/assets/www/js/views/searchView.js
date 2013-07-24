@@ -34,6 +34,7 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
             this.searchedEvents = this.events;
             this.eventlistview = new eventListView({collection: events, favourites : this.favourites});
             $(this.el).append($(this.eventlistview.el));
+            $(this.eventlistview.el).toggleClass("invisible");
         },
         
         search : function(){
@@ -135,6 +136,7 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
         renderSearchResult: function(){
             $(this.el).append($(this.poilistview.el));
             $(this.el).append($(this.eventlistview.el));
+            
             return this;
         }
         

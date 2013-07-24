@@ -3,7 +3,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
     
     var structureView = Backbone.View.extend({
         events: {
-            "touchstart #logout" : "logout",
+            "touchstart #key_icon" : "logout",
             "touchend #menu_icon" : "toggleMenu",
             "touchend #back": "back",
             "touchstart #map_icon" : "showMap",
@@ -11,7 +11,8 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
             "touchstart #favourite_icon" : "showFavourite",
             "touchstart #navigation_icon" : "showReachUs",
             "touchstart #nearby_icon" : "showNearby",
-            "touchstart #news_icon" : "showNewssList"
+            "touchstart #news_icon" : "showNewssList",
+            "touchend #turnoff_icon": "exitFromApp",
           },
           
         template: Handlebars.compile(template),
@@ -24,15 +25,19 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
         },
         
         logout: function(){
-            Ciceronotifier.off();
-            authClient.logout();
+            if(typeof cicero_user != 'undefined'){
+                Ciceronotifier.off();
+                authClient.logout();
+                this.setLogout();
+            }
+            else Backbone.history.navigate("login", {trigger: true});
         },
 
         setLogout: function(){
             if(typeof cicero_user === 'undefined')
-                $('#logout').addClass('invisible');
+                $('#logout').html('LOGIN');
             else
-                $('#logout').removeClass('invisible');
+                $('#logout').html('LOGOUT');
         },
 
         toggleMenu: function (eventName) {
@@ -86,6 +91,10 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
 
         changeTitle: function(title){
             $('#viewTitle').html(title);
+        },
+        
+        exitFromApp: function(){
+           navigator.app.exitApp();
         },
         
         render: function () {
