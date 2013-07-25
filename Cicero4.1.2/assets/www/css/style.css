@@ -406,6 +406,11 @@ body {
 .middle {
   margin-bottom: 60px;
 }
+
+.middle_rep{
+    margin-bottom: 20px;
+}
+
 .innerContent {
   padding: 2%;
 }
@@ -653,6 +658,12 @@ body {
   font-weight: 600;
   font-size: 13px;
 }
+.groupBox ul li .ellipsed {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .groupBox ul li .key {
   font-weight: normal;
   font-size: 11px;
@@ -927,15 +938,6 @@ body {
   max-height: 28px;
   overflow: hidden;
 }
-
-#pagePortfolio .list li .description .message {
-    font-size: 12px;
-    color: #7b7a7a;
-    max-height: 50px;
-    overflow: hidden;
-    text-overflow: ellipsis
-}
-
 
 #pagePortfolio .list li .description .website {
   position: absolute;

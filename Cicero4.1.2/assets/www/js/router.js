@@ -124,6 +124,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       
       changePage: function (page) {
         if(this.currentView) {
+           this.currentView.trigger("outOfDom");
            this.currentView.remove();
         }
 
