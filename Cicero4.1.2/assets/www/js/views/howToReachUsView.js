@@ -15,9 +15,7 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         /*coordinates of the event*/
        	xPos: 42.357957,
        	yPos: 13.364427,
-       	myXPos: 42.357957,
-       	myYPos: 13.364427,
-       	myLoc: "roma",
+       	
        	state:1,
 
         initialize: function () {
