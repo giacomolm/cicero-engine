@@ -1,23 +1,14 @@
-<div id="pagePortfolio" class="page">
-    <div style="display: block; opacity: 1;" id="gridView" class="portfolioProjects list">
+<div class="content middle_rep">
+<div class="groupBox">
+    <ul>
         <li>
-            <div class="groupBox innerContent" id="itemView">
-
-                <a class="thumb" href="">
-                    <img src="http://www.vineola.de/images/manufacturers/MiglianicoLogo.jpg" alt="Project X: iPhone Application Design">
-                </a>
-                <div class="description">
-                    <div class="title">
-                        {{title}}
-                    </div>
-                    <div class="message">
-                        {{message}}
-                    </div>
-                    <span class="website" id="arrow" >&raquo;</span>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-
+            <p class="key">Title</p>
+            <p class="value"><div id="seen{{id}}" class="invisible"><img src="img/check.png"/></div>{{title}}</p>
         </li>
-    </div>
+        <li>
+            <p class="key"> Message </p>
+            <p id="news{{id}}" class="value ellipsed">{{message}}</p>
+        </li>
+    </ul>
+</div>
 </div>

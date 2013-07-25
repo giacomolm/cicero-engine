@@ -11,25 +11,30 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","model
             initialize: function () {
                 EventDispatcher.trigger("changeTitle","News");
                 this.newss = new Newss();
-                this.render();
                 EventDispatcher.trigger("show_spinner");
-                this.newss.firebase.once("value",this.addNewss,this);
-            },
-
-            addNewss: function(){
-                 for(i=0;i<this.newss.length;i++){
-                     var news = this.newss.at(i);
-                     $(this.el).append(new NewssListItemView({
-                         model: news
-                     }).el);
-                     EventDispatcher.trigger("hide_spinner");
-                 }
+                this.on("inTheDom",this.addsubViews);
+                this.render();
             },
 
             render: function () {
                 $(this.el).empty();
                 $(this.el).html(this.template());
+
                 return this;
+            },
+
+            addsubViews: function(){
+                this.newss.firebase.on("value",function(){
+                    for(i=0;i<this.newss.length;i++){
+                        var news = this.newss.at(i);
+                        $(this.el).append(new NewssListItemView({
+                            model: news,
+                            parent: this
+                        }).render().el);
+                    }
+                    this.trigger("parentInTheDom");
+                    EventDispatcher.trigger("hide_spinner");
+                },this);
             }
         });
 
