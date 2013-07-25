@@ -1242,11 +1242,12 @@ hr{
 /*css matteo*/
 
 #gmap-cont{
-	margin-bottom: 60px;
+	
 }
 
 #form-cont{
-	height: 10%;
+	padding-top:20px;
+	height: 20%;
     width: 90%;
     margin-left: 5%;
 }
@@ -1254,31 +1255,25 @@ hr{
 #map-canvas{
 	height: 40%;
     width: 90%;
-    margin-up: 5%;
     margin-left: 5%;
 }
 
-#map-form{
-	height: 20%;
-    width: 90%;
-}
+
 
 #directionsPanel{
-    height: 30%;
+    height: 40%;
     width: 90%;
-    
-}
+   }
 
-#gFiller{
-	height:60px;
-}
+
 
 #route{
-	width:15%;
-	display: inline-block;
+	float: left;
+	width: 30%;
 	color: #fff;
   	font-size: 18px;
  	padding: 4px 20px;
+ 	text-align:center;
  	background: -moz-linear-gradient(top, #509b75 0%, #3f795c 100%);
 	  /* FF3.6+ */
 	
@@ -1300,13 +1295,20 @@ hr{
 	  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#509b75, endColorstr=#3f795c, GradientType=0);
 	  /* IE6-8 */
 }
-#Percorso{
+#Partenza{
 	width:60%;
-	display: inline-block;
+	float:left;
 }
+
+#gfloat{
+	width:40%;
+	float:right;
+}
+
 #find{
-	width:15%;
-	display: inline-block;
+	float: right;
+	width: 30%;
+	text-align:center;
 	color: #fff;
   	font-size: 18px;
   	padding: 4px 20px;
@@ -1331,4 +1333,6 @@ hr{
 	  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#509b75, endColorstr=#3f795c, GradientType=0);
 	  /* IE6-8 */
 }
+
+
 
