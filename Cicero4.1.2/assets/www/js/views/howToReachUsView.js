@@ -1,4 +1,4 @@
-define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!templates/howToReachUsView.html","async!https://maps.googleapis.com/maps/api/js?key=AIzaSyA0VJtE1wqPiwTV6Up4gPSAVu884ew_yMA&sensor=false"],
+define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!templates/howToReachUsView.html","async!https://maps.googleapis.com/maps/api/js?key=AIzaSyA0VJtE1wqPiwTV6Up4gPSAVu884ew_yMA&sensor=false&language=it"],
     function ($, _, Backbone, Handlebars,EventDispatcher,template) {
 
     var howToReachUsView = Backbone.View.extend({
@@ -46,13 +46,14 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         		    center: new google.maps.LatLng(this.xPos, this.yPos),
         		    mapTypeId: google.maps.MapTypeId.ROADMAP
         		  };
-        	var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+        	this.map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
         	var marker = new google.maps.Marker({
         	      position: new google.maps.LatLng(this.xPos, this.yPos),
-        	      map: map,
-        	      title:"Parchi d'Abruzzo"
+        	      map: this.map,
+        	      title:"Parchi d'Italia"
         	  });
-        	
+        	this.directionsService = new google.maps.DirectionsService();
+        	this.directionsDisplay = new google.maps.DirectionsRenderer();
         	}
         },
         
@@ -65,7 +66,7 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         
         route: function(){
         	
-        	this.myLoc=document.getElementById('Partenza').value;
+        	this.myLoc=document.getElementById('input_partenza').value;
         	this.gMap2();
         	
         },
@@ -86,7 +87,7 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         /*after geolocalizzating the device we can ask route to google*/
         gMap: function(){        
         	
-        	directionsService = new google.maps.DirectionsService();
+        	
         	arr = new google.maps.LatLng(42.358175, 13.364621);
         	par = new google.maps.LatLng(this.myXPos, this.myYPos);
         	request = {
@@ -94,13 +95,13 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         		      destination: arr,
         		      travelMode: google.maps.DirectionsTravelMode.DRIVING
         		  };
-        	directionsService.route(request, _.bind(this.gReq,this));
+        	this.directionsService.route(request, _.bind(this.gReq,this));
         	
         },
         
         gMap2: function(){        
 	        	
-	        directionsService = new google.maps.DirectionsService();
+	        
 	        arr = new google.maps.LatLng(42.358175, 13.364621);
 	        par = this.myLoc;
 	        request = {
@@ -108,25 +109,21 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
 	        	      destination: arr,
 	        	      travelMode: google.maps.DirectionsTravelMode.DRIVING
 	        };
-	        directionsService.route(request, _.bind(this.gReq,this));
+	        this.directionsService.route(request, _.bind(this.gReq,this));
 	        	
 	       },
         
         gReq: function(response, status){
         	
         	if (status == google.maps.DirectionsStatus.OK) {
-        		document.getElementById('map-canvas').style.height = ((window.innerHeight-120)/2)+"px";
-        		document.getElementById('directionsPanel').style.height = ((window.innerHeight-120)/2)+"px";
-        		directionsDisplay = new google.maps.DirectionsRenderer();
-        		var mapOptions = {
-        			    zoom:7,
-        			    mapTypeId: google.maps.MapTypeId.ROADMAP,
-        			    };
-        		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        		directionsDisplay.setMap(map);
         		
-        		directionsDisplay.setPanel(document.getElementById("directionsPanel"));
-        		directionsDisplay.setDirections(response);
+        		
+        		
+        		
+        		this.directionsDisplay.setMap(this.map);
+        		
+        		this.directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+        		this.directionsDisplay.setDirections(response);
         		
       	    }
         	
