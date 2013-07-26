@@ -1137,7 +1137,10 @@ body {
 }
 
 #spinner{
-    float:right;
+    position: absolute;
+    z-index: 5000;
+    top: 1px;
+    right:5px
 }
 
 .tabActive {
