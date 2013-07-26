@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="5a167ca7-35ab-473b-b775-1345cbfb8e06" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/modules/ciceroNotifier.js" afterPath="$PROJECT_DIR$/lib/modules/ciceroNotifier.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/loginView.js" afterPath="$PROJECT_DIR$/js/views/loginView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/mapView.js" afterPath="$PROJECT_DIR$/js/views/mapView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/newssListItemView.html" afterPath="$PROJECT_DIR$/templates/newssListItemView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/newssListItemView.js" afterPath="$PROJECT_DIR$/js/views/newssListItemView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/registerView.js" afterPath="$PROJECT_DIR$/js/views/registerView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/structureView.html" afterPath="$PROJECT_DIR$/templates/structureView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/structureView.js" afterPath="$PROJECT_DIR$/js/views/structureView.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/key - Copia.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/findme.png" afterPath="$PROJECT_DIR$/img/findme.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -24,7 +18,7 @@
     <file path="/main.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374158904295" ignored="false" />
     <file path="/loginView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374836784727" ignored="false" />
     <file path="/registerView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374845086311" ignored="false" />
-    <file path="/structureView.html" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374844918293" ignored="false" />
+    <file path="/structureView.html" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374861683719" ignored="false" />
     <file path="/searchView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1372927713601" ignored="false" />
     <file path="/eventDispatcher.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1372941861035" ignored="false" />
     <file path="/style.css" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374680573216" ignored="false" />
@@ -62,10 +56,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="structureView.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="structureView.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/views/structureView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="44" selection-start="1533" selection-end="1533" vertical-scroll-proportion="0.44822007">
+            <state line="34" column="44" selection-start="1533" selection-end="1533" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="structureView.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/structureView.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="42" selection-start="145" selection-end="145" vertical-scroll-proportion="0.05376344">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1141" column="10" selection-start="22707" selection-end="22707" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -91,19 +103,19 @@
         <option value="$PROJECT_DIR$/js/views/loginView.js" />
         <option value="$PROJECT_DIR$/templates/newssListItemView.html" />
         <option value="$PROJECT_DIR$/js/views/newssListItemView.js" />
-        <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/templates/structureView.html" />
         <option value="$PROJECT_DIR$/js/views/registerView.js" />
         <option value="$PROJECT_DIR$/js/views/mapView.js" />
         <option value="$PROJECT_DIR$/lib/modules/ciceroNotifier.js" />
         <option value="$PROJECT_DIR$/js/views/structureView.js" />
+        <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/templates/structureView.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="2" />
-    <option name="width" value="1280" />
-    <option name="height" value="798" />
+    <option name="y" value="24" />
+    <option name="width" value="1680" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -159,7 +171,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -174,38 +186,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -292,13 +272,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="2" width="1280" height="798" extended-state="6" />
+    <frame x="0" y="24" width="1680" height="1026" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.274463" sideWeight="0.67223066" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2082076" sideWeight="0.67223066" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -374,11 +354,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/views/poiEventView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/views/poiListItemView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -400,9 +375,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="33" selection-start="4739" selection-end="4749" vertical-scroll-proportion="0.6854839">
-          <folding />
-        </state>
+        <state line="132" column="33" selection-start="4739" selection-end="4749" vertical-scroll-proportion="0.6854839" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/views/howToReachUsView.js">
@@ -414,58 +387,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/views/newssListItemView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="41" selection-start="1479" selection-end="1479" vertical-scroll-proportion="0.38193345">
-          <folding />
-        </state>
+        <state line="35" column="41" selection-start="1479" selection-end="1479" vertical-scroll-proportion="0.38193345" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/views/nearbyPlacesView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/newssListItemView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="31" selection-start="340" selection-end="340" vertical-scroll-proportion="0.22727273">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="667" column="1" selection-start="13501" selection-end="13501" vertical-scroll-proportion="0.40298507">
-          <folding />
-        </state>
+        <state line="9" column="31" selection-start="340" selection-end="340" vertical-scroll-proportion="0.22727273" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/views/registerView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="54" selection-start="555" selection-end="555" vertical-scroll-proportion="0.31553397">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/mapView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/structureView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="41" selection-start="78" selection-end="87" vertical-scroll-proportion="0.049423393">
-          <folding />
-        </state>
+        <state line="13" column="54" selection-start="555" selection-end="555" vertical-scroll-proportion="0.31553397" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/modules/ciceroNotifier.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="30" selection-start="5721" selection-end="5721" vertical-scroll-proportion="0.6553398">
-          <folding />
-        </state>
+        <state line="113" column="30" selection-start="5721" selection-end="5721" vertical-scroll-proportion="0.6553398" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/views/mapView.js">
@@ -475,9 +417,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/mapView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="19" selection-start="186" selection-end="186" vertical-scroll-proportion="0.069848664">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/structural.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="23" selection-start="1677" selection-end="1677" vertical-scroll-proportion="0.9173273">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/views/structureView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="44" selection-start="1533" selection-end="1533" vertical-scroll-proportion="0.44822007">
+        <state line="34" column="44" selection-start="1533" selection-end="1533" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1141" column="10" selection-start="22707" selection-end="22707" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/structureView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="42" selection-start="145" selection-end="145" vertical-scroll-proportion="0.05376344">
           <folding />
         </state>
       </provider>
