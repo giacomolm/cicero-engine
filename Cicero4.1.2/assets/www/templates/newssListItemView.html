@@ -3,11 +3,11 @@
     <ul>
         <li>
             <p class="key">Title</p>
-            <p class="value"><div id="seen{{id}}" class="invisible"><img src="img/check.png"/></div>{{title}}</p>
+            <p class="value"><div id="seen{{model.id}}" class="invisible"><img src="img/check.png"/></div>{{model.title}}</p>
         </li>
         <li>
             <p class="key"> Message </p>
-            <p id="news{{id}}" class="value ellipsed">{{message}}</p>
+            <p id="news{{model.id}}" class="value">{{truncated_message}}</p>
         </li>
     </ul>
 </div>

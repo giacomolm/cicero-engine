@@ -112,7 +112,6 @@ define(['backbone','models/User','collections/Users','models/Event','collections
                     var myevent = new Backbone.Collection(events.filter(function(event){
                         return event.id == myfavourite.get("id_ref")
                     })).at(0);
-                    alert("removing notification for event "+myevent.id);
                     myevent.off("change");
                 }
             });

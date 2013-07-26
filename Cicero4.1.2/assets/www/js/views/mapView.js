@@ -14,8 +14,9 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
 
         initialize: function (options) { /* we can pass in the options floor, centerLat and centerLng*/
 
-           /*title changing*/
+           /*title changing and back button showing*/
            EventDispatcher.trigger("changeTitle","Map");
+           EventDispatcher.trigger("showBackButton");
 
           /* by default floor is 0, if another one is passed we use it*/
           this.floor = 0;
