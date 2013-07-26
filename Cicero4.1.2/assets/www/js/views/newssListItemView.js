@@ -13,6 +13,7 @@ define(["zepto", "underscore", "backbone", "handlebars","models/News","text!temp
                 this.parent = this.options.parent;
                 this.model.bind("change",this.render,this);
                 this.model.bind("destroy", this.remove, this);
+                this.ellipsed = true;
 
                 this.listenTo(this.parent,"parentInTheDom", _.bind(this.addChecked,this));
                 this.listenTo(this.parent,"outOfDom", _.bind(this.delView,this));
@@ -27,13 +28,27 @@ define(["zepto", "underscore", "backbone", "handlebars","models/News","text!temp
             toggleEllipsed: function(){
                 localStorage.setItem("news"+this.model.id,"yes");
                 $('#seen'+this.model.id).removeClass("invisible");
-                $('#news'+this.model.id).toggleClass('ellipsed');
+                if(this.ellipsed){
+                    $('#news'+this.model.id).html(this.model.get("message"));
+                    this.ellipsed = false;
+                }else{
+                    $('#news'+this.model.id).html(this.truncated_message);
+                    this.ellipsed = true;
+                }
             },
 
             render: function () {
                 $(this.el).empty();
-                $(this.el).html(this.template(this.model.toJSON()));
+                this.truncated_message = this.truncate(this.model.get("message"));
+                $(this.el).html(this.template({model: this.model.toJSON(),truncated_message: this.truncated_message}));
                 return this;
+            },
+
+            truncate: function(string){
+                if (string.length > 200)
+                    return string.substring(0,200)+'...';
+                else
+                    return string;
             },
 
             delView: function(){

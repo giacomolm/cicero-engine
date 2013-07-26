@@ -47,11 +47,17 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!tem
         },
         
         loginFacebook: function(){
-            authClient.login("facebook");
+            authClient.login("facebook",{
+                rememberMe: false,
+                auth_type: 'reauthenticate'
+            });
         },
         
         loginTwitter: function(){
-            authClient.login("twitter");
+            authClient.login("twitter",{
+                rememberMe: false,
+                auth_type: 'reauthenticate'
+            });
         },
 
         login_error: function(message){

@@ -12,7 +12,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
             "touchstart #navigation_icon" : "showReachUs",
             "touchstart #nearby_icon" : "showNearby",
             "touchstart #news_icon" : "showNewssList",
-            "touchend #turnoff_icon": "exitFromApp",
+            "touchend #turnoff_icon": "exitFromApp"
           },
           
         template: Handlebars.compile(template),
@@ -21,6 +21,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
             EventDispatcher.on("show_spinner",this.show_spinner);
             EventDispatcher.on("hide_spinner",this.hide_spinner);
             EventDispatcher.on("changeTitle",this.changeTitle);
+            EventDispatcher.on("showBackButton",this.showBackButton);
             this.render();
         },
         
@@ -31,6 +32,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
                 this.setLogout();
             }
             else Backbone.history.navigate("login", {trigger: true});
+            $("#back").addClass("invisible");
         },
 
         setLogout: function(){
@@ -91,6 +93,10 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
 
         changeTitle: function(title){
             $('#viewTitle').html(title);
+        },
+
+        showBackButton: function(){
+            $("#back").removeClass("invisible");
         },
         
         exitFromApp: function(){

@@ -11,6 +11,7 @@ define(["zepto","underscore","backbone","handlebars","models/User","collections/
 
         initialize: function () {
             EventDispatcher.trigger("changeTitle","Register");
+            EventDispatcher.trigger("showBackButton");
             this.users = new Users();
             EventDispatcher.trigger("show_spinner");
             this.users.firebase.on("value",this.render,this);

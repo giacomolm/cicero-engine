@@ -666,12 +666,6 @@ body {
   font-weight: 600;
   font-size: 13px;
 }
-.groupBox ul li .ellipsed {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 .groupBox ul li .key {
   font-weight: normal;
   font-size: 11px;
