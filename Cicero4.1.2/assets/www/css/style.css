@@ -1255,8 +1255,8 @@ hr{
 
 #form-cont{
 	padding-top:20px;
-    width: 96%;
-    margin-left: 2%;
+    width: 90%;
+    margin-left: 5%;
 	clear : both;
 }
 
@@ -1308,7 +1308,6 @@ hr{
 	  /* IE6-8 */
 }
 #Partenza{
-	width:40%;
 	float:right;
 	text-align : right;
 }
