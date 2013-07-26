@@ -46,7 +46,7 @@ textarea {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  font-size: 11px;
+  font-size: 13px;
   border-radius: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -58,6 +58,14 @@ input[type="email"],
 select,
 textarea {
 	width: 98%;
+	  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-size: 13px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
 }
 
 #username{
@@ -69,9 +77,9 @@ textarea.invalid {
   border: 1px solid red;
 }
 #search_field{
-	font-size: 14px;
+	font-size: 18px;
 	float:left;
-	padding-right: 30px;
+	padding-right: 50px;
 }
 /*
  if you want custom top bar and bottom bar background color for the gallery (portfolio page)
@@ -416,15 +424,13 @@ body {
 }
 .profileArea {
   margin-top: 5px;
+  width : 100%
 }
 .profileLeft{
-	
+	width : 60%;
 }
 .profileArea .profilePicAreaContainer {
-  background: #f2f2f2;
-  text-align: center;
-  padding: 8px;
-  border: 1px solid #e0e0e0;
+  text-align: left;
 }
 .profileArea .profilePicAreaContainer .shadow {
   position: absolute;
@@ -438,18 +444,11 @@ body {
 }
 .profileArea .profilePicAreaContainer,
 .profileArea .profilePicArea {
-  width: 86px;
-  height: 86px;
-  overflow: hidden;
-  margin-right: 7px;
-  border-radius: 42px;
-  -webkit-border-radius: 42px;
-  -moz-border-radius: 42px;
-  -o-border-radius: 42px;
+  width : 100%;
 }
 .profileArea .profilePicAreaContainer img,
 .profileArea .profilePicArea img {
-  width: 100%;
+  width : 87%;
 }
 .profileArea .profileInfoArea {
   margin-top: 3px;
@@ -476,6 +475,15 @@ body {
 	line-height : 1.7em;
 	text-overflow:ellipsis;
 }
+
+.detailIcon{
+	float:left;
+}
+.detailIcon img{
+	width : 30%;
+	margin : 10px;
+}
+
 .centerTable{
 	width : 150%;
 }
@@ -881,6 +889,7 @@ body {
 
 }
 #pagePortfolio .portfolioProjects li {
+ height : 100px;
   box-shadow: 0 0 1px #999999;
   -webkit-box-shadow: 0 0 1px #999999;
   -moz-box-shadow: 0 0 1px #999999;
@@ -901,6 +910,7 @@ body {
 }
 #pagePortfolio .portfolioProjects li a.thumb img {
   width: 100%;
+  height: 100%;
 }
 #pagePortfolio .list {
   margin: 0 2%;
@@ -1157,10 +1167,11 @@ body {
 	box-flex : 1;
 }
 #search_div .search_btn{
-	width : 24px;
+	
 }
 #search_div .search_btn img{
 	margin-top : 1.5%;
+	width : 30px;
 }
 #search_field{
 	width : 100%;
@@ -1231,31 +1242,32 @@ hr{
 @-webkit-keyframes pulse_animation {
 	0% { -webkit-transform: scale(1); }
 	30% { -webkit-transform: scale(1); }
-	40% { -webkit-transform: scale(1.09); }
-	50% { -webkit-transform: scale(1.1); }
-	60% { -webkit-transform: scale(1.11); }
-	70% { -webkit-transform: scale(1.1); }
-	80% { -webkit-transform: scale(1.09); }
+	40% { -webkit-transform: scale(1.19); }
+	50% { -webkit-transform: scale(1.2); }
+	60% { -webkit-transform: scale(1.31); }
+	70% { -webkit-transform: scale(1.2); }
+	80% { -webkit-transform: scale(1.19); }
 	100% { -webkit-transform: scale(1); }
 }
 
 
 
-/*css matteo*/
+/*css how to reach us*/
 
 #gmap-cont{
-	
+	width:100%;
+	margin-bottom : 60px;
 }
 
 #form-cont{
 	padding-top:20px;
-	height: 20%;
-    width: 90%;
-    margin-left: 5%;
+    width: 96%;
+    margin-left: 2%;
+	clear : both;
 }
 
 #map-canvas{
-	height: 40%;
+	height: 50%;
     width: 90%;
     margin-left: 5%;
 }
@@ -1263,15 +1275,19 @@ hr{
 
 
 #directionsPanel{
-    height: 40%;
+	margin : 5%;
+	padding-top: 10px;
+	padding-bottom: 67px;
     width: 90%;
+	text-align : center;
+	clear : both;
    }
 
 
 
 #route{
-	float: left;
 	width: 30%;
+	float:right;
 	color: #fff;
   	font-size: 18px;
  	padding: 4px 20px;
@@ -1298,8 +1314,9 @@ hr{
 	  /* IE6-8 */
 }
 #Partenza{
-	width:60%;
-	float:left;
+	width:40%;
+	float:right;
+	text-align : right;
 }
 
 #gfloat{
@@ -1308,8 +1325,8 @@ hr{
 }
 
 #find{
-	float: right;
 	width: 30%;
+	float : left;
 	text-align:center;
 	color: #fff;
   	font-size: 18px;
@@ -1336,5 +1353,8 @@ hr{
 	  /* IE6-8 */
 }
 
+#gFiller{
+		margin-bottom : 67px;
+}
 
 

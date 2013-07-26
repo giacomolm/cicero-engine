@@ -1,11 +1,13 @@
 <div id="gmap-cont">
-	<div id="map-canvas"></div>
+	<div id="map-canvas"></div><br><br>
+	<div style="width:100%; text-align:center">TRACE YOUR ROUTE</div>
 	<div id="form-cont">
-		<form>
-		<div id="Partenza">Partenza: <input type="text" name="Partenza" id="input_partenza"/></div>
-		<div id="route">ROUTE</div>
-		<div id="find">FIND ME</div>
-		</form>
+		<div id="Partenza">
+			<input type="text" name="Partenza" onfocus="if (this.value=='Rome') this.value='';"id="input_partenza" value="Rome"/><br><br>
+			<div id="route">ROUTE</div>
+		</div>	
+		<div id="find">From My <br>Position</div>
+		<div style="text-align:center;">OR</div>	
 	</div>
 	<div id="directionsPanel"></div>
 	<div id="map-form"></div>
