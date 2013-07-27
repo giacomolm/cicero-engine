@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="5a167ca7-35ab-473b-b775-1345cbfb8e06" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/howToReachUsView.html" afterPath="$PROJECT_DIR$/templates/howToReachUsView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/howToReachUsView.js" afterPath="$PROJECT_DIR$/js/views/howToReachUsView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/mapView.js" afterPath="$PROJECT_DIR$/js/views/mapView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/nearbyPlacesView.html" afterPath="$PROJECT_DIR$/templates/nearbyPlacesView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/nearbyPlacesView.js" afterPath="$PROJECT_DIR$/js/views/nearbyPlacesView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/structureView.js" afterPath="$PROJECT_DIR$/js/views/structureView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/findme.png" afterPath="" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +28,7 @@
     <file path="$PROJECT_DIR$/../../../../WebstormProjects/cicero-server-ref/ciceroChecker.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1373892848323" ignored="false" />
     <file path="/Favourite.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374007481302" ignored="false" />
     <file path="/Dummy.txt" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374239006710" ignored="false" />
-    <file path="/mapView.html" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374327112215" ignored="false" />
+    <file path="/mapView.html" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374946914569" ignored="false" />
     <file path="/New.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374588598988" ignored="false" />
     <file path="/News.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374588794632" ignored="false" />
     <file path="/newsView.js" changelist="5a167ca7-35ab-473b-b775-1345cbfb8e06" time="1374590370603" ignored="false" />
@@ -66,7 +59,26 @@
     <favorites_list name="www" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="mapView.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/mapView.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="47" selection-start="214" selection-end="214" vertical-scroll-proportion="-2.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mapView.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/views/mapView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="14" selection-start="1065" selection-end="1106" vertical-scroll-proportion="-0.10638298">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -76,7 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/newssListItemView.html" />
         <option value="$PROJECT_DIR$/lib/modules/ciceroNotifier.js" />
         <option value="$PROJECT_DIR$/templates/structureView.html" />
         <option value="$PROJECT_DIR$/js/views/newssListItemView.js" />
@@ -92,13 +103,14 @@
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/templates/howToReachUsView.html" />
+        <option value="$PROJECT_DIR$/templates/mapView.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="2" />
+    <option name="y" value="24" />
     <option name="width" value="1680" />
-    <option name="height" value="1048" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -154,7 +166,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -168,39 +180,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backbone" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -287,13 +271,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="2" width="1680" height="1048" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="24" width="1680" height="1026" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11888956" sideWeight="0.67223066" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11888956" sideWeight="0.67223066" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -371,11 +355,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/views/newssListItemView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="54" selection-start="761" selection-end="761" vertical-scroll-proportion="0.30646992" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="124" column="35" selection-start="4521" selection-end="4521" vertical-scroll-proportion="2.142857">
@@ -417,13 +396,6 @@
     <entry file="file://$PROJECT_DIR$/js/views/newssListView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/mapView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="14" selection-start="1065" selection-end="1106" vertical-scroll-proportion="0.36206895">
           <folding />
         </state>
       </provider>
@@ -476,6 +448,20 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/mapView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="47" selection-start="214" selection-end="214" vertical-scroll-proportion="-2.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/mapView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="14" selection-start="1065" selection-end="1106" vertical-scroll-proportion="-0.10638298">
+          <folding />
         </state>
       </provider>
     </entry>
