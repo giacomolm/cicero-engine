@@ -25,10 +25,12 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
             EventDispatcher.on("showBackButton",this.showBackButton);
             EventDispatcher.on("showMessage",this.showMessage);
             EventDispatcher.on("closeMessage",this.closeMessage);
+            EventDispatcher.on("changeMenuBar", this.changeMenuBar)
             this.render();
         },
         
         logout: function(){
+        	$('#popupMenu').addClass('invisible');
             if(typeof cicero_user != 'undefined'){
                 Ciceronotifier.off();
                 Ciceroauthentication.authClient.logout();
@@ -53,35 +55,54 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
             window.history.back();
         },
         
-        showMap: function () {
+        showMap: function () { 
+        	//this.removeFocus();       	
+        	//$('#mapMenuCapt').addClass("menuActive");
+        	$('#popupMenu').addClass('invisible');
             Backbone.history.navigate("map", {trigger: true});
         },
         
         showSearch: function () {
+        	this.removeFocus();
+        	$('#searchMenuCapt').addClass("menuActive");
+        	$('#popupMenu').addClass('invisible');
             Backbone.history.navigate("search", {trigger: true});
         },
         
         showFavourite: function () {
+        	this.removeFocus();
+        	$('#favMenuCapt').addClass("menuActive");
+        	$('#popupMenu').addClass('invisible');
             Backbone.history.navigate("favourite", {trigger: true});
         },
         
         showNearby: function () {
+        	this.removeFocus();
+        	$('#popupMenu').addClass('invisible');
             Backbone.history.navigate("nearbyPlaces", {trigger: true});
         },
         
         showReachUs: function () {
+        	this.removeFocus();
+        	$('#popupMenu').addClass('invisible');
             Backbone.history.navigate("howToReachUs", {trigger: true});
         },
         
         showPoiList: function () {
+        	this.removeFocus();
+        	$('#popupMenu').addClass('invisible');
             Backbone.history.navigate("poiList", {trigger: true});
         },
         
         showEventList: function () {
+        	this.removeFocus();
+        	$('#popupMenu').addClass('invisible');
             Backbone.history.navigate("eventList", {trigger: true});
         },
 
         showNewssList: function () {
+        	this.removeFocus();
+        	$('#popupMenu').addClass('invisible');
             Backbone.history.navigate("newssList", {trigger: true});
         },
 
@@ -113,6 +134,17 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
         
         exitFromApp: function(){
            navigator.app.exitApp();
+        },
+        
+        removeFocus: function(){
+        	$('#mapMenuCapt').removeClass("menuActive");
+        	$('#searchMenuCapt').removeClass("menuActive");
+        	$('#favMenuCapt').removeClass("menuActive");
+        },
+        changeMenuBar: function(){
+        	$('#mapMenuCapt').removeClass("menuActive");
+        	$('#searchMenuCapt').removeClass("menuActive");
+        	$('#favMenuCapt').removeClass("menuActive");
         },
         
         render: function () {

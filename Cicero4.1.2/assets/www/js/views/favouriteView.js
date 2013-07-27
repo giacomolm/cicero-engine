@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","views/eventListView","text!templates/favouriteView.html"],
-    function ($, _, Backbone, Handlebars,poiListView,eventListView,template) {
+define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","views/poiListView","views/eventListView","text!templates/favouriteView.html"],
+    function ($, _, Backbone, Handlebars,EventDispatcher,poiListView,eventListView,template) {
 
     var favouriteView = Backbone.View.extend({
 
@@ -12,7 +12,7 @@ define(["zepto", "underscore", "backbone", "handlebars","views/poiListView","vie
         
         initialize: function () {
             this.favourites = this.options.favourites;
-            
+            EventDispatcher.trigger("changeTitle", "Favourite");
             //this.listenTo(this.favourites,"change",this.refresh);
             this.user = cicero_user;
             

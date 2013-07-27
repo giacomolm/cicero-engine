@@ -33,6 +33,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'ciceroau
         },
         
         showMap: function () {
+	    
             Backbone.history.navigate("map", {trigger: true});
         },
         

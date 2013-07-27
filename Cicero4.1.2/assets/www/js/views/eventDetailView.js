@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","collections/Favourites","collections/Comments","collections/Medias","collections/Likes","collections/Pois","views/commentView","text!templates/eventDetailView.html"],
-    function ($, _, Backbone, Handlebars,Klass,Photoswipe,Favourites,Comments,Medias,Likes,Pois,commentView,template) {
+define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","klass","photoswipe","collections/Favourites","collections/Comments","collections/Medias","collections/Likes","collections/Pois","views/commentView","text!templates/eventDetailView.html"],
+    function ($, _, Backbone, Handlebars,EventDispatcher,Klass,Photoswipe,Favourites,Comments,Medias,Likes,Pois,commentView,template) {
 
     var eventDetailView = Backbone.View.extend({
 
@@ -47,6 +47,8 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             this.pois.firebase.on("value",this.updateMap,this);
             
             this.on('inTheDom', this.checkStatus, this);
+	    EventDispatcher.trigger("changeTitle", this.model.get("name"));
+	    EventDispatcher.trigger("changeMenuBar");
         },
 
         checkStatus: function(){
