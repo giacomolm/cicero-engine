@@ -14,9 +14,10 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
 
         initialize: function (options) { /* we can pass in the options floor, centerLat and centerLng*/
 
-           /*title changing and back button showing*/
+           /*title changing, back button showing and close possible left opened message*/
            EventDispatcher.trigger("changeTitle","Map");
            EventDispatcher.trigger("showBackButton");
+           EventDispatcher.trigger("closeMessage");
 
           /* by default floor is 0, if another one is passed we use it*/
           this.floor = 0;
@@ -106,7 +107,7 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
             /*once map is loaded we attach addPois event*/
             EventDispatcher.trigger("show_spinner");
             this.collection.firebase.on("value",this.addPois,this);
-            this.zoom = 1;
+            this.zoom = 1; /*it restores the initial zoom value if it has been changed to focus a marker*/
             
             return this;
         },

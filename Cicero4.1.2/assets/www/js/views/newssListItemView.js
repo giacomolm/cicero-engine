@@ -16,7 +16,7 @@ define(["zepto", "underscore", "backbone", "handlebars","models/News","text!temp
                 this.ellipsed = true;
 
                 this.listenTo(this.parent,"parentInTheDom", _.bind(this.addChecked,this));
-                this.listenTo(this.parent,"outOfDom", _.bind(this.delView,this));
+                this.listenTo(this.parent,"outOfTheDom", _.bind(this.delView,this));
             },
 
             addChecked: function(){

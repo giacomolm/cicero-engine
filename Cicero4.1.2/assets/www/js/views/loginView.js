@@ -17,6 +17,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!tem
 
         initialize: function () {
             EventDispatcher.trigger("changeTitle","Login");
+            EventDispatcher.trigger("closeMessage");
             EventDispatcher.on("login_error",this.login_error);
             this.render();
         },
