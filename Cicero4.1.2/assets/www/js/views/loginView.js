@@ -1,5 +1,5 @@
-define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!templates/loginView.html"],
-    function ($, _, Backbone, Handlebars,EventDispatcher,template) {
+define(["zepto","underscore","backbone","handlebars","eventDispatcher",'ciceroauthentication',"text!templates/loginView.html"],
+    function ($, _, Backbone, Handlebars,EventDispatcher,Ciceroauthentication,template) {
 
     var loginView = Backbone.View.extend({
         
@@ -41,21 +41,21 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher","text!tem
             $('#error').addClass('invisible');
             var user_email = $('#email').val();
             var user_password = $('#password').val();
-                authClient.login("password", {
+            Ciceroauthentication.authClient.login("password", {
                     email: user_email,
                     password: user_password
                 });
         },
         
         loginFacebook: function(){
-            authClient.login("facebook",{
+            Ciceroauthentication.authClient.login("facebook",{
                 rememberMe: false,
                 auth_type: 'reauthenticate'
             });
         },
         
         loginTwitter: function(){
-            authClient.login("twitter",{
+            Ciceroauthentication.authClient.login("twitter",{
                 rememberMe: false,
                 auth_type: 'reauthenticate'
             });
