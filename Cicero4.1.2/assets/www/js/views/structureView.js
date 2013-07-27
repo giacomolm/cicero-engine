@@ -12,7 +12,8 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
             "touchstart #navigation_icon" : "showReachUs",
             "touchstart #nearby_icon" : "showNearby",
             "touchstart #news_icon" : "showNewssList",
-            "touchend #turnoff_icon": "exitFromApp"
+            "touchend #turnoff_icon": "exitFromApp",
+            "touchend .close": "closeMessage"
           },
           
         template: Handlebars.compile(template),
@@ -22,6 +23,8 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
             EventDispatcher.on("hide_spinner",this.hide_spinner);
             EventDispatcher.on("changeTitle",this.changeTitle);
             EventDispatcher.on("showBackButton",this.showBackButton);
+            EventDispatcher.on("showMessage",this.showMessage);
+            EventDispatcher.on("closeMessage",this.closeMessage);
             this.render();
         },
         
@@ -97,6 +100,15 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
 
         showBackButton: function(){
             $("#back").removeClass("invisible");
+        },
+
+        showMessage: function(message){
+            $('#message').html(message);
+            $('#message_div').show();
+        },
+
+        closeMessage: function(){
+            $('#message_div').hide();
         },
         
         exitFromApp: function(){

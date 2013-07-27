@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView", "views/searchView", "views/favouriteView","views/eventListView","views/poiListView","views/howToReachUsView","views/nearbyPlacesView","views/eventDetailView","views/poiDetailView","views/poiEventView","views/newssListView","collections/Events","collections/Pois","collections/Favourites"],
-    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView,searchView,favouriteView,eventListView,poiListView, howToReachUsView,nearbyPlacesView,eventDetailView,poiDetailView,poiEventView,newssListView,Events,Pois,Favourites) {
+define(["zepto", "underscore", "backbone","views/semiStructureView","views/structureView","views/loginView","views/mapView", "views/registerView", "views/searchView", "views/favouriteView","views/eventListView","views/poiListView","views/howToReachUsView","views/nearbyPlacesView","views/eventDetailView","views/poiDetailView","views/poiEventView","views/newssListView","collections/Events","collections/Pois","collections/Favourites","eventDispatcher"],
+    function ($, _,Backbone,semiStructureView,StructureView,loginView,mapView,registerView,searchView,favouriteView,eventListView,poiListView, howToReachUsView,nearbyPlacesView,eventDetailView,poiDetailView,poiEventView,newssListView,Events,Pois,Favourites,EventDispatcher) {
 
     var AppRouter = Backbone.Router.extend({
 
@@ -124,7 +124,7 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       
       changePage: function (page) {
         if(this.currentView) {
-           this.currentView.trigger("outOfDom");
+           this.currentView.trigger("outOfTheDom");
            this.currentView.remove();
         }
 
