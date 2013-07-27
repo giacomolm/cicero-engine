@@ -1,4 +1,4 @@
-define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!templates/howToReachUsView.html","async!https://maps.googleapis.com/maps/api/js?key=AIzaSyA0VJtE1wqPiwTV6Up4gPSAVu884ew_yMA&sensor=false&language=it"],
+define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!templates/howToReachUsView.html","async!https://maps.googleapis.com/maps/api/js?key=AIzaSyA0VJtE1wqPiwTV6Up4gPSAVu884ew_yMA&sensor=false&libraries=places"],
     function ($, _, Backbone, Handlebars,EventDispatcher,template) {
 
     var howToReachUsView = Backbone.View.extend({
@@ -35,7 +35,7 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         InitMap: function(){
         	
         	document.getElementById('gmap-cont').style.height = (window.innerHeight-120)+"px";
-        	
+            EventDispatcher.trigger("changeTitle","How to reach us");
         	
         	if(this.state==1){
         	this.state=2;
