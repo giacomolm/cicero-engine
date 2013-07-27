@@ -1,5 +1,5 @@
-define(["zepto","underscore","backbone","handlebars","models/User","collections/Users","eventDispatcher","text!templates/registerView.html"],
-    function ($, _, Backbone, Handlebars,User,Users,EventDispatcher,template) {
+define(["zepto","underscore","backbone","handlebars","models/User","collections/Users","eventDispatcher","ciceroauthentication","text!templates/registerView.html"],
+    function ($, _, Backbone, Handlebars,User,Users,EventDispatcher,Ciceroauthentication,template) {
 
     var registerView = Backbone.View.extend({
 
@@ -46,7 +46,7 @@ define(["zepto","underscore","backbone","handlebars","models/User","collections/
                 return;
             }
 
-            authClient.createUser(user_email, user_password, _.bind(function(error, user) {
+            Ciceroauthentication.authClient.createUser(user_email, user_password, _.bind(function(error, user) {
                 if (!error) {
                   var nuser = new User({id: user.id, name: username, type: "password"});
                   this.users.add(nuser);

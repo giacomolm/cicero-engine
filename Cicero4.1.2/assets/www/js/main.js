@@ -18,6 +18,7 @@ require.config({
     klass: '../lib/photoswipe/klass',
     statusbarnotification: '../lib/statusbarnotification/statusbarnotification',
     ciceronotifier: '../lib/modules/ciceroNotifier',
+    ciceroauthentication: '../lib/modules/ciceroAuthentication',
     templates: '../templates'
   },
   shim: {
@@ -68,8 +69,8 @@ require.config({
 });
 
 /*Main dell'applicazione*/
-require(['zepto','domReady','underscore','backbone','firebase','fireauth','models/User','collections/Users','ciceronotifier','eventDispatcher','router'],
-    function ($,domReady, _,Backbone,Firebase,Fireauth,User,Users,Ciceronotifier,EventDispatcher,AppRouter) {
+require(['zepto','domReady','underscore','backbone','firebase','fireauth','ciceroauthentication','eventDispatcher','router'],
+    function ($,domReady, _,Backbone,Firebase,Fireauth,Ciceroauthentication,EventDispatcher,AppRouter) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
@@ -77,47 +78,7 @@ require(['zepto','domReady','underscore','backbone','firebase','fireauth','model
 
     function run() {
 
-        firebaseRef = new Firebase('https://cicero.firebaseio.com');
-        authClient = new FirebaseAuthClient(firebaseRef, function(error, user) {
-            if (error) {
-                /*login error*/
-                switch(error.code) {
-                    case 'INVALID_EMAIL':
-                    case 'INVALID_PASSWORD':
-                        EventDispatcher.trigger("login_error","invaild user or email");
-                        break;
-                    case 'INVALID_USER':
-                        EventDispatcher.trigger("login_error","user does not exist.");
-                        break;
-                    case 'UNKNOWN_ERROR':
-                        EventDispatcher.trigger("login_error","unknown error, please contact event administrator.");
-                }
-            } else if (user) {
-                    /*user si logga*/
-                    cicero_user = user;
-                    var users = new Users();
-                    users.firebase.on('value',function(){
-                        if(cicero_user.provider == 'password'){
-                            var user = users.findWhere({id: cicero_user.id, type:'password'});
-                            cicero_user.displayName = user.get('name');
-                            alert(cicero_user.displayName);
-                        } else {
-                            var social_user = users.findWhere({id: cicero_user.id,type: cicero_user.provider});
-                            if(social_user == undefined){
-                                var new_social_user = new User({id: cicero_user.id, name: cicero_user.displayName, type: cicero_user.provider});
-                                users.add(new_social_user);
-                            }
-                        }
-                        Ciceronotifier.on();
-                        EventDispatcher.trigger("hide_spinner");
-                        Backbone.history.navigate("map", {trigger: true});
-                    },this);
-                    } else {
-                            /*user si slogga*/
-                            cicero_user = undefined;
-                            Backbone.history.navigate("login", {trigger: true});
-                    }
-          });
+        Ciceroauthentication.init();
 
     	new AppRouter();
     	Backbone.history.start();
