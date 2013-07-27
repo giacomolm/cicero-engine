@@ -31,7 +31,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
         
         logout: function(){
         	$('#popupMenu').addClass('invisible');
-            if(typeof cicero_user != 'undefined'){
+            if(typeof cicero_user != undefined){
                 Ciceronotifier.off();
                 Ciceroauthentication.authClient.logout();
                 this.setLogout();

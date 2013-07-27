@@ -18,8 +18,8 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
            EventDispatcher.trigger("changeTitle","Map");
            EventDispatcher.trigger("showBackButton");
            EventDispatcher.trigger("closeMessage");
-	   EventDispatcher.trigger("changeMenuBar");
-	   $('#mapMenuCapt').addClass("menuActive");
+	       EventDispatcher.trigger("changeMenuBar");
+	       $('#mapMenuCapt').addClass("menuActive");
 
           /* by default floor is 0, if another one is passed we use it*/
           this.floor = 0;
