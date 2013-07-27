@@ -1,5 +1,5 @@
-define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","collections/Favourites","collections/Comments","collections/Medias","collections/Likes","views/commentView","text!templates/poiDetailView.html"],
-    function ($, _, Backbone, Handlebars,Klass,Photoswipe,Favourites,Comments,Medias,Likes,commentView,template) {
+define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","klass","photoswipe","collections/Favourites","collections/Comments","collections/Medias","collections/Likes","views/commentView","text!templates/poiDetailView.html"],
+    function ($, _, Backbone, Handlebars,EventDispatcher,Klass,Photoswipe,Favourites,Comments,Medias,Likes,commentView,template) {
 
     var poiDetailView = Backbone.View.extend({
 
@@ -44,6 +44,9 @@ define(["zepto", "underscore", "backbone", "handlebars","klass","photoswipe","co
             this.likes.firebase.on("value",this.checkLikes,this);
             
             this.on('inTheDom', this.checkStatus, this);
+            
+            EventDispatcher.trigger("changeTitle", this.model.get("name"));
+            EventDispatcher.trigger("changeMenuBar");
         },
 
         //Quando il DOM è effettivamente pronto, allora posso modificare il contenuto

@@ -36,14 +36,14 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       
       login: function(){
           this.externalView.setLogout();
-          $('footer').first().addClass('invisible');
+          $('#footer').first().addClass('invisible');
           var login = new loginView();
           this.changePage(login);
       },
       
       map: function(){
           this.externalView.setLogout();
-          $('footer').first().removeClass('invisible');
+          $('#footer').first().removeClass('invisible');
     	  var map = new mapView({collection : this.pois});
     	  this.changePage(map);
       },
@@ -67,8 +67,8 @@ define(["zepto", "underscore", "backbone","views/semiStructureView","views/struc
       
       search: function(){
           var search = new searchView({favourites : this.favourites});
-          search.setPois(this.pois);
-          search.setEvents(this.events);
+          //search.setPois(this.pois);
+          //search.setEvents(this.events);
           this.changePage(search);
       },
       

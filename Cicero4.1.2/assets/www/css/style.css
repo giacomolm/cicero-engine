@@ -449,6 +449,8 @@ body {
 .profileArea .profilePicAreaContainer img,
 .profileArea .profilePicArea img {
   width : 87%;
+  min-height : 130px;
+  max-height : 150px;
 }
 .profileArea .profileInfoArea {
   margin-top: 3px;
@@ -906,6 +908,24 @@ body {
   width: 100%;
   height: 100%;
 }
+#pagePortfolio .portfolioProjects li div.thumb {
+  display: block;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  /*
+        width: 77px;
+        height: 67px;
+        */
+
+  overflow: hidden;
+}
+#pagePortfolio .portfolioProjects li div.thumb img {
+  width: 100%;
+  height: 100%;
+}
+
 #pagePortfolio .list {
   margin: 0 2%;
 }
@@ -1353,4 +1373,6 @@ hr{
 		margin-bottom : 67px;
 }
 
-
+.menuActive{
+	background-color : #508b75;
+}
