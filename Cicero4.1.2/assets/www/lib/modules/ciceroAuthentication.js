@@ -23,7 +23,7 @@ define(['backbone','firebase','fireauth','models/User','collections/Users','cice
                 } else if (user) {
                     /*user login*/
                     cicero_user = user;  /*user global variable*/
-                    if(typeof cicero_user != undefined){  /*prevents to call these actions during user registration*/
+                    if(typeof cicero_user != 'undefined'){  /*prevents to call these actions during user registration*/
                     var users = new Users();
                     users.firebase.on('value',function(){
                         if(cicero_user.provider == 'password'){
