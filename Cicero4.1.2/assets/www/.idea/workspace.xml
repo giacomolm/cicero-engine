@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="5a167ca7-35ab-473b-b775-1345cbfb8e06" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/floor0.png" afterPath="$PROJECT_DIR$/img/floor0.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/floor1.png" afterPath="$PROJECT_DIR$/img/floor1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/howToReachUsView.js" afterPath="$PROJECT_DIR$/js/views/howToReachUsView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/leaflet.css" afterPath="$PROJECT_DIR$/css/leaflet.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/mapView.html" afterPath="$PROJECT_DIR$/templates/mapView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/mapView.js" afterPath="$PROJECT_DIR$/js/views/mapView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/nearbyPlacesView.js" afterPath="$PROJECT_DIR$/js/views/nearbyPlacesView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/structureView.js" afterPath="$PROJECT_DIR$/js/views/structureView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/modules/ciceroAuthentication.js" afterPath="$PROJECT_DIR$/lib/modules/ciceroAuthentication.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="www.iws" />
@@ -80,19 +72,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/css/style.css">
+      <file leaf-file-name="ciceroAuthentication.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/modules/ciceroAuthentication.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1153" column="2" selection-start="23016" selection-end="23016" vertical-scroll-proportion="0.4681107">
+            <state line="25" column="56" selection-start="1316" selection-end="1316" vertical-scroll-proportion="0.37003404">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mapView.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/mapView.html">
+      <file leaf-file-name="eventDispatcher.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/backbone/eventDispatcher.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="30" selection-start="60" selection-end="60" vertical-scroll-proportion="-0.625">
+            <state line="3" column="22" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,7 +105,6 @@
         <option value="$PROJECT_DIR$/js/router.js" />
         <option value="$PROJECT_DIR$/js/views/loginView.js" />
         <option value="$PROJECT_DIR$/js/views/registerView.js" />
-        <option value="$PROJECT_DIR$/lib/modules/ciceroAuthentication.js" />
         <option value="$PROJECT_DIR$/lib/googlemaps/googlemaps.js" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/templates/howToReachUsView.html" />
@@ -124,13 +115,14 @@
         <option value="$PROJECT_DIR$/js/views/mapView.js" />
         <option value="$PROJECT_DIR$/templates/mapView.html" />
         <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/lib/modules/ciceroAuthentication.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
+    <option name="y" value="2" />
     <option name="width" value="1680" />
-    <option name="height" value="1026" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -186,7 +178,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -201,6 +193,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -301,7 +297,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1680" height="1026" extended-state="7" />
+    <frame x="0" y="2" width="1680" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -385,25 +381,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/backbone/eventDispatcher.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="131" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/howToReachUsView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="39" selection-start="186" selection-end="186" vertical-scroll-proportion="0.07001167">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/loginView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="77" selection-start="185" selection-end="205" vertical-scroll-proportion="-0.3280363">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/modules/ciceroNotifier.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="6" selection-start="5869" selection-end="5869" vertical-scroll-proportion="0.86379117" />
@@ -422,13 +399,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/modules/ciceroAuthentication.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="45" selection-start="1305" selection-end="1305" vertical-scroll-proportion="0.37003404">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -467,9 +437,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/mapView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="30" selection-start="60" selection-end="60" vertical-scroll-proportion="-0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1106" column="2" selection-start="22267" selection-end="22267" vertical-scroll-proportion="0.45603752">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/poiDetailView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="57" selection-start="548" selection-end="551" vertical-scroll-proportion="-4.326923">
+        <state line="15" column="57" selection-start="548" selection-end="551" vertical-scroll-proportion="0.017772513">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/loginView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="12" selection-start="806" selection-end="806" vertical-scroll-proportion="0.42007002">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/loginView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="77" selection-start="185" selection-end="205" vertical-scroll-proportion="-0.3280363">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/backbone/eventDispatcher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="22" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -481,16 +486,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/mapView.html">
+    <entry file="file://$PROJECT_DIR$/lib/modules/ciceroAuthentication.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="30" selection-start="60" selection-end="60" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1153" column="2" selection-start="23016" selection-end="23016" vertical-scroll-proportion="0.4681107">
+        <state line="25" column="56" selection-start="1316" selection-end="1316" vertical-scroll-proportion="0.37003404">
           <folding />
         </state>
       </provider>
