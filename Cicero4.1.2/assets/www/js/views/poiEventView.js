@@ -13,8 +13,6 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","views
             this.events = new Events();
                 //this.model contiene il Poi dal quale abbiamo chiamato la view
             this.events.firebase.on("value", this.setPoiEvent, this);
-            
-            //
         },
 
         setPoiEvent: function(){               
