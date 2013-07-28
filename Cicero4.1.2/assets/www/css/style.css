@@ -448,9 +448,9 @@ body {
 }
 .profileArea .profilePicAreaContainer img,
 .profileArea .profilePicArea img {
-  width : 87%;
+  width : 67%;
   min-height : 130px;
-  max-height : 150px;
+  max-height : 67%;
 }
 .profileArea .profileInfoArea {
   margin-top: 3px;
