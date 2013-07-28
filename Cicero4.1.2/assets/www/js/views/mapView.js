@@ -96,7 +96,6 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
 
             /*if myMarker is presents and it's in the current floor, we attach it to the map*/
             if(this.myMarker != undefined && this.myMarker.floor == this.floor){
-                alert("adding marker...");
                 this.map.removeLayer(this.myMarker);
                 var coords = this.myMarker.getLatLng();
                 this.myMarker = new L.marker();
@@ -131,9 +130,14 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
                     /* if map isn't in the current floor*/
                     if(this.floor != data[2]){
                         this.floor = data[2];
+                        if(this.floor == 0)
+                            this.floor0();
+                        else
+                            this.floor1();
+                        /*this.floor = data[2];
                         this.loadMapdata();
-                        this.map.remove(); /* it destroys the current loaded map */
-                        this.addMap();
+                        this.map.remove();
+                        this.addMap();*/
                     }
 
                     this.myMarker.floor = this.floor; /* setting marker floor */
