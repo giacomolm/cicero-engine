@@ -163,16 +163,19 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
                 if(poi.get("coord")[2] == this.floor){ /*checking if poi is in the current displayed floor*/
                     var marker = new L.marker();
                     marker.setLatLng(new L.LatLng(poi.get("coord")[0],poi.get("coord")[1]));
-                    marker.setIcon(new L.icon({iconUrl:'img/markers/marker-icon.png'}));
+                    var pinAnchor = new L.Point(23,47);
+                    marker.setIcon(new L.icon({iconUrl:'img/markers/marker.png', iconAnchor: pinAnchor}));
                     var poiJson = poi.toJSON();
                     poiJson.cid = poi.cid;
-                    marker.bindPopup(this.templateMarkers(poiJson), {closeButton: false});
+                    marker.bindPopup(this.templateMarkers(poiJson), {offset: new L.Point(0,12)});
                     marker.addTo(this.map);
                 }
             }
         },
 
         floor0: function(){
+            $('#floor0').addClass('opacified_image');
+            $('#floor1').removeClass('opacified_image');
             this.floor = 0;
             this.loadMapdata();
             this.map.remove(); /* it destroys the current loaded map */
@@ -180,6 +183,8 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
         },
 
         floor1: function(){
+            $('#floor0').removeClass('opacified_image');
+            $('#floor1').addClass('opacified_image');
             this.floor = 1;
             this.loadMapdata();
             this.map.remove(); /* it destroys the current loaded map */

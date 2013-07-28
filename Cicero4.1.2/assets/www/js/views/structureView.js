@@ -3,7 +3,7 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
     
     var structureView = Backbone.View.extend({
         events: {
-            "touchstart #key_icon" : "logout",
+            "touchstart #key_icon" : "log",
             "touchend #menu_icon" : "toggleMenu",
             "touchend #back": "back",
             "touchstart #map_icon" : "showMap",
@@ -29,14 +29,15 @@ define(["zepto","underscore","backbone","handlebars","eventDispatcher",'cicerono
             this.render();
         },
         
-        logout: function(){
+        log: function(){
         	$('#popupMenu').addClass('invisible');
-            if(typeof cicero_user != undefined){
+            if(typeof cicero_user != 'undefined'){
                 Ciceronotifier.off();
                 Ciceroauthentication.authClient.logout();
                 this.setLogout();
+            } else {
+                Backbone.history.navigate("login", {trigger: true});
             }
-            else Backbone.history.navigate("login", {trigger: true});
             $("#back").addClass("invisible");
         },
 
