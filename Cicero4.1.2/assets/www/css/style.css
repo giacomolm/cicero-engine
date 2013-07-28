@@ -1423,7 +1423,7 @@ hr{
 }
 #parking{
 
-    float: right;
+    float: left;
     margin-left:5%;
     /*width:64px;
     height:64px;*/
@@ -1436,8 +1436,7 @@ hr{
     height:64px;*/
 }
 #bar{
-
-    float: right;
+    float: left;
     margin-left:5%;
     /*width:64px;
     height:64px;*/
@@ -1451,7 +1450,6 @@ hr{
 
 #gsearch{
 	width:20%;
-	height:90%;
 	float: right;
 	text-align:center;
     color: #fff;
