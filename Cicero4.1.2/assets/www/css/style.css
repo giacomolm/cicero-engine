@@ -1388,6 +1388,7 @@ hr{
 	width:90%;
 	height:10%;	
 	margin-left: 5%;
+	text-align:center
 }
 #nearbyfloat1{
 	height:90%;
@@ -1416,30 +1417,30 @@ hr{
 #hotel{
 
     float: left;
-    margin-left:12%;
-    width:64px;
-    height:64px;
+    margin-left:5%;
+    /*width:64px;
+    height:64px;*/
 }
 #parking{
 
     float: right;
-    margin-right:12%;
-    width:64px;
-    height:64px;
+    margin-left:5%;
+    /*width:64px;
+    height:64px;*/
 }
 #restaurant{
 
     float: left;
-    margin-left:12%;
-    width:64px;
-    height:64px;
+    margin-left:5%;
+    /*width:64px;
+    height:64px;*/
 }
 #bar{
 
     float: right;
-    margin-right:12%;
-    width:64px;
-    height:64px;
+    margin-left:5%;
+    /*width:64px;
+    height:64px;*/
 }
 
 #ginputcont{
@@ -1447,6 +1448,7 @@ hr{
 	height:90%;
 	float:left;
 }
+
 #gsearch{
 	width:20%;
 	height:90%;
@@ -1476,4 +1478,3 @@ hr{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#509b75, endColorstr=#3f795c, GradientType=0);
     /* IE6-8 */
 }
-
