@@ -1385,16 +1385,17 @@ hr{
 
 /* CSS NEARBY */
 #gbuttonscont{
-	width:100%;
+	width:90%;
 	height:15%;	
+	margin-left: 5%;
 }
 #nearbyfloat1{
-	height:100%
+	height:90%;
     width:50%;
     float:left;
 }
 #nearbyfloat2{
-	height:100%
+	height:90%;
     width:50%;
     float:right;
 }
@@ -1404,28 +1405,70 @@ hr{
     margin-left: 5%;
 }
 
+#gform-cont{
+	height:15%;
+    width: 90%;
+    margin-left: 5%;
+}
+
 
 #hotel{
 
     float: left;
-    width:40%;
-    height:80%;
+    width:64px;
+    height:64px;
 }
 #parking{
 
     float: rigth;
-    width:40%;
-    height:80%;
+    width:64px;
+    height:64px;
 }
-#resturant{
+#restaurant{
 
     float: left;
-    width:40%;
-    height:80%;
+    width:64px;
+    height:64px;
 }
 #bar{
 
     float: rigth;
-    width:40%;
-    height:80%;
+    width:64px;
+    height:64px;
 }
+
+#ginputcont{
+	width:40%;
+	height:90%;
+	float:left;
+}
+#gsearch{
+	width:40%;
+	height:90%;
+	margin-rigth:0px;
+	text-align:center;
+    color: #fff;
+    font-size: 18px;
+    padding: 4px 20px;
+    background: -moz-linear-gradient(top, #509b75 0%, #3f795c 100%);
+    /* FF3.6+ */
+
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #509b75), color-stop(100%, #3f795c));
+    /* Chrome,Safari4+ */
+
+    background: -webkit-linear-gradient(top, #509b75 0%, #3f795c 100%);
+    /* Chrome10+,Safari5.1+ */
+
+    background: -o-linear-gradient(top, #509b75 0%, #3f795c 100%);
+    /* Opera 11.10+ */
+
+    background: -ms-linear-gradient(top, #509b75 0%, #3f795c 100%);
+    /* IE10+ */
+
+    background: linear-gradient(to bottom, #509b75 0%, #3f795c 100%);
+    /* W3C */
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#509b75, endColorstr=#3f795c, GradientType=0);
+    /* IE6-8 */
+}
+
