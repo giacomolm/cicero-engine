@@ -427,7 +427,7 @@ body {
   width : 100%
 }
 .profileLeft{
-	width : 60%;
+	width : 48%;
 }
 .profileArea .profilePicAreaContainer {
   text-align: left;
@@ -448,9 +448,9 @@ body {
 }
 .profileArea .profilePicAreaContainer img,
 .profileArea .profilePicArea img {
-  width : 67%;
+  width : 100%;
   min-height : 130px;
-  max-height : 67%;
+  max-height : 100%;
 }
 .profileArea .profileInfoArea {
   margin-top: 3px;
@@ -487,7 +487,8 @@ body {
 }
 
 .centerTable{
-	width : 150%;
+	width : 48%;
+	float : right;
 }
 .profileTable {
   text-align: center;
