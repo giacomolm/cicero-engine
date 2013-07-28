@@ -19,12 +19,7 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
        	state:1,
 
         initialize: function () {
-        	
-        	
-        	
-        	
         	EventDispatcher.trigger("show_spinner");
-        	
         	this.on("inTheDom", this.InitMap);
         	this.render();
         },
@@ -38,54 +33,47 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
             EventDispatcher.trigger("changeTitle","How to reach us");
         	
         	if(this.state==1){
-        	this.state=2;
-        	var mapOptions = {
-        		    zoom: 8,
-        		    center: new google.maps.LatLng(this.xPos, this.yPos),
-        		    mapTypeId: google.maps.MapTypeId.ROADMAP
-        		  };
-        	this.map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-        	var marker = new google.maps.Marker({
-        	      position: new google.maps.LatLng(this.xPos, this.yPos),
-        	      map: this.map,
-        	      title:"Parchi d'Italia"
-        	  });
-        	this.directionsService = new google.maps.DirectionsService();
-        	this.directionsDisplay = new google.maps.DirectionsRenderer();
+                this.state=2;
+                var mapOptions = {
+                    zoom: 8,
+                    center: new google.maps.LatLng(this.xPos, this.yPos),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                this.map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+                this.marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(this.xPos, this.yPos),
+                    map: this.map,
+                });
+                this.directionsService = new google.maps.DirectionsService();
+                this.directionsDisplay = new google.maps.DirectionsRenderer();
         	}
         },
         
         
         find:function(){
-        	
-        	navigator.geolocation.getCurrentPosition(_.bind(this.setCoord,this), _.bind(this.coordNotSetted,this)); 
-        	
+            EventDispatcher.trigger("show_spinner");
+        	navigator.geolocation.getCurrentPosition(_.bind(this.setCoord,this), _.bind(this.coordNotSet,this));
+        },
+
+        /*geolocalizzation handles*/
+        setCoord:function (Position){
+            this.myXPos= Position.coords.latitude;
+            this.myYPos= Position.coords.longitude;
+            this.gMap();
+        },
+
+        coordNotSet:function (Position){
+            EventDispatcher.trigger("showMessage","Unable to Geolocalize");
         },
         
         route: function(){
-        	
+            EventDispatcher.trigger("show_spinner");
         	this.myLoc=document.getElementById('input_partenza').value;
         	this.gMap2();
-        	
         },
-        
-        
-        
-        /*geolocalizzation handles*/
-        setCoord:function (Position){
-        	this.myXPos= Position.coords.latitude;
-        	this.myYPos= Position.coords.longitude;
-        	this.gMap();
-        },
-        coordNotSetted:function (Position){
-        	alert("Unable to Geolocalize");
-        },
-        
-        
+
         /*after geolocalizzating the device we can ask route to google*/
-        gMap: function(){        
-        	
-        	
+        gMap: function(){
         	arr = new google.maps.LatLng(42.358175, 13.364621);
         	par = new google.maps.LatLng(this.myXPos, this.myYPos);
         	request = {
@@ -97,9 +85,7 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         	
         },
         
-        gMap2: function(){        
-	        	
-	        
+        gMap2: function(){
 	        arr = new google.maps.LatLng(42.358175, 13.364621);
 	        par = this.myLoc;
 	        request = {
@@ -109,23 +95,16 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
 	        };
 	        this.directionsService.route(request, _.bind(this.gReq,this));
 	        	
-	       },
+	    },
         
         gReq: function(response, status){
-        	
         	if (status == google.maps.DirectionsStatus.OK) {
-        		
-        		
-        		
-        		
+        	    this.marker.setMap(null);
         		this.directionsDisplay.setMap(this.map);
-        		
         		this.directionsDisplay.setPanel(document.getElementById("directionsPanel"));
         		this.directionsDisplay.setDirections(response);
-        		
       	    }
-        	
-        	
+            EventDispatcher.trigger("hide_spinner");
         },
         
                

@@ -1137,7 +1137,8 @@ body {
  position: absolute; 
  z-index: 1000;
  top: 58px;
- right:10px
+ right:10px;
+ opacity: 0.9;
 }
 
 .floor_container {
@@ -1150,10 +1151,15 @@ body {
 .floor {
   float: left;
   margin-right: 6px;
+  opacity: 0.9;
 }
 
 #error{
     color: red;
+}
+
+.opacified_image{
+    opacity:0.6;
 }
 
 #spinner{
@@ -1168,9 +1174,11 @@ body {
   position: relative;
   text-shadow: 1px 1px 1px #fff;
 }
+
 .invisible{
 		display : none;
 }
+
 #search_div{
 	display: -webkit-box;
 	display: -moz-box;

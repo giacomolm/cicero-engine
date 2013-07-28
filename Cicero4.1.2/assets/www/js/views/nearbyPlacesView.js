@@ -6,11 +6,10 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
     	
     	
     	events: {
-            "touchstart #shop" : "shop",
-            "touchstart #park" : "park",
+            "touchstart #parking" : "parking",
             "touchstart #hotel" : "hotel",
             "touchstart #restaurant" : "restaurant",
-            "touchstart #hospital" : "hospital",
+            "touchstart #bar" : "bar",
             "touchstart #gsearch" : "gsearch"
 
           },
@@ -33,7 +32,6 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
        	
         initialize: function () {
         	EventDispatcher.trigger("show_spinner");
-        	
         	this.on("inTheDom", this.InitMap);
         	this.render();
         },
@@ -49,7 +47,7 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         	if(this.state==1){
 	        	this.state=2;
 	        	var mapOptions = {
-	        		    zoom: 8,
+	        		    zoom: 12,
 	        		    center: new google.maps.LatLng(this.xPos, this.yPos),
 	        		    mapTypeId: google.maps.MapTypeId.ROADMAP
 	        		  };
@@ -57,50 +55,46 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
 	        	var marker = new google.maps.Marker({
 	        	      position: new google.maps.LatLng(this.xPos, this.yPos),
 	        	      map: this.map,
-	        	      title:"Parchi d'Italia"
+	        	      icon: 'img/markers/manifest.png'
         	  });
 	        	this.service = new google.maps.places.PlacesService(this.map);
 	        	this.infowindow = new google.maps.InfoWindow();
         	
         	}
         },
-        
-        shop: function(){
-            document.getElementById('input_nearby').value="shops";
-            this.gsearch();
-        },
 
-        park: function(){
-            document.getElementById('input_nearby').value="parks";
+        parking: function(){
+            document.getElementById('input_nearby').value="parking";
             this.gsearch();
         },
 
         hotel: function(){
-            document.getElementById('input_nearby').value="hotels";
+            document.getElementById('input_nearby').value="hotel";
             this.gsearch();
         },
 
         restaurant: function(){
-            document.getElementById('input_nearby').value="restaurants";
+            document.getElementById('input_nearby').value="restaurant";
             this.gsearch();
         },
 
-        hospital: function(){
-            document.getElementById('input_nearby').value="hospitals";
+        bar:function(){
+            document.getElementById('input_nearby').value="bar";
             this.gsearch();
         },
         
         gsearch: function(){
         	this.clearOverlays();
-        	search=document.getElementById('input_nearby').value;
+        	var search = document.getElementById('input_nearby').value;
         	var center = new google.maps.LatLng(this.xPos, this.yPos);
         	var request = {
         		    location: center,
-        		    radius: 10000,
-        		    types: [search]
+        		    radius: 5000,
+        		    query: search
         		  };
+            //var request = search+' '+this.xPos+' '+this.yPos;
         	
-        	this.service.nearbySearch(request, _.bind(this.rendRes,this));
+        	this.service.textSearch(request, _.bind(this.rendRes,this));
         },
         
         rendRes: function(results, status){
@@ -116,17 +110,19 @@ define(["zepto", "underscore", "backbone", "handlebars","eventDispatcher","text!
         },
         
         createMarker: function(place) {
-        	 
         	  var marker = new google.maps.Marker({
         	    map: this.map,
-        	    position: place.geometry.location
+        	    position: place.geometry.location,
+                icon: 'img/markers/result.png'
         	  });
         	  
         	  google.maps.event.addListener(marker, 'click', _.bind(function(){
-        		    this.infowindow.setContent(place.name);
-        		    this.infowindow.open(this.map,marker);
+                    var request = {reference: place.reference};
+        		    this.service.getDetails(request, _.bind(function(place,status){
+                        this.infowindow.setContent("<p>"+place.name+"</p><p>"+place.formatted_address+"</p><p>"+place.formatted_phone_number+"</p>");
+                        this.infowindow.open(this.map,marker);
+                    },this));
         		  },this));
-
              this.markersArray.push(marker);
         },
         
