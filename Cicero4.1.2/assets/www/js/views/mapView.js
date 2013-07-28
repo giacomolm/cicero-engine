@@ -167,7 +167,8 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
                     marker.setIcon(new L.icon({iconUrl:'img/markers/marker.png', iconAnchor: pinAnchor}));
                     var poiJson = poi.toJSON();
                     poiJson.cid = poi.cid;
-                    marker.bindPopup(this.templateMarkers(poiJson), {offset: new L.Point(0,12)});
+                    var pop_position = new L.Point(20,-40);
+                    marker.bindPopup(this.templateMarkers(poiJson), {offset: pop_position});
                     marker.addTo(this.map);
                 }
             }
