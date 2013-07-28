@@ -1386,7 +1386,7 @@ hr{
 /* CSS NEARBY */
 #gbuttonscont{
 	width:90%;
-	height:15%;	
+	height:10%;	
 	margin-left: 5%;
 }
 #nearbyfloat1{
@@ -1400,52 +1400,57 @@ hr{
     float:right;
 }
 #nearby_map-canvas{
-	height: 60%;
+	height: 70%;
     width: 90%;
     margin-left: 5%;
 }
 
 #gform-cont{
-	height:15%;
+	height:10%;
     width: 90%;
     margin-left: 5%;
+    margin-top:10%;
 }
 
 
 #hotel{
 
     float: left;
+    margin-left:12%;
     width:64px;
     height:64px;
 }
 #parking{
 
-    float: rigth;
+    float: right;
+    margin-right:12%;
     width:64px;
     height:64px;
 }
 #restaurant{
 
     float: left;
+    margin-left:12%;
     width:64px;
     height:64px;
 }
 #bar{
 
-    float: rigth;
+    float: right;
+    margin-right:12%;
     width:64px;
     height:64px;
 }
 
 #ginputcont{
-	width:40%;
+	width:70%;
 	height:90%;
 	float:left;
 }
 #gsearch{
-	width:40%;
+	width:20%;
 	height:90%;
-	margin-rigth:0px;
+	float: right;
 	text-align:center;
     color: #fff;
     font-size: 18px;
