@@ -47,6 +47,18 @@ define(["zepto", "underscore", "backbone","handlebars","models/Poi","collections
           if(this.options.centerLat && this.options.centerLng)
             this.zoom = 5;
 
+
+          /*refilling after size window changing depending on keyboard*/
+          window.onresize = _.bind(function(){
+              if(document.getElementById('map') != null){ /*if we are in the map view*/
+                  document.getElementById('map').style.height = (window.innerHeight-(44+58))+"px";
+                  if(this.floor == 0)
+                      this.floor0();
+                  else
+                      this.floor1();
+              }
+            },this);
+
           this.on("inTheDom", this.addMap);
           this.render();
 
