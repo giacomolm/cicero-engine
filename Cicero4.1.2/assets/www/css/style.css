@@ -1408,11 +1408,9 @@ hr{
 
 #gform-cont{
 	height:10%;
-    width: 90%;
     margin-left: 5%;
-    margin-top:10%;
+    margin-top:5%;
 }
-
 
 #hotel{
 
@@ -1442,16 +1440,22 @@ hr{
     height:64px;*/
 }
 
+
 #ginputcont{
-	width:70%;
-	height:90%;
+	width:60%;
 	float:left;
 }
 
+#ginputcont .input{
+	width:100%;
+	font-size:18px;
+}
+
 #gsearch{
-	width:20%;
 	float: right;
 	text-align:center;
+	width:20%;
+	margin-right : 20px;
     color: #fff;
     font-size: 18px;
     padding: 4px 20px;
